@@ -1,0 +1,5 @@
+// getting a single cutom field
+
+<?php if( get_field('faq_shortcode') ): ?>
+  <?php echo do_shortcode('[acf field="faq_shortcode"]'); ?>
+<?php endif; ?>
