@@ -56,7 +56,7 @@
                 </li>&nbsp;»&nbsp;
                 <li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'>
                     <a  itemprop='item'
-                        href='".$url."/".$grandparenturl."/".$parenturl."'>
+                        href='".$url."/".$parenturl."'>
                         <span itemprop='name'>". clean($parenturl) ."</span>
                     </a>
                     <meta itemprop='position' content='2' />
