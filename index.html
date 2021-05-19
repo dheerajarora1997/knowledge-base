@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data attribute scroll</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+</head>
+<body>
+    <ul class="d-flex flex-row fixed-top m-0 py-2 bg-warning">
+        <li class="px-4 "><a href="javascript:void(0);" data-href="#section1">1</a></li>
+        <li class="px-4 "><a href="javascript:void(0);" data-href="#section2">2</a></li>
+        <li class="px-4 "><a href="javascript:void(0);" data-href="#section3">3</a></li>
+        <li class="px-4 "><a href="javascript:void(0);" data-href="#section4">4</a></li>
+        <li class="px-4 "><a href="javascript:void(0);" data-href="#section5">5</a></li>
+        <li class="px-4 "><a href="javascript:void(0);" data-href="#section6">6</a></li>
+    </ul>
+    <div class="mt-5">
+        <div class="jumbotron py-5" id="section1">
+            <h1>heading1</h1>
+            <a href=""></a>
+        </div>
+        <div class="jumbotron py-5" id="section2">
+            <h2>Heading 2</h2>
+            <a href=""></a>
+        </div>
+        <div class="jumbotron py-5" id="section3">
+            <h3>Heading 3</h3>
+            <a href=""></a>
+        </div>
+        <div class="jumbotron py-5" id="section4">
+            <h4>Heading 4</h1>
+            <a href=""></a>
+        </div>
+        <div class="jumbotron py-5" id="section5">
+            <h5>Heading 5</h5>
+            <a href=""></a>
+        </div>
+        <div class="jumbotron py-5" id="section6">
+            <h6>Heading 6</h6>
+            <a href=""></a>
+        </div>
+    </div>
+    <div class="p-5"></div>
+    <div class="p-5"></div>
+    <div class="p-5"></div>
+    <div class="p-5"></div>
+    <div class="p-5"></div>
+    <div class="p-5"></div>
+
+</body>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $('ul li a').click(function(){
+            var linkSelect = $(this).data('href');
+            var sectionPlacement = $(linkSelect).offset();
+
+            $(window).scrollTop(sectionPlacement.top - 40);
+            // alert(sectionPlacement.top);
+
+        });
+    });
+</script>
+</html>
