@@ -57,6 +57,8 @@
             var linkSelect = $(this).data('href');
             var sectionPlacement = $(linkSelect).offset();
             var navHeight = $('ul').data('height');
+            $('ul li a').removeClass('active');
+            $(this).addClass('active');
             $(window).scrollTop(sectionPlacement.top - navHeight);
         });
     });
