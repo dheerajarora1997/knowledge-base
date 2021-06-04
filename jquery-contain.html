@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>span{display: inline-block; padding: 10px;}</style>
+</head>
+<body>
+    <span class="msgarw pull-right" style="background-color: #5390a2;color: #fff;font-weight: 500;font-size: 12px;outline: solid;">&nbsp;<i class="fa fa-info-circle" aria-hidden="true"></i>&nbsp;Application Stage: Verified</span>
+    <span class="msgarw pull-right" style="background-color: #5390a2;color: #fff;font-weight: 500;font-size: 12px;outline: solid;">&nbsp;<i class="fa fa-info-circle" aria-hidden="true"></i>&nbsp;Application Stage: Document Pending</span>
+    <span class="msgarw pull-right" style="background-color: #5390a2;color: #fff;font-weight: 500;font-size: 12px;outline: solid;">&nbsp;<i class="fa fa-info-circle" aria-hidden="true"></i>&nbsp;Application Stage: Error in Document Upload</span>
+    <span class="msgarw pull-right" style="background-color: #5390a2;color: #fff;font-weight: 500;font-size: 12px;outline: solid;">&nbsp;<i class="fa fa-info-circle" aria-hidden="true"></i>&nbsp;Application Stage: Ready for Hallticket</span>
+    <span class="msgarw pull-right" style="background-color: #5390a2;color: #fff;font-weight: 500;font-size: 12px;outline: solid;">&nbsp;<i class="fa fa-info-circle" aria-hidden="true"></i>&nbsp;Application Stage: Hallticket Generated</span>
+    <span class="msgarw pull-right" style="background-color: #5390a2;color: #fff;font-weight: 500;font-size: 12px;outline: solid;">&nbsp;<i class="fa fa-info-circle" aria-hidden="true"></i>&nbsp;Application Stage: Not Approved</span>
+    <span class="msgarw pull-right" style="background-color: #5390a2;color: #fff;font-weight: 500;font-size: 12px;outline: solid;">&nbsp;<i class="fa fa-info-circle" aria-hidden="true"></i>&nbsp;Application Stage: Ready for Verification</span>
+    <span class="msgarw pull-right" style="background-color: #5390a2;color: #fff;font-weight: 500;font-size: 12px;outline: solid;">&nbsp;<i class="fa fa-info-circle" aria-hidden="true"></i>&nbsp;Application Stage: Update Courses</span>
+    <span class="msgarw pull-right" style="background-color: #5390a2;color: #fff;font-weight: 500;font-size: 12px;outline: solid;">&nbsp;<i class="fa fa-info-circle" aria-hidden="true"></i>&nbsp;Application Stage: Absent</span>
+    <span class="msgarw pull-right" style="background-color: #5390a2;color: #fff;font-weight: 500;font-size: 12px;outline: solid;">&nbsp;<i class="fa fa-info-circle" aria-hidden="true"></i>&nbsp;Application Stage: Regret</span>
+    <span class="msgarw pull-right" style="background-color: #5390a2;color: #fff;font-weight: 500;font-size: 12px;outline: solid;">&nbsp;<i class="fa fa-info-circle" aria-hidden="true"></i>&nbsp;Application Stage: Accepted</span>
+    <span class="msgarw pull-right" style="background-color: #5390a2;color: #fff;font-weight: 500;font-size: 12px;outline: solid;">&nbsp;<i class="fa fa-info-circle" aria-hidden="true"></i>&nbsp;Application Stage: WL4</span>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $(".msgarw:contains(Verified)").css("background-color", "#28a745");
+        $(".msgarw:contains(Document Pending)").css("background-color", "#f54748");
+        $(".msgarw:contains(Error in Document Upload)").css("background-color", "red");
+        $(".msgarw:contains(Ready for Hallticket)").css("background-color", "#9fe6a0");
+        $(".msgarw:contains(Hallticket Generated)").css("background-color", "#4aa96c");
+        $(".msgarw:contains(Not Approved)").css("background-color", "#f55c47");
+        $(".msgarw:contains(Ready for Verification)").css("background-color", "#cf0000");
+        $(".msgarw:contains(Update Courses)").css("background-color", "#fb3640");
+        $(".msgarw:contains(Absent)").css("background-color", "#ce1212");
+        $(".msgarw:contains(Regret)").css("background-color", "#810000");
+        $(".msgarw:contains(Accepted)").css("background-color", "#5b8a72");
+        $(".msgarw:contains(WL)").css("background-color", "#ffcc29");
+    });
+</script>
+</body>
+</html>
