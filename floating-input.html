@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Floating input plain css || Dheeraj Arora</title>
+
+    <style>
+        .floating-input {
+            position: relative;
+            padding-top: 20px;
+        }
+
+        .floating-input label {
+            position: absolute;
+            background: white;
+            opacity: 0;
+            top: 9px;
+            left: 0;
+            transition: all 0.5s ease;
+            -webkit-transition: all 0.5s ease;
+            -moz-transition: all 0.5s ease;
+            -ms-transition: all 0.5s ease;
+            -o-transition: all 0.5s ease;
+        }
+
+        .floating-input input,
+        .floating-input select,
+        .floating-input textarea {
+            width: 100%;
+            position: relative;
+            border-color: #ced4da;
+        }
+
+        .floating-input input:not(:placeholder-shown)+label,
+        .floating-input select:not(:placeholder-shown)+label,
+        .floating-input textarea:not(:placeholder-shown)+label {
+            top: 0;
+            font-size: 90%;
+            opacity: 1;
+        }
+
+        .floating-input input:disabled label,
+        .floating-input select:disabled label,
+        .floating-input textarea:disabled label {
+            opacity: 0.5;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="floating-input" style="max-width: 550px;">
+        <input type="text" id="text-input" placeholder="Label and Placeholder must be the same">
+        <label for="text-input">Label and Placeholder must be the same</label>
+    </div>
+</body>
+
+</html>
