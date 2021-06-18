@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+    <style>
+        .custom-skeleton{
+            margin-bottom: 15px;
+        }
+         .skeleton-loader {
+            width: 100%;
+            height: 15px;
+            display: block;
+            margin: 0 0 15px;
+            background: linear-gradient(to right,
+                    rgba(255, 255, 255, 0),
+                    rgba(255, 255, 255, 0.5) 50%,
+                    rgba(255, 255, 255, 0) 80%),
+                lightgray;
+            background-repeat: repeat-y;
+            background-size: 50px 500px;
+            background-position: 0 0;
+            animation: shine 1s infinite;
+        }
+        .skeleton-loader.picture{
+            min-height: 180px;
+            margin-bottom: 0;
+        }
+
+        .skeleton-loader.title{
+            min-height: 30px;
+            margin-bottom: 15px;
+            width: 60%;
+        }
+        .skeleton-loader.description{
+            min-height: 15px;
+            width: 80%;
+        }
+        .skeleton-loader.description+.skeleton-loader.description{
+            width: 75%;
+        }
+        .skeleton-loader.description+.skeleton-loader.description+.skeleton-loader.description{
+            width: 65%;
+        }
+        .skeleton-loader.button{
+            min-height: 45px;
+            width: 40%;
+            margin-top: 10px;
+            border-radius: 5px;
+        }
+
+        @keyframes shine {
+            to {
+                background-position: 100% 0,
+                    /* move highlight to right */
+                    0 0;
+            }
+        }
+
+        .custom-skeleton img{
+            min-height: 120px;
+            background: linear-gradient(to right,
+                    rgba(255, 255, 255, 0),
+                    rgba(255, 255, 255, 0.5) 50%,
+                    rgba(255, 255, 255, 0) 80%),
+                lightgray;
+            background-repeat: repeat-y;
+            background-size: 50px 500px;
+            background-position: 0 0;
+            animation: shine .5s infinite;
+        }
+
+    </style>
+</head>
+
+<body>
+    <section>
+        <div class="container">
+            <div class="d-flex justify-content-around mt-5 ">
+                <div class="row w-100">
+                    <div class="col-md-4">
+                        <div class="custom-skeleton" id="cs-loader">
+                            <div class="card">
+                                <span class="skeleton-loader picture"></span>
+                                <div class="card-body">
+                                    <span class="skeleton-loader title"></span>
+                                    <span class="skeleton-loader description"></span>
+                                    <span class="skeleton-loader description"></span>
+                                    <span class="skeleton-loader description"></span>
+                                    <span class="skeleton-loader button"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex justify-content-around custom-skeleton" id="cs-loader">
+                <div class="row w-100">
+                    <div class="col-md-4">
+                        <div class="card my-3">
+                            <img src="./sample.jpeg?n0cach3"
+                                class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of
+                                    the card's content.</p>
+                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card my-3">
+                            <img src="./sample.jpeg?n0cach3"
+                                class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of
+                                    the card's content.</p>
+                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card my-3">
+                            <img src="./sample.jpeg?n0cach3"
+                                class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of
+                                    the card's content.</p>
+                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"></script>
+<script>
+    setTimeout(function(){
+  document.getElementById("cs-loader").style.display = "none";
+ }, 1000);
+</script>
+</html>
