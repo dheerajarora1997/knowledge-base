@@ -1,6 +1,19 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script>
+        const onTagsChange = () => {
+            const tagsInput = document.querySelector('#sahil')
+            console.log({tagsInput});
+            const classToAdd  = 'bg-danger'
+            if (tagsInput && tagsInput.value && !tagsInput.parentNode.classList.contains(classToAdd)) {
+                tagsInput.parentNode.classList.add(classToAdd)
+            } else if (tagsInput) {
+                tagsInput.parentNode.classList.remove(classToAdd)
+            }
+        }
+    </script>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,9 +27,9 @@
     </style>
 </head>
 <body>
-    <div class="jumbotron bg-light">
+    <div class="jumbotron bg-light" id="">
         <h3>Bootstrap input tag</h3>
-        <input type="text" class="form-control" value="Amsterdam,Washington,Sydney,Beijing,Cairo" data-role="tagsinput" />
+        <input type="text" class="form-control" onchange="onTagsChange" id="sahil" value="Amsterdam,Washington,Sydney,Beijing,Cairo" data-role="tagsinput" />
 
     </div>
 
