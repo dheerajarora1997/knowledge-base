@@ -38,14 +38,148 @@
                 <td>Berlin</td>
                 <td><a href="javascript:void(0)">Link Action</a></td>
             </tr>
+            <tr>
+                <td>Edith</td>
+                <td>23</td>
+                <td>New York</td>
+                <td><a href="javascript:void(0)">Link Action</a></td>
+            </tr>
+            <tr>
+                <td>Mariya</td>
+                <td>20</td>
+                <td>Sydney</td>
+                <td><a href="javascript:void(0)">Link Action</a></td>
+            </tr>
+            <tr>
+                <td>Patric</td>
+                <td>18</td>
+                <td>Berlin</td>
+                <td><a href="javascript:void(0)">Link Action</a></td>
+            </tr>
+            <tr>
+                <td>Sana</td>
+                <td>23</td>
+                <td>New York</td>
+                <td><a href="javascript:void(0)">Link Action</a></td>
+            </tr>
+            <tr>
+                <td>Unknown</td>
+                <td>20</td>
+                <td>Sydney</td>
+                <td><a href="javascript:void(0)">Link Action</a></td>
+            </tr>
+            <tr>
+                <td>Lucifer</td>
+                <td>18</td>
+                <td>Berlin</td>
+                <td><a href="javascript:void(0)">Link Action</a></td>
+            </tr>
+            <tr>
+                <td>Cholie</td>
+                <td>23</td>
+                <td>New York</td>
+                <td><a href="javascript:void(0)">Link Action</a></td>
+            </tr>
+            <tr>
+                <td>Denver</td>
+                <td>20</td>
+                <td>Sydney</td>
+                <td><a href="javascript:void(0)">Link Action</a></td>
+            </tr>
+            <tr>
+                <td>Magas</td>
+                <td>18</td>
+                <td>Berlin</td>
+                <td><a href="javascript:void(0)">Link Action</a></td>
+            </tr>
+            <tr>
+                <td>Sinaman</td>
+                <td>23</td>
+                <td>New York</td>
+                <td><a href="javascript:void(0)">Link Action</a></td>
+            </tr>
+            <tr>
+                <td>Tricsky</td>
+                <td>20</td>
+                <td>Sydney</td>
+                <td><a href="javascript:void(0)">Link Action</a></td>
+            </tr>
+            <tr>
+                <td>Jamila</td>
+                <td>18</td>
+                <td>Berlin</td>
+                <td><a href="javascript:void(0)">Link Action</a></td>
+            </tr>
+            <tr>
+                <td>Rob</td>
+                <td>23</td>
+                <td>New York</td>
+                <td><a href="javascript:void(0)">Link Action</a></td>
+            </tr>
+            <tr>
+                <td>Bob</td>
+                <td>20</td>
+                <td>Sydney</td>
+                <td><a href="javascript:void(0)">Link Action</a></td>
+            </tr>
+            <tr>
+                <td>Noody</td>
+                <td>18</td>
+                <td>Berlin</td>
+                <td><a href="javascript:void(0)">Link Action</a></td>
+            </tr>
+            <tr>
+                <td>Oswold</td>
+                <td>23</td>
+                <td>New York</td>
+                <td><a href="javascript:void(0)">Link Action</a></td>
+            </tr>
+            <tr>
+                <td>Samsung</td>
+                <td>20</td>
+                <td>Sydney</td>
+                <td><a href="javascript:void(0)">Link Action</a></td>
+            </tr>
+            <tr>
+                <td>Professor</td>
+                <td>18</td>
+                <td>Berlin</td>
+                <td><a href="javascript:void(0)">Link Action</a></td>
+            </tr>
+            <tr>
+                <td>Mickey</td>
+                <td>23</td>
+                <td>New York</td>
+                <td><a href="javascript:void(0)">Link Action</a></td>
+            </tr>
+            <tr>
+                <td>Anna</td>
+                <td>20</td>
+                <td>Sydney</td>
+                <td><a href="javascript:void(0)">Link Action</a></td>
+            </tr>
+            <tr>
+                <td>John</td>
+                <td>18</td>
+                <td>Berlin</td>
+                <td><a href="javascript:void(0)">Link Action</a></td>
+            </tr>
         </tbody>
     </table>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.datatables.net/1.11.1/js/jquery.dataTables.min.js"></script>
     <script>
-        $(document).ready(function () {
-            $('table').DataTable();
+        $(document).ready(function() {
+        var table = $('table').DataTable( {
+            rowReorder: true,
+            columnDefs: [
+                // { orderable: true, className: 'reorder', targets: 0 },
+                // { orderable: true, className: 'reorder', targets: 1 },
+                // { orderable: false, targets: '_all' }
+                { orderable: false, targets: 3 }
+            ]
         });
+    });
     </script>
 </body>
 
