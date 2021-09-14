@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,40 +20,42 @@
         <div class="row">
             <form role="search">
                 <div class="input-group">
-                    <input type="text" class="running-placeholder" data-placeholder="What are you looking for?">
+                    <input type="text" class="running-placeholder" data-id="input001" data-placeholder="What are you looking for?">
                 </div>
             </form>
+            <input type="text" id="input002" class="running-placeholder" data-placeholder="Placeholder here">
         </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script>
-        var txt = $('.running-placeholder').data('placeholder');
-        var timeOut;
-        var txtLen = txt.length;
-        var char = 0;
-        $('.running-placeholder').attr('placeholder', '|');
-        function typeIt() {
-            var humanize = Math.round(Math.random() * (200 - 30)) + 30;
-            timeOut = setTimeout(function () {
-                char++;
-                var type = txt.substring(0, char);
-                $('.running-placeholder').attr('placeholder', type + '|');
-                typeIt();
+        $('.running-placeholder').each(function(){
+            let txt = $(this).data('placeholder');
+            let timeOut;
+            let txtLen = txt.length;
+            let char = 0;
+            $(this).attr('placeholder', '|');
+            const typeIt =()=> {
+                let humanize = 150;
+                timeOut = setInterval(() => {
+                    char++;
+                    let type = txt.substring(0, char);
+                    $(this).attr('placeholder', type + '|');
 
-                if (char == txtLen) {
-                    $('.running-placeholder').attr('placeholder', $('.running-placeholder').attr('placeholder').slice(0, -1)) // remove the '|'
-                    clearTimeout(timeOut);
-                }
-            }, humanize);
-        };
-        typeIt();
-
-        $('.running-placeholder').focus( function(){
-            clearTimeout(timeOut);
-        });
-        $('.running-placeholder').focusout( function(){
+                    if (char == txtLen) {
+                        $(this).attr('placeholder', $(this).attr('placeholder').slice(0, -1)) // remove the '|'
+                        clearTimeout(timeOut);
+                    }
+                }, humanize);
+            };
             typeIt();
+            $(this).focus( function(){
+                clearTimeout(timeOut);
+            });
+            $(this).focusout( function(){
+                typeIt();
+            });
         });
+
     </script>
 </body>
 </html>
