@@ -13,7 +13,8 @@
     </style>
 </head>
 <body>
-    <h1 class="text-center">Placeholder Text Animation</h1>
+    <h1>Placeholder Text Animation</h1>
+    <h2>focus to stop and focusout start again</h2>
     <div class="container">
         <div class="row">
             <form role="search">
@@ -30,7 +31,7 @@
         var txtLen = txt.length;
         var char = 0;
         $('.running-placeholder').attr('placeholder', '|');
-        (function typeIt() {
+        function typeIt() {
             var humanize = Math.round(Math.random() * (200 - 30)) + 30;
             timeOut = setTimeout(function () {
                 char++;
@@ -43,9 +44,14 @@
                     clearTimeout(timeOut);
                 }
             }, humanize);
-        }());
-        $('.running-placeholder').hover( function(){
+        };
+        typeIt();
+
+        $('.running-placeholder').focus( function(){
             clearTimeout(timeOut);
+        });
+        $('.running-placeholder').focusout( function(){
+            typeIt();
         });
     </script>
 </body>
