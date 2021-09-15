@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,10 +19,10 @@
         <div class="row">
             <form role="search">
                 <div class="input-group">
-                    <input type="text" class="running-placeholder" data-id="input001" data-placeholder="What are you looking for?">
+                    <input type="text" class="running-placeholder" data-placeholder="What are you looking for?">
                 </div>
             </form>
-            <input type="text" id="input002" class="running-placeholder" data-placeholder="Placeholder here">
+            <input type="text" class="running-placeholder" data-placeholder="Placeholder here">
         </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
@@ -39,11 +38,12 @@
                 timeOut = setInterval(() => {
                     char++;
                     let type = txt.substring(0, char);
-                    $(this).attr('placeholder', type + '|');
+                    $(this).attr('placeholder', type);
+                    // typeIt();
 
                     if (char == txtLen) {
-                        $(this).attr('placeholder', $(this).attr('placeholder').slice(0, -1)) // remove the '|'
                         clearTimeout(timeOut);
+                        // $(this).attr('placeholder', $(this).attr('placeholder').slice(0, -1)) // remove the '|'
                     }
                 }, humanize);
             };
