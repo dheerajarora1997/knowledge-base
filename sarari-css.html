@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
+    <style>
+        body {
+            font-family: 'Gotham', sans-serif;
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        input[type="color"] {
+            -webkit-appearance: none;
+            border: none;
+            width: 20px;
+            height: 20px;
+            padding: 0;
+        }
+
+        input[type="color"]::-webkit-color-swatch-wrapper {
+            padding: 0;
+        }
+
+        input[type="color"]::-webkit-color-swatch {
+            border: none;
+        }
+
+        .color-span {
+            width: 30px;
+            height: 30px;
+            display: inline-block;
+            background: transparent;
+        }
+
+        .color-badge {
+            border: 1px solid #666;
+        }
+    </style>
+    <style>
+        body {
+            padding: 100px;
+        }
+
+        @media screen and (-webkit-min-device-pixel-ratio:0) {
+            body {
+                background: green;
+                /* on Safari and Chrome  */
+            }
+        }
+        ::i-block-chrome,
+        .yourClassName {
+            background : #f00;
+        }
+
+    </style>
+</head>
+
+<body>
+    <select name="" id="" class="picker" data-selected-text-format="count > 1" multiple>
+        <option value="">Name</option>
+        <option value="">Age</option>
+        <option value="">Gender</option>
+        <option value="">Group</option>
+        <option value="">Location</option>
+        <option value="">Place</option>
+        <option value="">City</option>
+        <option value="">state</option>
+        <option value="">Country</option>
+        <option value="">Education</option>
+        <option value="">Work</option>
+    </select>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
+    <script>
+        $('select').selectpicker();
+    </script>
+    <script>
+        $('[data-toggle="tooltip"]').tooltip();
+
+        $('.grid-button-group .btn').click(function () {
+            $('.grid-button-group .btn').removeClass('active');
+            $(this).addClass('active');
+            let ratingValue = $(this).data('value');
+            $('input.rating-value').val(ratingValue);
+        });
+    </script>
+    <script>
+        $('input[type="color"]').change(function () {
+            let colorValue = $(this).val();
+            $(this).next('.color-input').val(colorValue);
+            $(this).parent('.color-badge').css('border-color', colorValue);
+            $(this).parent('.color-badge').find('.color-span').css('background', colorValue);
+        });
+        $('input.color-input').change(function () {
+            let textColorValue = $(this).val();
+            $(this).prev('input[type="color"]').val(textColorValue);
+            $(this).prev('input[type="color"]').css('background', textColorValue);
+            $(this).parent('.color-badge').css('border-color', textColorValue);
+            $(this).parent('.color-badge').find('.color-span').css('background', textColorValue);
+        });
+    </script>
+</body>
+
+</html>
