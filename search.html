@@ -25,23 +25,10 @@
             width: 350px;
         }
     </style>
-<style>
-        body {
-            padding: 100px;
-        }
-
-        @media screen and (-webkit-min-device-pixel-ratio:0) {
-            body {
-                background: green;
-                /* on Safari and Chrome  */
-            }
-        }
-        ::i-block-chrome,
-        body {
-            background : #f00;
-        }
-
-    </style>
+        @media not all and (min-resolution:.001dpcm)
+{ @supports (-webkit-appearance:none) and (stroke-color:transparent) {
+    body{background: red;}
+}}
 </head>
 
 <body>
