@@ -24,7 +24,7 @@
 <body>
     <div class="jumbotron">
         <div class="container" id="groupContainer">
-            <div class="row">
+            <div class="row mb-3">
                 <div class="col-sm-4">
                     <input type="text" name="" id="">
                 </div>
@@ -32,9 +32,9 @@
                     <input type="text" name="" id="">
                 </div>
                 <div class="col-sm-4 text-right">
-                    <a href="javascript:void(0);" class="add-element text-success text-decoration-none h4" onclick="addNewElement()"> +
+                    <a href="javascript:void(0);" class="add-element mb-0 btn btn-sm btn-success text-decoration-none" onclick="addNewElement()"> +
                     </a>
-                    <a href="javascript:void(0);" class="remove-element text-danger text-decoration-none h4" onclick="removeCurrentElement(this)"> - </a>
+                    <a href="javascript:void(0);" class="remove-element mb-0 btn btn-sm btn-danger text-decoration-none" onclick="removeCurrentElement(this)"> - </a>
                 </div>
             </div>
         </div>
@@ -44,7 +44,11 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"></script>
     <script>
         function addNewElement(){
-            $('#groupContainer').append('<div class="row clone"> <div class="col-sm-4"> <input type="text" name="" id=""> </div><div class="col-sm-4"> <input type="text" name="" id=""> </div><div class="col-sm-4 text-right"> <a href="javascript:void(0);" class="add-element text-success text-decoration-none h4" onclick="addNewElement()"> + </a> <a href="javascript:void(0);" class="remove-element text-danger text-decoration-none h4" onclick="removeCurrentElement(this)"> - </a> </div></div>');
+            let addingHtml = $('.row:first-child').html();
+            // Add extra class
+            // $('#groupContainer').append('<div class="row mb-3 clone"> '+ addingHtml + '</div>');
+            // Complete clone
+            $('#groupContainer .row:first-child').clone().appendTo('#groupContainer');
         }
         function removeCurrentElement(e) {
             $(e).closest('.row').remove();
