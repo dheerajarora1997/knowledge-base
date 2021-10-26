@@ -12,7 +12,8 @@
     <style>
         #app {
             width: 100%;
-            min-height: 150px;
+            /* min-height: 150px; */
+            min-height: 100vh;
             position: relative;
             display: flex;
             justify-content: center;
@@ -123,44 +124,61 @@
 </head>
 
 <body>
-    <div class="jumbotron">
+    <div class="jumbotron p-0 m-0">
         <div id="app" class="border h-100">
         </div>
+        <input type="hidden" name="click-count" class="click-count" value="0">
     </div>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"></script>
     <script>
         const mySpot = '<div class="spot"></div>';
-        const startBtn = '<div class="start-btn btn btn-warning">Start</div>'
+        const startBtn = '<div class="start-btn btn btn-warning">Start</div>';
         $('#app').append(startBtn);
         function statClicked() {
             $('.start-btn').remove();
             $('#app').css('display', 'block');
             $('#app').append(mySpot);
-            let topPlacement = Math.floor(Math.random() * 95) + 1;
-            let leftPlacement = Math.floor(Math.random() * 95) + 1;
-            $('#app .spot').css('top', topPlacement);
+            let topPlacement = Math.floor(Math.random() * 90) + 1;
+            let leftPlacement = Math.floor(Math.random() * 90) + 1;
+            $('#app .spot').css('top', topPlacement + 'vh');
             $('#app .spot').css('left', leftPlacement + '%');
         }
         $('.start-btn').click(statClicked);
+
         $(document).on('click', '.spot', function () {
-            spotClicked();
+            getClickCount();
+            let counter = 1;
+            spotClicked(counter);
+            getReactionTime();
         });
-
-
-        $(document).ready(function () {
-        });
-        function spotClicked() {
+        function spotClicked(counter) {
             $('.spot').remove();
-            let topPlacement = Math.floor(Math.random() * 95) + 1;
-            let leftPlacement = Math.floor(Math.random() * 95) + 1;
             setTimeout(function () {
                 $('#app').append(mySpot);
-                $('#app .spot').css('top', topPlacement);
+                let topPlacement = Math.floor(Math.random() * 90) + 1;
+                 let leftPlacement = Math.floor(Math.random() * 90) + 1;
+                $('#app .spot').css('top', topPlacement + 'vh');
                 $('#app .spot').css('left', leftPlacement + '%');
             }, 100);
+            counter++;
         }
+        function getClickCount(){
+            let clickCount=  parseInt($('.click-count').val());
+            clickCount = clickCount + parseInt(1);
+            $('.click-count').val(clickCount);
+        }
+        function getReactionTime(){
+            setTimeout(function () {
+                let clickCount =  $('.click-count').val();
+                $('#app').html('');
+                $('#app').html('<p>You have clicked '+ clickCount +' Time  in 5 seconds </p>');
+            }, 5000);
+        }
+    </script>
+    <script>
+
     </script>
 </body>
 
