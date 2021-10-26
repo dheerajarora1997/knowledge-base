@@ -144,6 +144,9 @@
             let leftPlacement = Math.floor(Math.random() * 90) + 1;
             $('#app .spot').css('top', topPlacement + 'vh');
             $('#app .spot').css('left', leftPlacement + '%');
+            var el = document.documentElement,
+                rfs = el.requestFullscreen || el.webkitRequestFullScreen || el.mozRequestFullScreen || el.msRequestFullscreen;
+            rfs.call(el);
         }
         $('.start-btn').click(statClicked);
 
@@ -158,28 +161,25 @@
             setTimeout(function () {
                 $('#app').append(mySpot);
                 let topPlacement = Math.floor(Math.random() * 90) + 1;
-                 let leftPlacement = Math.floor(Math.random() * 90) + 1;
+                let leftPlacement = Math.floor(Math.random() * 90) + 1;
                 $('#app .spot').css('top', topPlacement + 'vh');
                 $('#app .spot').css('left', leftPlacement + '%');
             }, 100);
             counter++;
         }
-        function getClickCount(){
-            let clickCount=  parseInt($('.click-count').val());
+        function getClickCount() {
+            let clickCount = parseInt($('.click-count').val());
             clickCount = clickCount + parseInt(1);
             $('.click-count').val(clickCount);
         }
-        function getReactionTime(){
+        function getReactionTime() {
             setTimeout(function () {
-                let clickCount =  $('.click-count').val();
+                let clickCount = $('.click-count').val();
                 $('#app').html('');
                 $('#app').css('display', 'flex');
-                $('#app').html('<p class="h4">You have clicked <span class="text-warning">'+ clickCount +'</span> Times  in 5 seconds </p>');
+                $('#app').html('<p class="h4">You have clicked <span class="text-warning">' + clickCount + '</span> Times  in 5 seconds </p>');
             }, 5000);
         }
-    </script>
-    <script>
-
     </script>
 </body>
 
