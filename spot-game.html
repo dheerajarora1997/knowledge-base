@@ -173,6 +173,7 @@
             setTimeout(function () {
                 let clickCount =  $('.click-count').val();
                 $('#app').html('');
+                $('#app').css('display', 'flex');
                 $('#app').html('<p>You have clicked '+ clickCount +' Time  in 5 seconds </p>');
             }, 5000);
         }
