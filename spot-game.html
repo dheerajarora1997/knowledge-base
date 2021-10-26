@@ -177,7 +177,7 @@
                 let clickCount = $('.click-count').val();
                 $('#app').html('');
                 $('#app').css('display', 'flex');
-                $('#app').html('<p class="h4">You have clicked <span class="text-warning">' + clickCount + '</span> Times  in 5 seconds </p>');
+                $('#app').html('<p class="h4">You have clicked <span class="text-warning">' + clickCount + '</span> Times  in 5 seconds </p> <button type="button" class="btn btn-warning" onClick="window.location.reload();">Restart</button>');
             }, 5000);
         }
     </script>
