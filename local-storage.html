@@ -33,9 +33,13 @@
         });
         $('.removeSet').click(function(){
             localStorage.removeItem('inputValue');
+            $('input').val('');
+            $('p').html('');
         });
         $('.clearStorage').click(function(){
             localStorage.clear();
+            $('input').val('');
+            $('p').html('');
         });
     </script>
 </body>
