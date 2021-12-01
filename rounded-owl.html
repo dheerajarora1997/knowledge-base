@@ -10,85 +10,203 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
-        <style>
-            .owl-carousel .owl-item{margin-top: 30px;}
-            .owl-carousel .owl-item>div{padding: 80px 60px 0 !important;}
-            .owl-carousel{max-width: 400px; margin: 0 auto; padding: 40px 0;}
-            .owl-carousel .owl-dots{position: relative; top: -240px; border: 3px solid #5940a4; border-radius: 100%; z-index: 0; min-height: 330px; min-width: 330px; max-width: 330px; margin: 0 auto;}
-            .owl-carousel .owl-dots .owl-dot{position: absolute;}
-            .owl-carousel .owl-dots .owl-dot span:before{content: ''; font: normal normal normal 22px/1 FontAwesome; color: #5940a4;}
-            .owl-carousel .owl-dots .owl-dot span{width: 50px !important; height: 50px !important; background: #fff !important; border: 3px solid #5940a4 !important; border-radius: 100%; display: flex; align-items: center; justify-content: center;}
-            .owl-carousel .owl-dots .owl-dot.active span{border-color: #5940a4 !important; background: #eae3ff !important;}
-            .owl-carousel .owl-dots .owl-dot:nth-child(1){top: -25px; left: 44%;}
-            .owl-carousel .owl-dots .owl-dot:nth-child(1) span:before{content: '\f029'}
-            .owl-carousel .owl-dots .owl-dot:nth-child(2){top: 10.6%; left: 79.4%;}
-            .owl-carousel .owl-dots .owl-dot:nth-child(2) span:before{content: '\f1b2'}
-            .owl-carousel .owl-dots .owl-dot:nth-child(3){top: 44%; left: 93%;}
-            .owl-carousel .owl-dots .owl-dot:nth-child(3) span:before{content: '\f2dd'}
-            .owl-carousel .owl-dots .owl-dot:nth-child(4){top: 76.4%; left: 79.4%;}
-            .owl-carousel .owl-dots .owl-dot:nth-child(4) span:before{content: '\f2dc'}
-            .owl-carousel .owl-dots .owl-dot:nth-child(5){top: 94%; left: 44%;}
-            .owl-carousel .owl-dots .owl-dot:nth-child(5) span:before{content: '\f0e7'}
-            .owl-carousel .owl-dots .owl-dot:nth-child(6){top: 76.4%; left: 4.6%;}
-            .owl-carousel .owl-dots .owl-dot:nth-child(6) span:before{content: '\f0a3'}
-            .owl-carousel .owl-dots .owl-dot:nth-child(7){top: 46%; left: -29px;}
-            .owl-carousel .owl-dots .owl-dot:nth-child(7) span:before{content: '\f219'}
-            .owl-carousel .owl-dots .owl-dot:nth-child(8){top: 12.6%; left: 4.6%;}
-            .owl-carousel .owl-dots .owl-dot:nth-child(8) span:before{content: '\f0fb'}
-            @media only screen and (max-width: 415px){
-                .owl-carousel .owl-item > div {padding: 60px 30px 0 !important; max-width: 320px;}
-                .owl-carousel .owl-dots{max-width: 300px; min-width: 300px;  min-height: 300px;}
-            }
-        </style>
+    <style>
+        .owl-carousel {
+            max-width: 360px;
+            margin: 0 auto;
+            height: 360px;
+            position: relative;
+            margin-bottom: 0 !important;
+        }
+
+        .owl-carousel:before {
+            content: '';
+            position: absolute;
+            background: #fff;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            border-radius: 100%;
+            overflow: hidden;
+            top: -30px;
+            left: 0;
+        }
+
+        .owl-carousel .owl-item {
+            margin-top: 30px;
+            padding: 0 15px;
+        }
+
+        .owl-carousel .owl-item>div {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 240px;
+        }
+
+        .owl-carousel .owl-dots {
+            position: relative;
+            top: -300px;
+            border: 3px solid #5940a4;
+            border-radius: 100%;
+            z-index: 0;
+            min-height: 360px;
+            max-width: 360px;
+        }
+
+        .owl-carousel .owl-dots .owl-dot {
+            position: absolute;
+        }
+
+        .owl-carousel .owl-dots .owl-dot span {
+            width: 50px !important;
+            height: 50px !important;
+            background-color: #fff !important;
+            border: 3px solid #5940a4 !important;
+            display: flex !important;
+            justify-content: center;
+            align-items: center;
+            border-radius: 100%;
+        }
+
+        .owl-carousel .owl-dots .owl-dot span:before {
+            content: '';
+            font: normal normal normal 22px/1 FontAwesome;
+            color: #5940a4;
+        }
+
+        .owl-carousel .owl-dots .owl-dot.active span {
+            width: 30px;
+            height: 30px;
+            border-color: #5940a4 !important;
+            background-color: #5940a4 !important;
+        }
+
+        .owl-carousel .owl-dots .owl-dot.active span:before {
+            color: #fff;
+        }
+
+        .owl-carousel .owl-dots .owl-dot:nth-child(1) {
+            top: -25px;
+            left: calc(50% - 25px);
+        }
+
+        .owl-carousel .owl-dots .owl-dot:nth-child(1) span:before {
+            content: '\f029'
+        }
+
+        .owl-carousel .owl-dots .owl-dot:nth-child(2) {
+            top: calc(25% - 60px);
+            right: calc(0% + 15px);
+        }
+
+        .owl-carousel .owl-dots .owl-dot:nth-child(2) span:before {
+            content: '\f1b2'
+        }
+
+        .owl-carousel .owl-dots .owl-dot:nth-child(3) {
+            top: calc(50% - 25px);
+            right: calc(0px - 25px);
+        }
+
+        .owl-carousel .owl-dots .owl-dot:nth-child(3) span:before {
+            content: '\f2dd'
+        }
+
+        .owl-carousel .owl-dots .owl-dot:nth-child(4) {
+            bottom: calc(25% - 60px);
+            right: calc(0% + 15px);
+        }
+
+        .owl-carousel .owl-dots .owl-dot:nth-child(4) span:before {
+            content: '\f2dc'
+        }
+
+        .owl-carousel .owl-dots .owl-dot:nth-child(5) {
+            bottom: -25px;
+            left: calc(50% - 25px);
+        }
+
+        .owl-carousel .owl-dots .owl-dot:nth-child(5) span:before {
+            content: '\f0e7'
+        }
+
+        .owl-carousel .owl-dots .owl-dot:nth-child(6) {
+            bottom: calc(25% - 60px);
+            left: calc(0% + 15px);
+        }
+
+        .owl-carousel .owl-dots .owl-dot:nth-child(6) span:before {
+            content: '\f0a3'
+        }
+
+        .owl-carousel .owl-dots .owl-dot:nth-child(7) {
+            top: calc(50% - 25px);
+            left: -25px;
+        }
+
+        .owl-carousel .owl-dots .owl-dot:nth-child(7) span:before {
+            content: '\f219'
+        }
+
+        .owl-carousel .owl-dots .owl-dot:nth-child(8) {
+            top: calc(25% - 60px);
+            left: calc(0% + 15px);
+        }
+
+        .owl-carousel .owl-dots .owl-dot:nth-child(8) span:before {
+            content: '\f0fb'
+        }
+    </style>
 </head>
 
 <body>
-    <div class="container">
-        <div class="jumbotron">
+    <div class="jumbotron">
+        <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <div class="carousel-wrap">
-                        <div class="owl-carousel">
-                            <div class="item">
-                                <h3 class="text-center mt-4">Heading Here 1</h3>
-                                <p class="text-center">Duis dolor est, tincidunt vel enim sit amet, venenatis euismod
-                                    neque Duis dolor est, tincidunt vel enim sit amet,</p>
-                            </div>
-                            <div class="item">
-                                <h3 class="text-center mt-4">Heading Here 2</h3>
-                                <p class="text-center">Duis dolor est, tincidunt vel enim sit amet, venenatis euismod
-                                    neque Duis dolor est, tincidunt vel enim sit amet,</p>
-                            </div>
-                            <div class="item">
-                                <h3 class="text-center mt-4">Heading Here 3</h3>
-                                <p class="text-center">Duis dolor est, tincidunt vel enim sit amet, venenatis euismod
-                                    neque Duis dolor est, tincidunt vel enim sit amet,</p>
-                            </div>
-                            <div class="item">
-                                <h3 class="text-center mt-4">Heading Here 4</h3>
-                                <p class="text-center">Duis dolor est, tincidunt vel enim sit amet, venenatis euismod
-                                    neque Duis dolor est, tincidunt vel enim sit amet,</p>
-                            </div>
-                            <div class="item">
-                                <h3 class="text-center mt-4">Heading Here 5</h3>
-                                <p class="text-center">Duis dolor est, tincidunt vel enim sit amet, venenatis euismod
-                                    neque Duis dolor est, tincidunt vel enim sit amet,</p>
-                            </div>
-                            <div class="item">
-                                <h3 class="text-center mt-4">Heading Here 6</h3>
-                                <p class="text-center">Duis dolor est, tincidunt vel enim sit amet, venenatis euismod
-                                    neque Duis dolor est, tincidunt vel enim sit amet,</p>
-                            </div>
-                            <div class="item">
-                                <h3 class="text-center mt-4">Heading Here 7</h3>
-                                <p class="text-center">Duis dolor est, tincidunt vel enim sit amet, venenatis euismod
-                                    neque Duis dolor est, tincidunt vel enim sit amet,</p>
-                            </div>
-                            <div class="item">
-                                <h3 class="text-center mt-4">Heading Here 8</h3>
-                                <p class="text-center">Duis dolor est, tincidunt vel enim sit amet, venenatis euismod
-                                    neque Duis dolor est, tincidunt vel enim sit amet,</p>
-                            </div>
+                    <h3 class="text-center mb-5">Owl Carousal </h3>
+                    <div class="owl-carousel position-relative">
+                        <div class="item">
+                            <h3 class="text-center mt-4">Heading Here 1</h3>
+                            <p class="text-center">Duis dolor est, tincidunt vel enim sit amet, venenatis euismod
+                                neque Duis dolor est, tincidunt vel enim sit amet,</p>
+                        </div>
+                        <div class="item">
+                            <h3 class="text-center mt-4">Heading Here 2</h3>
+                            <p class="text-center">Duis dolor est, tincidunt vel enim sit amet, venenatis euismod
+                                neque Duis dolor est, tincidunt vel enim sit amet,</p>
+                        </div>
+                        <div class="item">
+                            <h3 class="text-center mt-4">Heading Here 3</h3>
+                            <p class="text-center">Duis dolor est, tincidunt vel enim sit amet, venenatis euismod
+                                neque Duis dolor est, tincidunt vel enim sit amet,</p>
+                        </div>
+                        <div class="item">
+                            <h3 class="text-center mt-4">Heading Here 4</h3>
+                            <p class="text-center">Duis dolor est, tincidunt vel enim sit amet, venenatis euismod
+                                neque Duis dolor est, tincidunt vel enim sit amet,</p>
+                        </div>
+                        <div class="item">
+                            <h3 class="text-center mt-4">Heading Here 5</h3>
+                            <p class="text-center">Duis dolor est, tincidunt vel enim sit amet, venenatis euismod
+                                neque Duis dolor est, tincidunt vel enim sit amet,</p>
+                        </div>
+                        <div class="item">
+                            <h3 class="text-center mt-4">Heading Here 6</h3>
+                            <p class="text-center">Duis dolor est, tincidunt vel enim sit amet, venenatis euismod
+                                neque Duis dolor est, tincidunt vel enim sit amet,</p>
+                        </div>
+                        <div class="item">
+                            <h3 class="text-center mt-4">Heading Here 7</h3>
+                            <p class="text-center">Duis dolor est, tincidunt vel enim sit amet, venenatis euismod
+                                neque Duis dolor est, tincidunt vel enim sit amet,</p>
+                        </div>
+                        <div class="item">
+                            <h3 class="text-center mt-4">Heading Here 8</h3>
+                            <p class="text-center">Duis dolor est, tincidunt vel enim sit amet, venenatis euismod
+                                neque Duis dolor est, tincidunt vel enim sit amet,</p>
                         </div>
                     </div>
                 </div>
