@@ -8,6 +8,10 @@
     <title>Document</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+    <style>
+        .selected-items select,.selected-items select:focus {background: transparent; border: none; overflow: visible; padding: 0;}
+        .selected-items select option {background: #f1f1f1; padding: 5px 5px 5px 10px; margin: 3px; min-height: 25px; border-radius: 100px; cursor: pointer; font-size: 75%; word-break: break-all; white-space: normal;}
+    </style>
 </head>
 
 <body>
@@ -15,6 +19,7 @@
         <div class="row">
             <div class="col-5">
                 <div class="jumbotron bg-warning h-100">
+                    <small class="mb-3">Available</small>
                     <select name="from" id="undo_redo" class="form-control" size="13" multiple="multiple">
                         <option value="1">C++</option>
                         <option value="2">C#</option>
@@ -28,7 +33,7 @@
                         <option value="10">PHP</option>
                         <option value="11">Perl</option>
                         <option value="12">SQL</option>
-                        <option value="13">Unix shell</option>
+                        <option value="13">Unix shell Unix shell Unix shell Unix shell Unix shell Unix shell Unix shell Unix shell Unix shell </option>
                     </select>
                 </div>
             </div>
@@ -47,7 +52,8 @@
                 </div>
             </div>
             <div class="col-5">
-                <div class="jumbotron bg-info h-100">
+                <div class="jumbotron bg-info h-100 selected-items">
+                    <small class="mb-3">Selected</small>
                     <select name="to" id="undo_redo_to" class="form-control" size="13" multiple="multiple"></select>
                 </div>
             </div>
