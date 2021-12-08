@@ -8,19 +8,437 @@
     <title>Document</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css"
+        href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined" />
     <style>
-        .selected-items select,.selected-items select:focus {background: transparent; border: none; overflow: visible; padding: 0;}
-        .selected-items select option {background: #f1f1f1; padding: 5px 5px 5px 10px; margin: 3px; min-height: 25px; border-radius: 100px; cursor: pointer; font-size: 75%; word-break: break-all; white-space: normal;}
+        select.multi-select-pill[multiple] {
+            min-height: 120px;
+            border: 1px solid #ccc;
+        }
+
+        select.multi-select-pill[multiple] option {
+            margin-bottom: 5px;
+            padding: 5px 5px 5px 10px;
+            border-radius: 100px;
+            background: #ededed;
+            white-space: normal;
+            word-break: break-all;
+        }
+
+        .pill-selected select.multi-select-pill[multiple],
+        .pill-selected select.multi-select-pill[multiple]:focus {
+            background: transparent;
+        }
+
+        .pill-selected select.multi-select-pill[multiple] option {
+            background: #f1f1f1;
+            min-height: 25px;
+            cursor: pointer;
+            font-size: 75%;
+            word-break: break-all;
+            white-space: normal;
+        }
+    </style>
+    <style>
+        .iconfont {
+            display: inline-block;
+            font: normal normal normal 14px /1 FontAwesome;
+            font-size: inherit;
+            text-rendering: auto;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+
+        }
+
+        .icon-forward:before {
+            content: '\f105';
+            font-size: 25px;
+        }
+
+        .icon-back:before {
+            content: '\f104';
+            font-size: 25px;
+
+        }
+
+        .selected-hidden {
+            display: none;
+        }
+
+        .checkbox-group .checkbox-normal {
+            display: none;
+        }
+
+        .checkbox-group {
+            display: inline-block;
+            position: relative;
+        }
+
+        .checkbox-group label {
+            display: inline-block;
+            position: relative;
+            padding-left: 25px;
+            cursor: pointer;
+        }
+
+        .checkbox-group+.checkbox-group label {
+            margin-left: 15px;
+        }
+
+        .radio-group label:before {
+            content: "";
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            position: absolute;
+            top: 3px;
+            left: 0px;
+            background: #fcfcfc;
+            border: 1px solid #bbb;
+        }
+
+        .radio-group .radio-normal+label:before {
+            -webkit-border-radius: 10px;
+            -moz-border-radius: 10px;
+            border-radius: 10px;
+        }
+
+        .radio-group .radio-normal:hover+label:before {
+            border-color: #4c79dc;
+        }
+
+        .radio-group .radio-normal:checked+label:before {
+            content: "\e6bf";
+            font-family: "Material Icons";
+            color: #fff;
+            font-size: 14px;
+            line-height: 15px;
+            border-color: #4c79dc;
+            text-align: center;
+            background: #4c79dc;
+        }
+
+        .radio-group .radio-normal:disabled+label:before {
+            color: #fff;
+            border: 1px solid #ccc;
+            background: #ddd;
+            cursor: not-allowed;
+        }
+
+        .checkbox-group label:before {
+            content: "";
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            position: absolute;
+            top: 3px;
+            left: 0;
+            background: #fcfcfc;
+            border: 1px solid #bbb;
+        }
+
+        .checkbox-group .checkbox-normal+label:before {
+            -webkit-border-radius: 3px;
+            -moz-border-radius: 3px;
+            border-radius: 3px;
+        }
+
+        .checkbox-group .checkbox-normal:hover+label:before {
+            border-color: #4c79dc;
+        }
+
+        .checkbox-group .checkbox-normal:checked+label:before {
+            content: "\e876";
+            font-family: "Material Icons";
+            color: #fff;
+            font-size: 13px;
+            text-align: center;
+            line-height: 13px;
+            border-color: #4c79dc;
+            font-weight: bold;
+            background: #4c79dc;
+        }
+
+        .checkbox-group .checkbox-normal:disabled+label:before {
+            color: #fff;
+            border: 1px solid #ccc;
+            background-color: #ddd;
+            cursor: not-allowed;
+        }
+
+        .checkbox-group .checkbox-indeterminate+label:before {
+            content: "\e95f";
+            font-family: "Material Icons";
+            font-size: 14px;
+            text-align: center;
+            line-height: 15px;
+            color: #fff;
+            border-color: #4c79dc;
+            font-weight: bold;
+            background: #4c79dc;
+            -webkit-border-radius: 3px;
+            -moz-border-radius: 3px;
+            border-radius: 3px;
+        }
+
+        .multi-select-active:after {
+            content: "\e876";
+            font-family: "Material Icons";
+            margin-left: 64%;
+            font-weight: bold;
+        }
+
+        .icon-single-add {
+            font-size: 22px;
+            position: absolute;
+            margin-left: -30px;
+            margin-top: 7px;
+        }
+
+        .icon-double-add {
+            font-size: 22px;
+            position: absolute;
+            margin-left: -30px;
+            margin-top: 7px;
+        }
+
+        .transfer-double {
+            width: 100%;
+            height: 390px;
+            background-color: #fff;
+            border: 1px solid #f1f1f1;
+            z-index: 1000;
+            border-radius: 2px;
+        }
+
+        .transfer-double-header {
+            padding: 10px
+        }
+
+        .transfer-double-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .transfer-double-content-left {
+            display: inline-block;
+            width: 45%;
+            min-height: 320px;
+            border: 1px solid #eee;
+            border-radius: 2px;
+        }
+
+        .transfer-double-content-middle {
+            display: inline-block;
+            width: 35px;
+            margin: 0 20px;
+            text-align: center;
+        }
+
+        .transfer-double-content-right {
+            display: inline-block;
+            width: 45%;
+            min-height: 320px;
+            border: 1px solid #eee;
+            border-radius: 2px;
+        }
+
+        .transfer-double-content-param {
+            display: inline-block;
+            width: 100%;
+            height: 36px;
+            line-height: 36px;
+            border-bottom: 1px solid #eee;
+            text-align: center;
+        }
+
+        .transfer-double-content-param .param-item {
+            display: inline-block;
+            height: 36px;
+            line-height: 36px;
+        }
+
+        .vertical-separation-line {
+            color: #eee;
+            margin: 0 10px;
+        }
+
+        .transfer-double-list-header {
+            padding: 8px 8px 6px 8px;
+            text-align: center;
+        }
+
+        .transfer-double-list-search-input {
+            width: 100%;
+            height: 32px;
+            line-height: 24px;
+            border: 1px solid #ddd;
+            padding: 5px 0 4px 8px;
+            border-radius: 2px;
+        }
+
+        .transfer-double-list-content {
+            padding: 3px 3px;
+        }
+
+        .transfer-double-list-main {
+            height: 210px;
+            overflow-y: auto;
+        }
+
+        .transfer-double-list-main .transfer-double-list-ul {
+            list-style: none;
+            padding-left: 25px;
+            margin: 0;
+        }
+
+        .transfer-double-list-main .transfer-double-list-ul .transfer-double-list-li {
+            margin-top: 5px;
+        }
+
+        .transfer-double-list-main .transfer-double-list-ul .transfer-double-list-li input {
+            margin-right: 10px;
+        }
+
+        .transfer-double-list-main .transfer-double-group-list-ul {
+            list-style: none;
+            padding-left: 25px;
+            margin: 0;
+        }
+
+        .transfer-double-list-main .transfer-double-group-list-ul .transfer-double-group-list-li {
+            margin-top: 5px;
+        }
+
+        .transfer-double-list-main .transfer-double-group-list-ul .transfer-double-group-list-li .transfer-double-group-list-li-ul {
+            list-style: none;
+            margin-left: 5px;
+            padding-left: 20px;
+        }
+
+        .transfer-double-list-main .transfer-double-group-list-ul .transfer-double-group-list-li .transfer-double-group-list-li-ul .transfer-double-group-list-li-ul-li {
+            margin-top: 5px;
+        }
+
+        .transfer-double-selected-list-header {
+            padding: 8px 8px 6px 8px;
+            text-align: center;
+        }
+
+        .transfer-double-selected-list-search-input {
+            width: 100%;
+            height: 32px;
+            line-height: 24px;
+            border: 1px solid #ddd;
+            padding: 5px 0 4px 8px;
+            border-radius: 2px;
+        }
+
+        .transfer-double-selected-list-content {
+            padding: 3px 3px;
+        }
+
+        .transfer-double-selected-list-main {
+            height: 210px;
+            overflow-y: auto;
+        }
+
+        .transfer-double-selected-list-main .transfer-double-selected-list-ul {
+            list-style: none;
+            padding-left: 20px;
+            margin: 0;
+        }
+
+        .transfer-double-selected-list-main .transfer-double-selected-list-ul .transfer-double-selected-list-li {
+            margin-top: 5px;
+        }
+
+        .transfer-double-selected-list-main .transfer-double-selected-list-ul .transfer-double-selected-list-li .checkbox-group {
+            width: 65%;
+        }
+
+        .transfer-double-selected-list-main .transfer-double-selected-list-ul .transfer-double-selected-list-li input[type="checkbox"] {
+            margin-right: 10px;
+        }
+
+        .transfer-double-selected-list-main .transfer-double-selected-list-ul .transfer-double-selected-list-li input[type="text"] {
+            min-width: 40px;
+            width: 40px;
+            min-height: 24px;
+            height: 24px;
+        }
+
+        .transfer-double-list-footer {
+            height: 32px;
+            line-height: 24px;
+            border-top: 1px solid #ddd;
+            padding-left: 18px;
+            color: #999;
+            padding-top: 5px;
+        }
+
+        .transfer-double-list-footer span {
+            margin-left: 20px;
+        }
+
+        .transfer-double-list-footer input {
+            min-width: 40px;
+            width: 40px;
+            min-height: 24px;
+            height: 24px;
+            margin-left: 75px;
+        }
+
+        .transfer-double-list-footer .btn-setting {
+            display: inline-block;
+            margin-left: 5px;
+        }
+
+        .transfer-double-list-footer label {
+            margin-left: 10px;
+        }
+
+        .transfer-double-footer {
+            padding: 10px;
+            text-align: right;
+        }
+
+        .btn-select-arrow {
+            display: flex;
+            width: 40px;
+            height: 40px;
+            color: #bbb;
+            font-size: 18px;
+            line-height: 1;
+            border-radius: .25rem;
+            align-items: center;
+            justify-content: center;
+            background: #e0e0e0;
+        }
+
+        .btn-select-arrow+.btn-select-arrow {
+            margin-top: 10px;
+        }
+
+        .btn-arrow-active {
+            color: #fff;
+            background: #4c79dc;
+        }
+
     </style>
 </head>
 
 <body>
     <div class="container pt-4">
         <div class="row">
+            <div class="col-12">
+                <h3 class="text-center my-3">Multi Select jQuery</h3>
+            </div>
             <div class="col-5">
                 <div class="jumbotron bg-warning h-100">
                     <small class="mb-3">Available</small>
-                    <select name="from" id="undo_redo" class="form-control" size="13" multiple="multiple">
+                    <select name="from" id="undo_redo" class="form-control multi-select-pill" multiple="multiple">
                         <option value="1">C++</option>
                         <option value="2">C#</option>
                         <option value="3">Haskell</option>
@@ -33,7 +451,8 @@
                         <option value="10">PHP</option>
                         <option value="11">Perl</option>
                         <option value="12">SQL</option>
-                        <option value="13">Unix shell Unix shell Unix shell Unix shell Unix shell Unix shell Unix shell Unix shell Unix shell </option>
+                        <option value="13">Unix shell Unix shell Unix shell Unix shell Unix shell Unix shell Unix shell
+                            Unix shell Unix shell </option>
                     </select>
                 </div>
             </div>
@@ -54,19 +473,78 @@
             <div class="col-5">
                 <div class="jumbotron bg-info h-100 selected-items">
                     <small class="mb-3">Selected</small>
-                    <select name="to" id="undo_redo_to" class="form-control" size="13" multiple="multiple"></select>
+                    <select name="to" id="undo_redo_to" class="form-control multi-select-pill"
+                        multiple="multiple"></select>
                 </div>
             </div>
         </div>
+        <hr />
+        <div id="transfer3" class="transfer-demo"></div>
     </div>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/multiselect-two-sides@2.5.7/dist/js/multiselect.min.js"></script>
+    <script src="./transfer/transfer.js"></script>
     <script>
         $(document).ready(function () {
-            $('#undo_redo').multiselect();
+            $('#undo_redo').multiselect({ search: true });
         });
+    </script>
+    <script>
+        var groupDataArray1 = [
+            {
+                "groupName": "China",
+                "groupData": [
+                    {
+                        "city": "Beijing",
+                        "value": 122
+                    },
+                    {
+                        "city": "Shanghai",
+                        "value": 643
+                    },
+                    {
+                        "city": "Qingdao",
+                        "value": 422
+                    },
+                    {
+                        "city": "Tianjin",
+                        "value": 622
+                    }
+                ]
+            },
+            {
+                "groupName": "Japan",
+                "groupData": [
+                    {
+                        "city": "Tokyo",
+                        "value": 132
+                    },
+                    {
+                        "city": "Osaka",
+                        "value": 112
+                    },
+                    {
+                        "city": "Yokohama",
+                        "value": 191
+                    }
+                ]
+            }
+        ];
+
+        var settings3 = {
+            "groupDataArray": groupDataArray1,
+            "groupItemName": "groupName",
+            "groupArrayName": "groupData",
+            "itemName": "city",
+            "valueName": "value",
+            "callable": function (items) {
+                // console.dir(items)
+            }
+        };
+
+        $("#transfer3").transfer(settings3);
     </script>
 </body>
 
