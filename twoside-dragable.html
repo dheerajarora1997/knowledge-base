@@ -4,37 +4,43 @@
     <title>jQuery UI Sortable - Example</title>
     <link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
     <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
     <style>
+        .ui-sortable-placeholder {
+            visibility: visible !important;
+            background: transparent;
+            border: 2px dashed #000;
+        }
+
+        .ui-sortable-placeholder:after {
+            content: none;
+        }
+        li svg{
+            position: absolute;
+            left: 3px;
+            top: 15px;
+        }
+
         li {
             list-style-type: none;
             background: #fff;
             display: block;
-            padding: 10px 40px 10px 10px;
+            padding: 10px 10px 10px 35px;
             cursor: all-scroll;
             margin: 0 0 5px;
             position: relative;
+            border-radius: 4px;
         }
-        li:after{
-            content: '\f047';
-            font: normal normal normal 14px/1 'FontAwesome';
-            position: absolute;
-            right: 15px;
-            top: 20px;
+        code:empty{
+            display: none;
         }
     </style>
     <script>
         $(function () {
             $("#sortable-5, #sortable-6").sortable({
                 connectWith: "#sortable-5, #sortable-6",
-                update: function (event, ui) {
-                    var returnValue5 = $('#sortable-5').sortable('toArray').toString();
-                    $("#returnValue5").text(returnValue5);
-                    var returnValue6 = $('#sortable-6').sortable('toArray').toString();
-                    $("#returnValue6").text(returnValue6);
-                }
             });
         });
     </script>
@@ -42,37 +48,85 @@
 
 <body>
     <div class="jumbotron">
-        <div class="row">
-            <div class="col-12">
-                <h3 class="text-center mb-5">Two Side Sorting/Drag and Drop</h3>
-            </div>
-            <div class="col-6">
-                <div class="p-4 bg-warning">
-                    <ul class="pl-0" id="sortable-5">
-                        <li id="1" class="default"><select class="form-control"><option>Course 1</option></select></li>
-                        <li id="2" class="default"><select class="form-control"><option>Course 2</option></select></li>
-                        <li id="3" class="default"><select class="form-control"><option>Course 3</option></select></li>
-                        <li id="4" class="default"><select class="form-control"><option>Course 4</option></select></li>
-                    </ul>
-                    <div id="returnValue5"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h3 class="text-center mb-5">Two Side Sorting/Drag and Drop</h3>
                 </div>
-            </div>
-            <div class="col-6">
-                <div class="p-4 bg-info">
-                    <ul class="pl-0" id="sortable-6">
-                        <li id="5" class="default"><select class="form-control"><option>Course 5</option></select></li>
-                        <li id="6" class="default"><select class="form-control"><option>Course 6</option></select></li>
-                        <li id="7" class="default"><select class="form-control"><option>Course 7</option></select></li>
-                        <li id="8" class="default"><select class="form-control"><option>Course 8</option></select></li>
-                    </ul>
-                    <div id="returnValue6"></div>
+                <div class="col-6">
+                    <div class="p-4 bg-warning0">
+                        <ol class="pl-0" id="sortable-5">
+                            <li id="1" class="default">
+                                <svg height="30" viewBox="0 0 24 24" width="30" xmlns="http://www.w3.org/2000/svg"><circle cx="8" cy="4" r="2"/><circle cx="8" cy="12" r="2"/><circle cx="8" cy="20" r="2"/><circle cx="16" cy="4" r="2"/><circle cx="16" cy="12" r="2"/><circle cx="16" cy="20" r="2"/></svg>
+                                <select name="course[]" class="form-control">
+                                    <option>BA</option>
+                                </select>
+                            </li>
+                            <li id="2" class="default">
+                                <svg height="30" viewBox="0 0 24 24" width="30" xmlns="http://www.w3.org/2000/svg"><circle cx="8" cy="4" r="2"/><circle cx="8" cy="12" r="2"/><circle cx="8" cy="20" r="2"/><circle cx="16" cy="4" r="2"/><circle cx="16" cy="12" r="2"/><circle cx="16" cy="20" r="2"/></svg>
+                                <select name="course[]" class="form-control">
+                                    <option>BBA</option>
+                                </select>
+                            </li>
+                            <li id="3" class="default">
+                                <svg height="30" viewBox="0 0 24 24" width="30" xmlns="http://www.w3.org/2000/svg"><circle cx="8" cy="4" r="2"/><circle cx="8" cy="12" r="2"/><circle cx="8" cy="20" r="2"/><circle cx="16" cy="4" r="2"/><circle cx="16" cy="12" r="2"/><circle cx="16" cy="20" r="2"/></svg>
+                                <select name="course[]" class="form-control">
+                                    <option>BCA</option>
+                                </select>
+                            </li>
+                            <li id="4" class="default">
+                                <svg height="30" viewBox="0 0 24 24" width="30" xmlns="http://www.w3.org/2000/svg"><circle cx="8" cy="4" r="2"/><circle cx="8" cy="12" r="2"/><circle cx="8" cy="20" r="2"/><circle cx="16" cy="4" r="2"/><circle cx="16" cy="12" r="2"/><circle cx="16" cy="20" r="2"/></svg>
+                                <select name="course[]" class="form-control">
+                                    <option>BBM</option>
+                                </select>
+                            </li>
+                        </ol>
+                        <div id="returnValue5"></div>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="p-4 bg-info0">
+                        <ol class="pl-0" id="sortable-6" start="5">
+                            <li id="5" class="default">
+                                <svg height="30" viewBox="0 0 24 24" width="30" xmlns="http://www.w3.org/2000/svg"><circle cx="8" cy="4" r="2"/><circle cx="8" cy="12" r="2"/><circle cx="8" cy="20" r="2"/><circle cx="16" cy="4" r="2"/><circle cx="16" cy="12" r="2"/><circle cx="16" cy="20" r="2"/></svg>
+                                <select name="course[]" class="form-control">
+                                    <option>B com</option>
+                                </select>
+                            </li>
+                            <li id="6" class="default">
+                                <svg height="30" viewBox="0 0 24 24" width="30" xmlns="http://www.w3.org/2000/svg"><circle cx="8" cy="4" r="2"/><circle cx="8" cy="12" r="2"/><circle cx="8" cy="20" r="2"/><circle cx="16" cy="4" r="2"/><circle cx="16" cy="12" r="2"/><circle cx="16" cy="20" r="2"/></svg>
+                                <select name="course[]" class="form-control">
+                                    <option>B Com(hon)</option>
+                                </select>
+                            </li>
+                            <li id="7" class="default">
+                                <svg height="30" viewBox="0 0 24 24" width="30" xmlns="http://www.w3.org/2000/svg"><circle cx="8" cy="4" r="2"/><circle cx="8" cy="12" r="2"/><circle cx="8" cy="20" r="2"/><circle cx="16" cy="4" r="2"/><circle cx="16" cy="12" r="2"/><circle cx="16" cy="20" r="2"/></svg>
+                                <select name="course[]" class="form-control">
+                                    <option>BA (Hon)</option>
+                                </select>
+                            </li>
+                        </ol>
+                        <div id="returnValue6"></div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <code class="bg-white p-2" id="resultHere"></code>
+                </div>
+                <div class="col-12 text-right">
+                    <button class="btn btn-warning" type="button">Submit</button>
                 </div>
             </div>
         </div>
     </div>
-
-
-
+    <script>
+        $('button').click(function () {
+            var selected = $('select[name="course[]"]').map(function () {
+                if ($(this).val())
+                    return $(this).val();
+            }).get();
+            $('#resultHere').text(selected);
+        });
+    </script>
 </body>
 
 </html>
