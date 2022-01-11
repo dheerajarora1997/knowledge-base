@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.18/css/bootstrap-select.min.css" />
+    <style>
+        .add-elements li.no-results {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px 10px;
+            word-break: break-all;
+            white-space: normal;
+            min-height: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h4 class="mt-4 text-center">Add custom button in No data Select picker</h4>
+        <div class="jumbotron my-5">
+            <div class="row">
+                <div class="col-6"><select name="" id="" class="form-control select-picker" data-live-search="true">
+                        <option>A</option>
+                        <option>B</option>
+                        <option>C</option>
+                        <option>D</option>
+                        <option>E</option>
+                    </select></div>
+                <div class="col-6"><select name="" id="" class="form-control select-picker add-elements"
+                        data-live-search="true"
+                        data-none-results-text="hello there {0} <button onclick='buttonClicked()' class='btn btn-sm btn-primary rounded mt-3 '>Add Now</button>">
+                        <option>a</option>
+                        <option>b</option>
+                        <option>c</option>
+                        <option>d</option>
+                        <option>e</option>
+                    </select></div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.18/js/bootstrap-select.min.js"></script>
+    <script>
+        $('.select-picker').selectpicker({});
+        const buttonClicked = () => {
+            alert('buttonclicked');
+        }
+    </script>
+</body>
+
+</html>
