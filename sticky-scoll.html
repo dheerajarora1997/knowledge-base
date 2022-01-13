@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    .sticky-points-wrapper {
+      position: absolute;
+      top: 60px;
+      right: 10px;
+      min-height: 400vh;
+    }
+
+    ul.sticky-points {
+      list-style-type: none;
+      top: 0;
+      right: 0;
+      z-index: 1;
+    }
+
+    ul.sticky-points li {
+      width: 10px;
+      height: 20px;
+      border-radius: 5px;
+      margin-top: 10px;
+      cursor: pointer;
+      background: rgba(255, 255, 255, .5);
+    }
+
+    ul.sticky-points li.active {
+      height: 35px;
+      background: rgba(255, 255, 255, .9);
+    }
+  </style>
+</head>
+
+<body>
+  <section>
+    <div class="jumbotron m-0 d-flex align-items-center" style="min-height: 100vh">
+      <h1 class="display-1 text-center">
+        Hello World
+      </h1>
+    </div>
+  </section>
+  <section>
+    <div class="jumbotron m-0 d-flex align-items-center bg-danger" style="min-height: 100vh">
+      <h1 class="display-1 text-center">
+        Hello World
+      </h1>
+    </div>
+  </section>
+  <section>
+    <div class="jumbotron m-0 d-flex align-items-center bg-warning" style="min-height: 100vh">
+      <h1 class="display-1 text-center">
+        Hello World
+      </h1>
+    </div>
+  </section>
+  <section>
+    <div class="jumbotron m-0 d-flex align-items-center bg-success" style="min-height: 100vh">
+      <h1 class="display-1 text-center">
+        Hello World
+      </h1>
+    </div>
+  </section>
+  <section>
+    <div class="jumbotron m-0 d-flex flex-column align-items-center bg-dark position-relative"
+      style="min-height: 100vh">
+      <div class="sticky-points-wrapper">
+        <ul class="sticky-points position-sticky d-flex flex-column ">
+          <li class="sticky-point-item active" data-href="sec1"></li>
+          <li class="sticky-point-item" data-href="sec2"></li>
+          <li class="sticky-point-item" data-href="sec3"></li>
+          <li class="sticky-point-item" data-href="sec4"></li>
+        </ul>
+      </div>
+      <div id="sec1" class="sticky-element position-sticky d-flex align-items-center justify-content-center bg-light"
+        style="top: 0; min-height: 100vh; width: 100%">
+        <h2 class="display-3">Hello World</h2>
+      </div>
+      <div id="sec2" class="sticky-element position-sticky d-flex align-items-center justify-content-center bg-light"
+        style="top: 0; min-height: 100vh; width: 100%">
+        <h2 class="display-3">Hello World 1</h2>
+      </div>
+      <div id="sec3" class="sticky-element position-sticky d-flex align-items-center justify-content-center bg-light"
+        style="top: 0; min-height: 100vh; width: 100%">
+        <h2 class="display-3">Hello World 2</h2>
+      </div>
+      <div id="sec4" class="sticky-element position-sticky d-flex align-items-center justify-content-center bg-light"
+        style="top: 0; min-height: 100vh; width: 100%">
+        <h2 class="display-3">Hello World 3</h2>
+      </div>
+    </div>
+  </section>
+  <section>
+    <div class="jumbotron m-0 d-flex align-items-center bg-info" style="min-height: 100vh">
+      <h1 class="display-1 text-center">
+        Hello World
+      </h1>
+    </div>
+  </section>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    $(window).scroll(function () {
+      let scrollDistance = $(window).scrollTop();
+      $('.sticky-element').each(function (i) {
+        if ($(this).offset().top <= scrollDistance) {
+          console.log($(this).offset().top <= scrollDistance)
+          $('.sticky-points .sticky-point-item').removeClass('active');
+          $('.sticky-points .sticky-point-item').eq(i).addClass('active');
+        }
+      });
+    }).scroll();
+  </script>
+</body>
+
+</html>
