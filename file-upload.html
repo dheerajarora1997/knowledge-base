@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bootstrap 4.6 with jQuery</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-8 text-center">
+        <div class="p-5">
+          <form runat="server">
+            <input accept="image/*" type='file' id="imgInp" />
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="bg-light p-5 h-100">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 col-md-6">
+          <h5 class="mb-4">Img Src</h5>
+          <img id="blah" src="" alt="your image" class="img-fluid" />
+        </div>
+        <div class="col-sm-12 col-md-6">
+          <h5 class="mb-4">Background Image</h5>
+          <div id="bg-img" class="w-100 p-3" style="background-repeat: no-repeat;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
+<script>
+  document.getElementById("blah").style.display = "none";
+  imgInp.onchange = evt => {
+    const [file] = imgInp.files
+    if (file) {
+      blah.src = URL.createObjectURL(file)
+      blah.style.display = "block";
+      console.log(URL.createObjectURL(file))
+      document.getElementById("bg-img").style.backgroundImage = 'url(' + URL.createObjectURL(file) + ')';
+    }
+  }
+</script>
+
+</html>
