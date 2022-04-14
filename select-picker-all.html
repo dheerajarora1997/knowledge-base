@@ -7,16 +7,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.18/css/bootstrap-select.min.css" />
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.18/css/bootstrap-select.min.css" />
+  <style>
+    .add-elements li.no-results {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px 10px;
+      word-break: break-all;
+      white-space: normal;
+      min-height: 100px;
+    }
+  </style>
 </head>
 
 <body>
   <div class="container">
-    <h4 class="mt-4 text-center">Select picker custom All Option</h4>
+    <h4 class="mt-4 text-center">Add custom button in No data Select picker</h4>
     <div class="jumbotron my-5">
       <div class="row">
         <div class="col-6">
-          <select name="" id="" class="form-control select-picker" id="selectPicker" multiple>
+          <select name="" id="" class="form-control select-picker all-feature" id="selectPicker" multiple>
             <option value="0">ALL</option>
             <option value="1">A</option>
             <option value="2">B</option>
@@ -26,7 +38,14 @@
           </select>
         </div>
         <div class="col-6">
-          <div class="val-here"></div>
+          <select name="" id="" class="form-control select-picker" id="selectPicker" multiple>
+            <option value="0">ALL</option>
+            <option value="1">A</option>
+            <option value="2">B</option>
+            <option value="3">C</option>
+            <option value="4">D</option>
+            <option value="5">E</option>
+          </select>
         </div>
       </div>
     </div>
@@ -38,7 +57,7 @@
     $('select.select-picker').selectpicker('show');
 
 
-    $('select.select-picker').on('changed.bs.select', function (e, clickedIndex, isSelected, previousValue) {
+    $('select.select-picker.all-feature').on('changed.bs.select', function (e, clickedIndex, isSelected, previousValue) {
 
       if (clickedIndex == 0) {
         if (isSelected) {
