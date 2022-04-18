@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Get Multiple Checkbox Value in jQuery</title>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+</head>
+<body>
+    <form>
+        <h3>Select your favorite programming languages:</h3>
+        <label><input type="checkbox" value="Java" name="language"> Java</label>
+        <label><input type="checkbox" value="PHP" name="language"> PHP</label>
+        <label><input type="checkbox" value="JavaScript" name="language"> JavaScript</label>
+        <label><input type="checkbox" value="jQuery" name="language"> jQuery</label>
+        <label><input type="checkbox" value="React" name="language"> React</label>
+        <br>
+        <button type="button">Get Selected Values</button>
+    </form>
+  <script>
+      $(document).ready(function() {
+          $("button").click(function(){
+              var arr = [];
+              $.each($("input[name='language']:checked"), function(){
+                  arr.push($(this).val());
+              });
+              alert("Your favourite programming languages are: " + arr.join(", "));
+          });
+      });
+  </script>
+</body>
+</html>
