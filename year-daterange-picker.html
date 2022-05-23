@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,21 +9,17 @@
   <link rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-daterangepicker/3.0.5/daterangepicker.css" />
 </head>
-
 <body>
   <div class="jumbotron rounded-0">
-    <div class="row">
-      <div class="col-sm-4">
-        <select name="" id="year" class="form-control">
-          <option value="current">current</option>
-          <option value="2021-2022">2021-2022</option>
-          <option value="2020-2021">2020-2021</option>
-          <option value="2019-2020">2019-2020</option>
-        </select>
-
+    <div class="row justify-content-center">
+      <div class="col-12 text-center">
+        <h3 class="text-center mb-5">Dynamic date range picker (with Quarter date range filter)</h3>
       </div>
       <div class="col-sm-4">
-        <input type="text" class="range-input" id="dateRange">
+        <select name="" id="year" class="form-control"></select>
+      </div>
+      <div class="col-sm-4">
+        <input type="text" class="range-input form-control" id="dateRange">
       </div>
     </div>
   </div>
@@ -36,9 +31,9 @@
   <script>
     let current_year = new Date().getFullYear();
     let start_year = 2017;
-    $('select').html('');
+    $('select#year').html('');
     for (let index = current_year; index >= start_year; index--) {
-      $('select').append(`<option value=${index + '-' + parseInt(index + 1).toString()} > ${index + '-' + parseInt(index + 1).toString()} </option>`);
+      $('select#year').append(`<option value=${index + '-' + parseInt(index + 1).toString()} > ${index + '-' + parseInt(index + 1).toString()} </option>`);
     }
     $('#dateRange').daterangepicker({
       locale: {
@@ -52,6 +47,8 @@
       "alwaysShowCalendars": true,
       startDate: moment().startOf('year').add(3, 'month'),
       endDate: moment(),
+      minDate: moment().startOf('year').add(3, 'month'),
+      maxDate: moment(),
     });
     $('#year').change(function () {
       let selection = $('#year').val();
@@ -93,10 +90,7 @@
           endDate: moment(selectionStart).endOf('year').add(3, 'month'),
         });
       }
-
     });
   </script>
-
 </body>
-
 </html>
