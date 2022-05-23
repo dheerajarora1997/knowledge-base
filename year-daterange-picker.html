@@ -34,6 +34,13 @@
   <script src="https://uat-bkndcdn.npfs.co/static/theme/v1/js/plugins/moment.min.js?1653023101"></script>
   <script src="https://uat-bkndcdn.npfs.co/static/theme/v1/js/daterangepicker.min.js"></script>
   <script>
+    // debugger;
+    let current_year = new Date().getFullYear();
+    let start_year = 2017;
+    $('select').html('');
+    for (let index = current_year; index >= start_year; index--) {
+      $('select').append(`<option value=${index + '-' +  parseInt(index + 1).toString()} > ${index + '-' + parseInt(index + 1).toString()} </option>`);
+    }
     $('#dateRange').daterangepicker({
       locale: {
         format: 'DD/MM/YYYY'
