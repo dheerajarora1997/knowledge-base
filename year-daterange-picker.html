@@ -34,12 +34,11 @@
   <script src="https://uat-bkndcdn.npfs.co/static/theme/v1/js/plugins/moment.min.js?1653023101"></script>
   <script src="https://uat-bkndcdn.npfs.co/static/theme/v1/js/daterangepicker.min.js"></script>
   <script>
-    // debugger;
     let current_year = new Date().getFullYear();
     let start_year = 2017;
     $('select').html('');
     for (let index = current_year; index >= start_year; index--) {
-      $('select').append(`<option value=${index + '-' +  parseInt(index + 1).toString()} > ${index + '-' + parseInt(index + 1).toString()} </option>`);
+      $('select').append(`<option value=${index + '-' + parseInt(index + 1).toString()} > ${index + '-' + parseInt(index + 1).toString()} </option>`);
     }
     $('#dateRange').daterangepicker({
       locale: {
@@ -56,7 +55,7 @@
     });
     $('#year').change(function () {
       let selection = $('#year').val();
-      if (selection == 'current') {
+      if (selection == current_year + '-' + parseInt(current_year + 1).toString()) {
         $('#dateRange').daterangepicker({
           locale: {
             format: 'DD/MM/YYYY'
@@ -67,6 +66,8 @@
             'This Year': [moment().startOf('year').add(3, 'month'), moment()],
           },
           "alwaysShowCalendars": true,
+          startDate: moment(current_year).startOf('year').add(3, 'month'),
+          endDate: moment(),
           minDate: moment().startOf('year').add(3, 'month'),
           maxDate: moment(),
         });
@@ -74,13 +75,16 @@
       else {
         selectionStart = selection.slice(0, 4);
         selectionEnd = selection.slice(5, 9);
-
         $('#dateRange').daterangepicker({
           locale: {
             format: 'DD/MM/YYYY'
           },
           ranges: {
-            'This Year': [moment().startOf('year').add(3, 'month'), moment()],
+            'First Quarter': [moment(selectionStart).startOf('year').add(3, 'month'), moment(selectionStart).startOf('year').add(6, 'month').subtract(1, 'day')],
+            'Second Quarter': [moment(selectionStart).startOf('year').add(6, 'month'), moment(selectionStart).startOf('year').add(9, 'month').subtract(1, 'day')],
+            'Third Quarter': [moment(selectionStart).startOf('year').add(9, 'month'), moment(selectionStart).startOf('year').add(12, 'month').subtract(1, 'day')],
+            'Forth Quarter': [moment(selectionStart).startOf('year').add(12, 'month'), moment(selectionStart).startOf('year').add(15, 'month').subtract(1, 'day')],
+            'Complete Year': [moment(selectionStart).startOf('year').add(3, 'month'), moment(selectionStart).startOf('year').add(15, 'month')],
           },
           "alwaysShowCalendars": true,
           minDate: moment(selectionStart).startOf('year').add(3, 'month'),
