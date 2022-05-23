@@ -35,7 +35,9 @@
   <script src="https://uat-bkndcdn.npfs.co/static/theme/v1/js/daterangepicker.min.js"></script>
   <script>
     $('#dateRange').daterangepicker({
-      format: 'dd-mm-yy',
+      locale: {
+        format: 'DD/MM/YYYY'
+      },
       ranges: {
         'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')],
         'Last 90 Days': [moment().subtract(89, 'days'), moment()],
@@ -49,28 +51,35 @@
       let selection = $('#year').val();
       if (selection == 'current') {
         $('#dateRange').daterangepicker({
+          locale: {
+            format: 'DD/MM/YYYY'
+          },
           ranges: {
             'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')],
             'Last 90 Days': [moment().subtract(89, 'days'), moment()],
             'This Year': [moment().startOf('year').add(3, 'month'), moment()],
           },
           "alwaysShowCalendars": true,
-          minDate: '04/01/2022',
+          minDate: moment().startOf('year').add(3, 'month'),
           maxDate: moment(),
         });
       }
       else {
         selectionStart = selection.slice(0, 4);
         selectionEnd = selection.slice(5, 9);
+
         $('#dateRange').daterangepicker({
+          locale: {
+            format: 'DD/MM/YYYY'
+          },
           ranges: {
             'This Year': [moment().startOf('year').add(3, 'month'), moment()],
           },
           "alwaysShowCalendars": true,
-          minDate: '04/01/' + selectionStart,
-          maxDate: '03/31/' + selectionEnd,
-          startDate: '04/01/' + selectionStart,
-          endDate: '03/31/' + selectionEnd,
+          minDate: moment(selectionStart).startOf('year').add(3, 'month'),
+          maxDate: moment(selectionStart).endOf('year').add(3, 'month'),
+          startDate: moment(selectionStart).startOf('year').add(3, 'month'),
+          endDate: moment(selectionStart).endOf('year').add(3, 'month'),
         });
       }
 
