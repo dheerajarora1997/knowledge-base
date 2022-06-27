@@ -1,1 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>New Tour</title>
+  <style>
+    .tourClose {
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Web Tour Example</h1>
+  <h1 id="heading_1" style="display: inline-block;">Heading 1</h1>
+  <h2 id="heading_2" style="display: inline-block;">Heading 2</h2>
+  <h3 id="heading_3" style="display: inline-block;">Heading 3</h3>
+  <h4 id="heading_4" style="display: inline-block;">Heading 4</h4>
+  <h5 id="heading_5" style="display: inline-block;">Heading 5</h5>
+  <h6 id="heading_6" style="display: inline-block;">Heading 6</h6>
+  <script>
+    if (!localStorage.getItem('webTour')) {
+
+      const link = document.createElement('link');
+      link.href = 'https://unpkg.com/webtour@1.1.0/dist/webtour.min.css';
+      link.rel = 'stylesheet';
+      document.getElementsByTagName('head')[0].appendChild(link);
+
+      const script = document.createElement('script');
+      script.src = 'https://unpkg.com/webtour@1.1.0/dist/webtour.min.js';
+      document.getElementsByTagName('head')[0].appendChild(script);
+
+      setTimeout(() => {
+        const wt = new WebTour();
+        const steps = [
+          {
+            element: '#heading_1',
+            title: 'Popover title',
+            content: 'Popover content <button class="tourClose" onclick="tourClose()">X</button>',
+            placement: 'right-start',
+          },
+          {
+            element: '#heading_2',
+            title: 'Popover title',
+            content: 'Popover content <button class="tourClose" onclick="tourClose()">X</button>',
+            placement: 'right-start',
+          },
+          {
+            element: '#heading_3',
+            title: 'Popover title',
+            content: 'Popover content <button class="tourClose" onclick="tourClose()">X</button>',
+            placement: 'right-start',
+          },
+          {
+            element: '#heading_4',
+            title: 'Popover title',
+            content: 'Popover content <button class="tourClose" onclick="tourClose()">X</button>',
+            placement: 'right-start',
+          },
+          {
+            element: '#heading_5',
+            title: 'Popover title',
+            content: 'Popover content <button class="tourClose" onclick="tourClose()">X</button>',
+            placement: 'right-start',
+          },
+          {
+            element: '#heading_6',
+            title: 'Popover title',
+            content: 'Popover content <button class="tourClose" onclick="tourClose()">X</button>',
+            placement: 'right-start',
+          },
+        ];
+
+        wt.setSteps(steps);
+        wt.start();
+        localStorage.setItem('webTour', 1);
+
+      }, 200);
+      function tourClose() {
+        var wt = new WebTour();
+        wt.stop();
+      }
+    }
+
+  </script>
+</body>
+
+</html>
