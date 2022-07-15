@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Learn Javascript</title>
+  <!-- CSS only -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <style>
+    :root {
+      /* --bs-primary-rgb : #1F4690; */
+      --bs-primary-rgb: 31, 70, 144;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1 class="text-center mt-4">Javascript Examples</h1>
+    <!-- <h2 class="h4">JavaScript Basics</h2>
+    <div class="ps-3">
+      <p class="">Including JavaScript in an HTML Page</p>
+      <code class="bg-primary bg-opacity-25 p-2 rounded d-block">
+        &lt;script type="text/javascript"&gt
+          //JS code goes here
+          &lt;/script&gt          
+      </code>
+    </div> -->
+    <div class="py-4">
+      <h2 class="h4 mt-0">Var, Let, Const</h2>
+      <div class="row">
+        <div class="col-sm-12 col-md-4">
+          <code class="bg-primary bg-opacity-25 rounded p-3 d-inline-block">
+            var myVar = 0; <br />
+          </code>
+        </div>
+        <div class="col-sm-12 col-md-4">
+          <code class="bg-primary bg-opacity-25 rounded p-3 d-inline-block">
+            let myLet = 0;
+          </code>
+        </div>
+        <div class="col-sm-12 col-md-4">
+          <code class="bg-primary bg-opacity-25 rounded p-3 d-inline-block">
+            const myConst = 0;
+          </code>
+        </div>
+      </div>
+      <script>
+        var myVar = 0;
+        console.log('var myVar = 0', myVar);
+
+        let myLet = 0;
+        console.log('let myLet = 0', myLet);
+
+        const myConst = 0;
+        console.log('const myConst = 0', myConst);
+      </script>
+    </div>
+    <div class="py-4">
+      <h2 class="h4 mt-0">Data Types - Number, String, Operations, Boolean, Constant numbers, Objects, Arrays</h2>
+      <code class="bg-primary bg-opacity-25 rounded p-3 d-inline-block">
+        let dataTypes = [12345, 'String', true, false, { 'age': 25, 'name': 'Mickey' }];
+        </code>
+      <script>
+        let dataTypes = [12345, 'String', true, false, { 'age': 25, 'name': 'Mickey' }];
+        console.log("let dataTypes = [12345, 'String', true, false, { 'age': 25, 'name': 'Mickey' }]", dataTypes)
+      </script>
+    </div>
+    <div class="py-4">
+      <h2 class="h4 mt-0">Array Methods - concat, indexOf, join, lastIndexOf, pop, push, reverse, shift, slice, sort,
+        splice, toString, unShift, valueOf</h2>
+      <div class="row">
+        <div class="col-sm-12 col-md-6">
+          <code class="bg-primary bg-opacity-25 rounded p-3 d-block">
+              let fruits = ["Banana", "Apple", "Pear"];
+            </code>
+        </div>
+        <div class="col-sm-12 col-md-6">
+          <code class="bg-primary bg-opacity-25 rounded p-3 d-block">
+              let vegetables = ["Potatoes", "Tomatoes", "Onions"];
+            </code>
+        </div>
+        <div class="col-sm-12 mt-3">
+          <h3 class="h5 mt-0">Concat</h3>
+          <code class="bg-primary bg-opacity-25 rounded p-3 d-block">
+            let fruitVeg = fruits.concat(vegetables); <br />
+            fruits.concat(vegetables);
+          </code>
+          <script>
+            let fruits = ["Banana", "Apple", "Pear"];
+            console.log('let fruits = ["Banana", "Apple", "Pear"]', fruits)
+            let vegetables = ["Potatoes", "Tomatoes", "Onions"];
+            console.log('let vegetables = ["Potatoes", "Tomatoes", "Onions"]', fruits)
+            let fruitVeg = fruits.concat(vegetables);
+            console.log('concat - ', 'let fruitVeg = fruits.concat(vegetables);', fruitVeg);
+          </script>
+        </div>
+        <div class="col-sm-12 mt-3">
+          <h3 class="h5 mt-0">indexOf</h3>
+          <code class="bg-primary bg-opacity-25 rounded p-3 d-block">
+            let fruits = ["Banana", "Apple", "Pear"];<br />
+            fruits.indexOf('Apple')
+          </code>
+          <script>
+            console.log('let fruits = ["Banana", "Apple", "Pear"]', fruits.indexOf('Apple'))
+          </script>
+        </div>
+        <div class="col-sm-12 mt-3">
+          <h3 class="h5 mt-0">join</h3>
+          <code class="bg-primary bg-opacity-25 rounded p-3 d-block">
+            let fruits = ["Banana", "Apple", "Pear"];<br />
+            let newString = Potatoes<br />
+            fruits.join(newString)
+          </code>
+          <script>
+            let newString = 'Potatoes';
+            console.log('fruits.join(newString)', fruits.join(newString));
+          </script>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+  <!-- JavaScript Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
