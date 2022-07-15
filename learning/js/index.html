@@ -110,13 +110,56 @@
         <div class="col-sm-12 mt-3">
           <h3 class="h5 mt-0">join</h3>
           <code class="bg-primary bg-opacity-25 rounded p-3 d-block">
-            let fruits = ["Banana", "Apple", "Pear"];<br />
+            let fruits = ["Banana", "Apple", "Pear"]<br />
             let newString = Potatoes<br />
             fruits.join(newString)
           </code>
           <script>
             let newString = 'Potatoes';
             console.log('fruits.join(newString)', fruits.join(newString));
+          </script>
+        </div>
+        <div class="col-sm-12 mt-3">
+          <h3 class="h5 mt-0">lastIndexOf</h3>
+          <code class="bg-primary bg-opacity-25 rounded p-3 d-block">
+            let newSentence = 'The quick brown fox jumps over the lazy dog'; <br />
+            newSentence.lastIndexOf('dog')<br />
+            newSentence.lastIndexOf('o')
+          </code>
+          <script>
+            let newSentence = 'The quick brown fox jumps over the lazy dog'; 
+            console.log(`newSentence.lastIndexOf('dog')`, newSentence.lastIndexOf('dog'));
+            console.log(`newSentence.lastIndexOf('0')`, newSentence.lastIndexOf('o'));
+          </script>
+        </div>
+        <div class="col-sm-12 mt-3">
+          <h3 class="h5 mt-0">pop</h3>
+          <code class="bg-primary bg-opacity-25 rounded p-3 d-block">
+            let fruits = ["Banana", "Apple", "Pear"];<br />
+            fruits.pop('')
+          </code>
+          <script>
+            console.log('fruits.pop(), fruits', fruits.pop(), fruits)
+          </script>
+        </div>
+        <div class="col-sm-12 mt-3">
+          <h3 class="h5 mt-0">push</h3>
+          <code class="bg-primary bg-opacity-25 rounded p-3 d-block">
+            let fruits = ["Banana", "Apple", "Pear"];<br />
+            fruits.push('Mango')
+          </code>
+          <script>
+            console.log(`fruits.push('Mango'), fruits`, fruits.push('Mango'), fruits)
+          </script>
+        </div>
+        <div class="col-sm-12 mt-3">
+          <h3 class="h5 mt-0">reverse</h3>
+          <code class="bg-primary bg-opacity-25 rounded p-3 d-block">
+            let fruits = ["Banana", "Apple", "Pear"];<br />
+            fruits.reverse('Mango')
+          </code>
+          <script>
+            console.log(`fruits.reverse(), fruits`, fruits.reverse(), fruits)
           </script>
         </div>
       </div>
