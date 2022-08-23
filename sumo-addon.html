@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.sumoselect/3.4.5/sumoselect.css" />
   <style>
+    *,*:active,*:focus{outline: 0; box-shadow: none !important;}
     .SumoSelect>.optWrapper>.options li label {
       margin: 0;
     }
@@ -72,14 +73,15 @@
     }
 
     .SumoSelect .option_group~.optWrapper .option_group_action {
-      padding: 5px 0;
+      padding: 5px 0 0;
       background: #f1f1f1;
     }
 
     .SumoSelect .option_group~.optWrapper .option_group_action>.btn {
       width: 45%;
       margin: 0 2%;
-      border: 1px solid red;
+      border-radius: 0;
+      border-bottom: 2px solid transparent;
     }
 
     .SumoSelect .option_group.owner-selected~.optWrapper>.options li.group:not([data-key="allUser"]) {
@@ -87,7 +89,8 @@
     }
 
     .SumoSelect .option_group.owner-selected~.optWrapper .option_group_action>.btn.owner-btn {
-      background: red;
+      color: #4b7bdd;
+      border-bottom-color: #4b7bdd;
     }
 
     .SumoSelect .option_group.team-selected~.optWrapper>.options li.group[data-key="allUser"] {
@@ -95,7 +98,8 @@
     }
 
     .SumoSelect .option_group.team-selected~.optWrapper .option_group_action>.btn.team-btn {
-      background: red;
+      color: #4b7bdd;
+      border-bottom-color: #4b7bdd;
     }
   </style>
 </head>
@@ -105,7 +109,7 @@
     <div class="row">
       <div class="col-sm-4 bg- p-2">
         <h6>with ok button</h6>
-        <select tabindex="-1" id="sumo" class="optgroup_test option_group owner-selected" multiple="multiple"
+        <select tabindex="-1" id="sumo" class="optgroup_test option_group owner-selected owner-team-tab" multiple="multiple"
           placeholder="Hello  im from placeholder">
 
           <optgroup value="teamA" label="Team A">
@@ -130,7 +134,32 @@
       </div>
       <div class="col-sm-4 bg- p-2">
         <h6>CLone</h6>
-        <select tabindex="-1" id="sumo" class="optgroup_test option_group owner-selected" multiple="multiple"
+        <select tabindex="-1" id="sumo" class="optgroup_test option_group team-selected owner-team-tab" multiple="multiple"
+          placeholder="Hello  im from placeholder">
+
+          <optgroup value="teamA" label="Team A">
+            <option value="A1">User A1</option>
+            <option value="a2">User A2</option>
+            <option value="a3">User A3</option>
+            <option value="a4">User A4</option>
+          </optgroup>
+          <optgroup value="teamB" label="Team B">
+            <option value="B1">User B1</option>
+            <option value="B2">User B2</option>
+            <option value="B3">User B3</option>
+            <option value="B4">User B4</option>
+          </optgroup>
+          <optgroup value="allUser" label="Select all users">
+            <option value="U1">User A1</option>
+            <option value="u2">User A2</option>
+            <option value="u3">User A3</option>
+            <option value="u4">User A4</option>
+          </optgroup>
+        </select>
+      </div>
+      <div class="col-sm-4 bg- p-2">
+        <h6>CLone</h6>
+        <select tabindex="-1" id="sumo" class="optgroup_test option_group team-selected" multiple="multiple"
           placeholder="Hello  im from placeholder">
 
           <optgroup value="teamA" label="Team A">
@@ -190,7 +219,7 @@
     </div>
   </div>
 
-  <script src="https://uat.npfs.co/js/lib/jquery.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"></script>
   <!-- <script src="https://uat.npfs.co/js/jquery.sumoselect.min.js"></script> -->
   <script src="./jquery.sumoselect.js"></script>
   <script>
@@ -200,7 +229,6 @@
       search: true, searchText: 'Enter here.',
     });
     $('.normal_group').SumoSelect({ search: true, searchText: 'Enter here.' });
-
 
     $(document).on('keyup', '.option_group ~ .SelectBox .search-txt', function () {
       if ($(this).val().length > 0) {
@@ -227,10 +255,10 @@
 
 
     // New settings
-    $('select.option_group').on('sumo:opening', function (sumo) {
+    $('select.option_group.owner-team-tab').on('sumo:opening', function (sumo) {
       $(this).siblings('.optWrapper').prepend('<div class="option_group_action"><button class="btn owner-btn">Owner</button><button class="btn team-btn">Team</button></div>')
     });
-    $('select.option_group').on('sumo:closed', function (sumo) {
+    $('select.option_group.owner-team-tab').on('sumo:closed', function (sumo) {
       $(this).siblings('.optWrapper').find('.option_group_action').remove();
     });
     $(document).on('click', '.option_group ~ .optWrapper .option_group_action .owner-btn', function () {
@@ -250,7 +278,7 @@
       else {
         $(this).closest('.optWrapper').find('.options li.group[data-key="allUser"] li.opt.selected.group-child').trigger('click');
       }
-      console.log('value : ', $(this).closest('.optWrapper').siblings('.option_group').val());
+      // console.log('value : ', $(this).closest('.optWrapper').siblings('.option_group').val());
       $(this).closest('.optWrapper').siblings('.option_group')[0].sumo.reload();
     });
 
