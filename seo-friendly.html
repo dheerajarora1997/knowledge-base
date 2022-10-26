@@ -6,29 +6,49 @@
         <title>HTML5 semantic codility task</title>
         <meta name="description" content="HTML5 semantic codility task">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!-- <link rel="stylesheet" type="text/css" href="css/style.css"> -->
+        <link rel="stylesheet" type="text/css" href="css/style.css">
     </head>
 
     <body>
 
         <nav id="top-menu">
             <div class="menu-element" id="logo">
-                <a href="javascript:void(0);">
-                    <!-- <img alt="Codility" src="images/logo.png" /> -->
+                <a href="#">
+                    <img alt="Codility" src="images/logo.png" />
                 </a>
             </div>
             <div class="menu-element">
-                <a href="javascript:void(0);">About us</a>
+                <a href="#">About us</a>
             </div>
             <div class="menu-element">
-                <a href="javascript:void(0);">References</a>
+                <a href="#">References</a>
             </div>
             <div class="menu-element">
-                <a href="javascript:void(0);">Contact</a>
+                <a href="#">Contact</a>
             </div>
         </nav>
 
         <main id="content-container">
+            <article id="content">
+                <header id="main-block">
+                    <h1 id="main-title">Duis varius venenatis nulla et.</h1>
+                    <p id="main-description">
+                    Pellentesque nec dolor gravida, porta metus et, dignissim tellus. Vivamus facilisis erat eget condimentum volutpat.
+                    </p>
+                </header>
+                <section class="site-block">
+                    <h2 class="subtitle">Aenean feugiat tellus vitae finibus laoreet.</h2>
+                    <p class="description">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ultrices laoreet nisi, vitae commodo erat malesuada quis. Etiam vitae libero euismod, commodo massa in, luctus nisi. Pellentesque aliquam leo mi, pulvinar porttitor orci auctor vitae. Quisque sagittis, velit ac consequat sollicitudin, enim est varius ligula, sed vulputate odio libero sit amet nunc. Nunc urna mauris, porttitor a vestibulum ac, fringilla aliquam dui. Sed fringilla venenatis erat quis consectetur. Nam id sapien et massa dapibus dapibus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nam scelerisque nibh a risus ullamcorper, nec faucibus lectus gravida. Vivamus id est purus. Donec imperdiet interdum auctor. Nunc in ante velit. Phasellus dictum et lectus ut malesuada. Nullam eget ante sodales, elementum sem et, porta mi. Aliquam accumsan arcu at eros sagittis accumsan nec non urna. Phasellus at diam non urna congue tempus in sit amet eros.
+                    </p>
+                </section>
+                <section class="site-block">
+                    <figure class="image-container">
+                        <img alt="article related image" id="main-image" src="images/image.png">
+                        <figcaption class="image-caption">Mauris eget risus ullamcorper, facilisis lectus eget.</figcaption>
+                    </figure>
+                </section>
+            </article>
             <aside id="sidepanel">
                 <h2 class="sidepanel-title">Integer a placerat arcu.</h2>
                 <p class="sidepanel-content">
@@ -41,32 +61,13 @@
                 Praesent eleifend massa velit, ut aliquet purus pretium quis. Vivamus euismod, arcu a varius euismod, arcu urna lacinia nibh, quis eleifend lacus nibh a ligula. In efficitur et nisl in tristique. Vestibulum rutrum finibus vulputate. Integer pharetra congue tortor ut luctus. Vivamus tempor, massa eu convallis rhoncus, orci dolor porta velit, vel viverra tellus sapien id erat. Vivamus accumsan blandit neque, in viverra lorem pharetra in. Quisque nec arcu euismod, mollis augue sed, porttitor dui. Proin sed iaculis odio. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nam bibendum felis sit amet erat ornare fringilla.
                 </p>
             </aside>
-            <article id="content">
-                <aside id="main-block">
-                    <h1 id="main-title">Duis varius venenatis nulla et.</h1>
-                    <p id="main-description">
-                    Pellentesque nec dolor gravida, porta metus et, dignissim tellus. Vivamus facilisis erat eget condimentum volutpat.
-                    </p>
-                </aside>
-                <div class="site-block">
-                    <h2 class="subtitle">Aenean feugiat tellus vitae finibus laoreet.</h2>
-                    <p class="description">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ultrices laoreet nisi, vitae commodo erat malesuada quis. Etiam vitae libero euismod, commodo massa in, luctus nisi. Pellentesque aliquam leo mi, pulvinar porttitor orci auctor vitae. Quisque sagittis, velit ac consequat sollicitudin, enim est varius ligula, sed vulputate odio libero sit amet nunc. Nunc urna mauris, porttitor a vestibulum ac, fringilla aliquam dui. Sed fringilla venenatis erat quis consectetur. Nam id sapien et massa dapibus dapibus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nam scelerisque nibh a risus ullamcorper, nec faucibus lectus gravida. Vivamus id est purus. Donec imperdiet interdum auctor. Nunc in ante velit. Phasellus dictum et lectus ut malesuada. Nullam eget ante sodales, elementum sem et, porta mi. Aliquam accumsan arcu at eros sagittis accumsan nec non urna. Phasellus at diam non urna congue tempus in sit amet eros.
-                    </p>
-                </div>
-                <div class="site-block">
-                    <figure class="image-container">
-                        <!-- <img alt="article related image" id="main-image" src="images/image.png"> -->
-                        <figcaption class="image-caption">Mauris eget risus ullamcorper, facilisis lectus eget.</figcaption>
-                        </figure>
-                </div>
-            </article>
+            
         </main>
 
         <footer id="copyright-container">
             <div id="copyright-content">
-                <p class="copyright">Copyright 1999-2020.</p>
-                <p> by Codility &reg; All Rights Reserved.</p>
+                <strong class="copyright">Copyright 1999-2020.</strong>
+                <span> by Codility &reg; All Rights Reserved.</span>
             </div>
         </footer>
 
