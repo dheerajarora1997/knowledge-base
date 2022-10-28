@@ -1,0 +1,52 @@
+<div class="TaskDescription__TaskContentWrapper-sc-7m9k5q-2 kDUwpJ task-description-content"><p>Your task is to implement a function which adds type validation to an object.</p>
+<h3>Requirements</h3>
+<p>Your function should receive an object as its only argument and return an object with the same properties, but with type validation added.
+Types should be validated when:</p>
+<ul>
+<li>the function creates the object;</li>
+<li>someone updates a property;</li>
+<li>someone adds a property.</li>
+</ul>
+<p>The type validation should always be based on the last part of the property name. For example, the <code>age_int</code> property should always be an integer and throw an error when set to something else.</p>
+<p>Here are possible types:</p>
+<ul>
+<li>string: for example, <code>"string type"</code></li>
+<li>int: <code>12.00</code> and <code>12</code> are both integers</li>
+<li>float: for example, <code>12.34</code></li>
+<li>number: any int or float</li>
+<li>bool: for example, <code>true</code></li>
+</ul>
+<h3>Assumptions</h3>
+<ul>
+<li>Types are optional and validation should be skipped if the type isn't specified.</li>
+<li><code>_</code> always precedes the type name.</li>
+</ul>
+<h3>Hints</h3>
+<ul>
+<li>JavaScript Proxy might be useful.</li>
+<li>Your solution will be evaluated based on its correctness; performance and coding style will not be assessed.</li>
+<li>Do not edit the default export.</li>
+</ul>
+<h3>Available tools/packages</h3>
+<p>You can use:</p>
+<ul>
+<li>JavaScript <em>Node 14 / ES2020</em></li>
+</ul>
+<h3>Examples</h3>
+<p>Your function (<code>typeCheck</code> here) should behave as shown below:</p>
+<pre><code class="language-js">const obj = {
+    age_int: 2,
+    name_string: "Adam",
+    job: null,
+}
+const validatingObject = typeCheck(obj)
+validatingObject.age_int = 2.25 // Throws error
+validatingObject.age_int = 2
+validatingObject.job = "fireman"
+validatingObject.address_string = 20 // Throws error
+
+const obj_2 = {
+    employed_bool: "true",
+}
+const validatingObject = typeCheck(obj_2) // Throws error
+</code></pre></div>
