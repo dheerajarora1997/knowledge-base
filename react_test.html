@@ -1,0 +1,83 @@
+<div class="TaskDescription__TaskContentWrapper-sc-7m9k5q-2 kDUwpJ task-description-content"><p>Your task is to implement a React component that renders a running-clock that will count down time until it reaches 0 minutes and 0 seconds (00:00).</p>
+<h3>Requirements</h3>
+<h4>Functionality</h4>
+<p>Given the HTML structure:</p>
+<pre><code class="language-HTML">&lt;label&gt;
+    &lt;input type="number"&gt;
+    Minutes
+&lt;/label&gt;
+&lt;label&gt;
+    &lt;input type="number"&gt;
+    Seconds
+&lt;/label&gt;
+
+&lt;button&gt;START&lt;/button&gt;
+&lt;button&gt;PAUSE / RESUME&lt;/button&gt;
+&lt;button&gt;RESET&lt;/button&gt;
+
+&lt;h1 data-testid="running-clock"&gt;00:00&lt;/h1&gt;
+</code></pre>
+<p>implement a running-clock that receives its time value from user inputs and allows the user to start, pause/resume the countdown and reset the clock.</p>
+<p>In order to satisfy the task's requirements, you need to implement the following:</p>
+<ol>
+<li>
+<p>Time display:</p>
+<ul>
+<li>time is displayed in <code>&lt;h1 data-testid="running-clock"&gt;</code> and its initial value is <code>00:00</code>;</li>
+<li>time is displayed in <code>mm:ss</code> format;</li>
+<li>1 minute, 5 seconds should be displayed as: <code>01:05</code>;</li>
+<li>1 minute, 65 seconds should be displayed as: <code>02:05</code>.</li>
+</ul>
+</li>
+<li>
+<p>Inputs:</p>
+<ul>
+<li>changing input values does not change the value displayed in <code>&lt;h1 data-testid="running-clock"&gt;</code>;</li>
+<li>inputs do not need to have <code>max</code> or <code>min</code> attributes;</li>
+<li>the clock doesn't need to handle negative values; this is not a part of the solution and will not be evaluated.</li>
+</ul>
+</li>
+<li>
+<p>Behavior:</p>
+<ol>
+<li>On a <code>START</code> button click, set the clock value displayed in <code>&lt;h1 data-testid="running-clock"&gt;</code> with the time calculated from the inputs and start counting down;</li>
+<li>Once the clock is running, update the displayed time every second;</li>
+<li>Once the clock is running and the <code>START</code> button is clicked, restart the clock with the same time originally provided in the inputs;</li>
+<li>Once the countdown is done and the clock reaches <code>00:00</code>, stop counting and keep displaying <code>00:00</code>;</li>
+<li>On a <code>PAUSE / RESUME</code> button click, pause or resume the clock appropriately:
+<ul>
+<li><code>PAUSE</code> puts the countdown on hold;</li>
+<li><code>RESUME</code> resumes the countdown from where it left off;</li>
+</ul>
+</li>
+<li>Once the <code>RESET</code> button is clicked, both inputs should be reset to <code>0</code>;</li>
+<li>Once the <code>RESET</code> button is clicked, the time displayed in <code>&lt;h1 data-testid="running-clock"&gt;</code> should be reset to <code>00:00</code>.</li>
+</ol>
+</li>
+</ol>
+<h3>Implementation hints &amp; notice:</h3>
+<ul>
+<li>Do not clear the inputs on a <code>START</code> button click.</li>
+<li>Use the same button element for both pause and resume actions.</li>
+<li>The following elements are used in tests and therefore must not be changed:
+<ul>
+<li><code>&lt;input&gt;</code> labels;</li>
+<li><code>&lt;button&gt;</code> texts;</li>
+<li><code>&lt;h1&gt;</code>element <code>data-testid</code> attribute value.</li>
+</ul>
+</li>
+</ul>
+<h3>Hints</h3>
+<ul>
+<li>Only imports from the <code>react</code> module are allowed.</li>
+<li>Your solution will be evaluated based on its correctness.</li>
+<li>Design/styling is not assessed and will not affect the score. You should focus only on implementing the requirements.</li>
+<li>The <em>Preview</em> tab will display your component. You can use it for testing purposes.</li>
+<li>You can use <code>console.log</code> and <code>console.error</code> for debugging purposes via your browser's developer tools.</li>
+</ul>
+<h3>Available packages/libraries</h3>
+<ul>
+<li>React 17.0.1</li>
+</ul>
+<h3>Example</h3>
+<p><img src="https://s3.amazonaws.com/codility-frontend-prod/media/task_static/running_clock/static/1627898001/images/running-clock.gif" alt="example"></p></div>
