@@ -1,0 +1,78 @@
+import React, { Fragment, useEffect, useState, useRef } from 'react';
+
+export default function Solution() {
+
+	const [sec, setSec] = useState(0)
+	const [intervalId, setIntervalId] = useState(null);
+
+	const minRef = useRef()
+	const secRef = useRef()
+
+	const intervalFun = () => {
+		setSec(sec => sec > 0 ? sec - 1 : sec);
+	};
+
+	const startTimer = () => {
+
+		const newSec = (+secRef.current.value || 0) + (+minRef.current.value || 0) * 60
+
+		if (newSec > 0) {
+			if (!intervalId) {
+				setIntervalId(setInterval(intervalFun, 1000))
+			}
+			setSec(newSec);
+		} else if (newSec <= 0) {
+			setSec(0);
+		}
+	}
+
+	const toggleInterval = () => {
+		if (intervalId) {
+			clearInterval(intervalId);
+			setIntervalId(null)
+		} else {
+			setIntervalId(setInterval(intervalFun, 1000))
+		}
+	}
+
+	useEffect(() => {
+		if (sec <= 0) {
+			setIntervalId(intervalId => {
+				if (intervalId) {
+					clearInterval(intervalId);
+				}
+
+				return null;
+			});
+			setSec(0)
+		}
+	}, [sec]);
+
+
+	const resetTimer = () => {
+		setSec(0)
+    minRef.current.value = 0;
+    secRef.current.value = 0;
+	}
+
+	const minPrint = parseInt(sec / 60).toString();
+	const secPrint = (sec % 60).toString();
+
+	return (
+		<Fragment>
+			<label>
+				<input type="number" ref={minRef} />
+				Minutes
+			</label>
+			<label>
+				<input type="number" ref={secRef} />
+				Seconds
+			</label>
+
+			<button onClick={startTimer}>START</button>
+			<button onClick={toggleInterval}>PAUSE / RESUME</button>
+			<button onClick={resetTimer}>RESET</button>
+			<h1 data-testid="running-clock">{minPrint.length === 1 ? `0${minPrint}` : minPrint}:{secPrint.length === 1 ? `0${secPrint}` : secPrint}</h1>
+		</Fragment>
+	);
+}
