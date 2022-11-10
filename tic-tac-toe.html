@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+ <meta charset="UTF-8">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Tic-Tac-Toe</title>
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap" rel="stylesheet">
+ <style>
+  body {
+   font-family: 'Rubik', sans-serif;
+   text-align: center;
+   font-size: 13px;
+   color: #323232;
+  }
+
+  a {
+   white-space: nowrap;
+   color: #3A8891;
+  }
+
+  table {
+   margin: 10px auto 0;
+  }
+
+  table tr td {
+   position: relative;
+   min-width: 100px;
+   min-height: 100px;
+  }
+
+  table tr td label {
+   position: relative;
+   min-width: 100px;
+   min-height: 100px;
+   background: #666;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+  }
+
+  table tr td label input {
+   visibility: hidden;
+   opacity: 0;
+  }
+
+  label.player1:before {
+   content: '✕';
+   position: absolute;
+   background: #323232;
+   color: #fff;
+   font-size: 40px;
+   width: 100%;
+   height: 100%;
+   text-align: center;
+   line-height: 2.5;
+  }
+
+  label.player2:before {
+   content: '⬤';
+   position: absolute;
+   background: #323232;
+   color: #fff;
+   font-size: 40px;
+   width: 100%;
+   height: 100%;
+   text-align: center;
+   line-height: 2.5;
+  }
+ </style>
+</head>
+
+<body>
+ <main>
+  <div id="wrapper">
+   <h1>Tic Tac Toe Game by <a href="https://www.linkedin.com/in/dheerajarora1997/" target="_blank">Dheeraj Arora</a>
+   </h1>
+   <table>
+    <tr>
+     <td>
+      <label><input type="checkbox" name="input_1" value="1" onchange="optionSelected(this)" id=""></label>
+     </td>
+     <td>
+      <label><input type="checkbox" name="input_2" value="2" onchange="optionSelected(this)" id=""></label>
+     </td>
+     <td>
+      <label><input type="checkbox" name="input_3" value="3" onchange="optionSelected(this)" id=""></label>
+     </td>
+    </tr>
+    <tr>
+     <td>
+      <label><input type="checkbox" name="input_4" value="4" onchange="optionSelected(this)" id=""></label>
+     </td>
+     <td>
+      <label><input type="checkbox" name="input_5" value="5" onchange="optionSelected(this)" id=""></label>
+     </td>
+     <td>
+      <label><input type="checkbox" name="input_6" value="6" onchange="optionSelected(this)" id=""></label>
+     </td>
+    </tr>
+    <tr>
+     <td>
+      <label><input type="checkbox" name="input_7" value="7" onchange="optionSelected(this)" id=""></label>
+     </td>
+     <td>
+      <label><input type="checkbox" name="input_8" value="8" onchange="optionSelected(this)" id=""></label>
+     </td>
+     <td>
+      <label><input type="checkbox" name="input_9" value="9" onchange="optionSelected(this)" id=""></label>
+     </td>
+    </tr>
+   </table>
+  </div>
+ </main>
+ <script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
+  data-id="dheerajarora97" data-description="Support me on Buy me a coffee!" data-message="" data-color="#3A8891"
+  data-position="Right" data-x_margin="18" data-y_margin="18"></script>
+ <script>
+
+  let allOption, player1, player2, p1, p2;
+  allOption = [];
+  player1 = [];
+  player2 = [];
+  p1 = true;
+  p2 = false;
+
+  let matchResult = (ele) => {
+   if (ele) {
+    setTimeout(() => {
+     let result = confirm(`${ele} Wins, Do you want a rematch?`);
+     result ? location.reload() : console.log(`Player 1 Selected Options: ${player1} V/S Player 2 Selected Options: ${player2} `)
+    }, 300);
+   }
+   else {
+    setTimeout(() => {
+     let result = confirm(`Match draw, Do you want a rematch?`)
+     result ? location.reload() : console.log(`Player 1 Selected Options: ${player1} V/S Player 2 Selected Options: ${player2} `)
+    }, 300);
+   }
+  }
+
+
+  const optionSelected = (el) => {
+
+   if (p1) {
+    el.setAttribute("disabled", "disabled");
+    allOption.push(+el.value)
+    el.parentElement.classList.add('player1');
+    player1.push(+el.value)
+    player1.sort()
+    p1 = false;
+    p2 = true;
+   }
+   else {
+    el.setAttribute("disabled", "disabled");
+    allOption.push(+el.value)
+    el.parentElement.classList.add('player2');
+    player2.push(+el.value)
+    player2.sort()
+    p2 = false;
+    p1 = true;
+   }
+
+   if (player1.includes(1) && player1.includes(2) && player1.includes(3) || player1.includes(1) && player1.includes(4) && player1.includes(7) || player1.includes(1) && player1.includes(5) && player1.includes(9) || player1.includes(2) && player1.includes(5) && player1.includes(8) || player1.includes(3) && player1.includes(6) && player1.includes(9) || player1.includes(3) && player1.includes(5) && player1.includes(7) || player1.includes(4) && player1.includes(5) && player1.includes(6) || player1.includes(7) && player1.includes(8) && player1.includes(9)) {
+    // player 1 Win
+    matchResult('PLayer 1')
+   }
+
+   if (player2.includes(1) && player2.includes(2) && player2.includes(3) || player2.includes(1) && player2.includes(4) && player2.includes(7) || player2.includes(1) && player2.includes(5) && player2.includes(9) || player2.includes(2) && player2.includes(5) && player2.includes(8) || player2.includes(3) && player2.includes(6) && player2.includes(9) || player2.includes(3) && player2.includes(5) && player2.includes(7) || player2.includes(4) && player2.includes(5) && player2.includes(6) || player2.includes(7) && player2.includes(8) && player2.includes(9)) {
+    // player 2 win
+    matchResult('PLayer 2')
+   }
+   // Nobody win match draw
+   if (allOption.length == 9) {
+    matchResult();
+   }
+  }
+ </script>
+</body>
+
+</html>
