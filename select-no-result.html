@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SelectPicker No Data</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.18/css/bootstrap-select.min.css" />
+  <style>
+    .add-elements li.no-results {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px 10px;
+      word-break: break-all;
+      white-space: normal;
+      min-height: 100px;
+    }
+
+    .fixed-select-field .dropdown-menu.inner li.last-element-fixed button {
+      position: fixed;
+      bottom: 0;
+      display: flex;
+      font-weight: 500;
+      align-items: center;
+      justify-content: center;
+      box-shadow: none !important;
+      color: #4c79dc !important;
+      background: #f7f9fd;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="jumbotron">
+    <div class="container">
+      <div class="row">
+        <div class="col-6">
+          <div class="add-elements fixed-select-field">
+            <select name="" id="" class="form-control select-picker all-feature" id="selectPicker"
+              data-none-results-text="hello there <span id='ele'>{0}</span> <button onclick='buttonClicked()' class='btn btn-sm btn-primary rounded mt-3 '>Add Now</button>"
+              data-live-search="true">
+              <option value="0">Hot</option>
+              <option value="1">Cold</option>
+              <option value="2">Warm</option>
+              <option value="3">Not Interested</option>
+              <option value="4">Qualified</option>
+              <option value="5">Un-Qualified</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.18/js/bootstrap-select.min.js"></script>
+  <script>
+    $('select.select-picker').selectpicker();
+
+    const buttonClicked = (el) => {
+      let ele = $('#ele').text();
+      $('select').append('<option selected>' + ele + '</option>');
+      $('select.select-picker').selectpicker('refresh');
+      $('select.select-picker').selectpicker('render');
+    }
+
+    const optionClicked = (op) => {
+
+      $('select').append('<option selected>' + op + '</option>');
+      $('select.select-picker').selectpicker('refresh');
+      $('select.select-picker').selectpicker('render');
+    }  
+
+    $(document).on('shown.bs.select', '.fixed-select-field select', function (e) {
+
+      let ele = $(e.currentTarget).closest('.fixed-select-field').find('.bs-searchbox input');
+
+      $(ele).on('keyup', function () {
+
+        $(e.currentTarget).closest('.fixed-select-field').find('ul.dropdown-menu .last-element-fixed').remove();
+        
+        let ele_value = $(ele).val();
+        let available_Option = $(e.currentTarget).closest('.fixed-select-field').find('ul.dropdown-menu li:not(.last-element-fixed):not(.no-results)').length; 
+        if(ele_value && available_Option){
+          $(e.currentTarget).closest('.fixed-select-field').find('ul.dropdown-menu').css('padding-bottom', '25px');
+          $(e.currentTarget).closest('.fixed-select-field').find('ul.dropdown-menu').append(`<li class="last-element-fixed"><button class="dropdown-item" onclick="optionClicked('${ele_value}')">Create New List Item ${ele_value} </button></li>`)
+        }
+        else{
+          $(e.currentTarget).closest('.fixed-select-field').find('ul.dropdown-menu').css('padding-bottom', '0');
+          $(e.currentTarget).closest('.fixed-select-field').find('ul.dropdown-menu .last-element-fixed').remove();
+        }
+      });
+    });
+
+
+    $('select.select-picker').on('shown.bs.select', function () {
+      $('.accordion-card').removeClass('z-20');
+      $(this).closest('.accordion-card').addClass('z-20');
+    });
+  </script>
+</body>
+
+</html>
