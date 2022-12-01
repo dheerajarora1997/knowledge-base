@@ -5,34 +5,34 @@
  <meta charset="UTF-8">
  <meta http-equiv="X-UA-Compatible" content="IE=edge">
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <title>Bootstrap 4.6 with jQuery</title>
+ <title>Html Lazy Load</title>
  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
 </head>
 
 <body>
- <section class="py-4 bg-primary dashlet">
-  <div class="container py-5"></div>
+ <section class="py-4 bg-primary dashlet" data-function="alert('1')">
+  <div class="container py-5">1</div>
  </section>
- <section class="py-4 bg-secondary dashlet">
-  <div class="container py-5"></div>
+ <section class="py-4 bg-secondary dashlet" data-function="alert('2')">
+  <div class="container py-5">2</div>
  </section>
- <section class="py-4 bg-danger dashlet">
-  <div class="container py-5"></div>
+ <section class="py-4 bg-danger dashlet" data-function="alert('3')">
+  <div class="container py-5">3</div>
  </section>
- <section class="py-4 bg-info dashlet">
-  <div class="container py-5"></div>
+ <section class="py-4 bg-info dashlet" data-function="alert('4')">
+  <div class="container py-5">4</div>
  </section>
- <section class="py-4 bg-success dashlet">
-  <div class="container py-5"></div>
+ <section class="py-4 bg-success dashlet" data-function="alert('5')">
+  <div class="container py-5">5</div>
  </section>
- <section class="py-4 bg-primary dashlet">
-  <div class="container py-5"></div>
+ <section class="py-4 bg-primary dashlet" data-function="alert('6')">
+  <div class="container py-5">6</div>
  </section>
- <section class="py-4 bg-secondary dashlet">
-  <div class="container py-5"></div>
+ <section class="py-4 bg-secondary dashlet" data-function="alert('7')">
+  <div class="container py-5">7</div>
  </section>
- <section class="py-4 bg-info dashlet">
-  <div class="container py-5"></div>
+ <section class="py-4 bg-info dashlet" data-function="alert('8')">
+  <div class="container py-5">8</div>
  </section>
 
 </body>
@@ -41,14 +41,28 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js"></script>
 <script>
  let windowHeight = $(window).height();
- $('.dashlet').map((index, ele) => {
-  $(window).scroll(() => {
-   if ($(window).scrollTop() + $(window).height() >= $(ele).position().top) {
-    console.log(index)
-   }
-  });
+ let LoadedElement = []
 
+ const onLoadRequest = () => {
+
+  $('.dashlet').map((index, ele) => {
+   if ($(window).scrollTop() + $(window).height() >= $(ele).position().top) {
+
+    if(!LoadedElement.includes($(ele).data('function'))){
+     LoadedElement.push($(ele).data('function'))
+     console.log(LoadedElement)
+     eval($(ele).data('function'));
+    }
+   }
+  })
+ }
+ $(window).scroll(() => {
+  onLoadRequest()
+ });
+ $(document).ready(function(){
+  onLoadRequest();
  })
+
 </script>
 
 </html>
