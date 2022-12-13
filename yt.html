@@ -32,7 +32,7 @@
    console.log(parseNewData.items)
    parseNewData.items.map((el, i) => {
     console.log(i)
-    if(el.id.videoId){
+    if(el.id.kind == "youtube#video"){
      iframes[i].setAttribute("src", `https://www.youtube.com/embed/${el.id.videoId}`);
     }
     else{
