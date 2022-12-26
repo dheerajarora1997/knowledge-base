@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+ <meta charset="UTF-8">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Snake & Ladders </title>
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap.min.css" />
+ <style>
+  .line-row {
+   border: 1px solid #f1f1f1;
+   width: 100%;
+   display: flex;
+   justify-content: space-between;
+  }
+
+  .row-block {
+   width: 80px;
+   height: 50px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   position: relative;
+  }
+
+  .line-row:nth-child(even) {
+   background: #f1f1f1;
+   flex-direction: row-reverse;
+  }
+
+  .player1:before,
+  .player2:after,
+  .player3:before,
+  .player4:after {
+   content: '';
+   position: absolute;
+   bottom: 0;
+   width: 12px;
+   height: 20px;
+   border-radius: 5px 5px 0 0;
+   border:1px solid #999;
+   border-width: 1px 1px 0;
+  }
+
+  .player1:before {
+   content: '1';
+   background: #00FFC6;
+   right: 10px;
+  }
+
+  .player2:after {
+   content: '2';
+   background: #D800A6;
+   right: 25px;
+  }
+  .player3:before {
+   content: '3';
+   background: #5800FF;
+   right: 40px;
+  }
+
+  .player4:after {
+   content: '4';
+   background: #FFF5B7;
+   right: 55px;
+  }
+ </style>
+</head>
+
+<body>
+ <div class="container">
+  <h3 class="text-center col-10 mb-4">Game</h3>
+  <div class="row text-center mt-2">
+   <div class="col-sm-10">
+    <div class="" id="gameTable">
+     <div class="line-row">
+      <div class="row-block">100</div>
+      <div class="row-block">99</div>
+      <div class="row-block">98</div>
+      <div class="row-block">97</div>
+      <div class="row-block">96</div>
+      <div class="row-block">95</div>
+      <div class="row-block">94</div>
+      <div class="row-block">93</div>
+      <div class="row-block">92</div>
+      <div class="row-block">91</div>
+     </div>
+     <div class="line-row">
+      <div class="row-block">90</div>
+      <div class="row-block">89</div>
+      <div class="row-block">88</div>
+      <div class="row-block">87</div>
+      <div class="row-block">86</div>
+      <div class="row-block">85</div>
+      <div class="row-block">84</div>
+      <div class="row-block">83</div>
+      <div class="row-block">82</div>
+      <div class="row-block">81</div>
+     </div>
+     <div class="line-row">
+      <div class="row-block">80</div>
+      <div class="row-block">79</div>
+      <div class="row-block">78</div>
+      <div class="row-block">77</div>
+      <div class="row-block">76</div>
+      <div class="row-block">75</div>
+      <div class="row-block">74</div>
+      <div class="row-block">73</div>
+      <div class="row-block">72</div>
+      <div class="row-block">71</div>
+     </div>
+     <div class="line-row">
+      <div class="row-block">70</div>
+      <div class="row-block">69</div>
+      <div class="row-block">68</div>
+      <div class="row-block">67</div>
+      <div class="row-block">66</div>
+      <div class="row-block">65</div>
+      <div class="row-block">64</div>
+      <div class="row-block">63</div>
+      <div class="row-block">62</div>
+      <div class="row-block">61</div>
+     </div>
+     <div class="line-row">
+      <div class="row-block">60</div>
+      <div class="row-block">59</div>
+      <div class="row-block">58</div>
+      <div class="row-block">57</div>
+      <div class="row-block">56</div>
+      <div class="row-block">55</div>
+      <div class="row-block">54</div>
+      <div class="row-block">53</div>
+      <div class="row-block">52</div>
+      <div class="row-block">51</div>
+     </div>
+     <div class="line-row">
+      <div class="row-block">50</div>
+      <div class="row-block">49</div>
+      <div class="row-block">48</div>
+      <div class="row-block">47</div>
+      <div class="row-block">46</div>
+      <div class="row-block">45</div>
+      <div class="row-block">44</div>
+      <div class="row-block">43</div>
+      <div class="row-block">42</div>
+      <div class="row-block">41</div>
+     </div>
+     <div class="line-row">
+      <div class="row-block">40</div>
+      <div class="row-block">39</div>
+      <div class="row-block">38</div>
+      <div class="row-block">37</div>
+      <div class="row-block">36</div>
+      <div class="row-block">35</div>
+      <div class="row-block">34</div>
+      <div class="row-block">33</div>
+      <div class="row-block">32</div>
+      <div class="row-block">31</div>
+     </div>
+     <div class="line-row">
+      <div class="row-block">30</div>
+      <div class="row-block">29</div>
+      <div class="row-block">28</div>
+      <div class="row-block">27</div>
+      <div class="row-block">26</div>
+      <div class="row-block">25</div>
+      <div class="row-block">24</div>
+      <div class="row-block">23</div>
+      <div class="row-block">22</div>
+      <div class="row-block">21</div>
+     </div>
+     <div class="line-row">
+      <div class="row-block">20</div>
+      <div class="row-block">19</div>
+      <div class="row-block">18</div>
+      <div class="row-block">17</div>
+      <div class="row-block">16</div>
+      <div class="row-block">15</div>
+      <div class="row-block">14</div>
+      <div class="row-block">13</div>
+      <div class="row-block">12</div>
+      <div class="row-block">11</div>
+     </div>
+     <div class="line-row">
+      <div class="row-block">10</div>
+      <div class="row-block">9</div>
+      <div class="row-block">8</div>
+      <div class="row-block">7</div>
+      <div class="row-block">6</div>
+      <div class="row-block">5</div>
+      <div class="row-block">4</div>
+      <div class="row-block">3</div>
+      <div class="row-block">2</div>
+      <div class="row-block">1</div>
+     </div>
+
+    </div>
+   </div>
+   <div class="col-sm-2 ">
+    <div class="bg-light p-2 mb-2 rounded">
+     <h4 id="playerTurn">Player Room</h4>
+     <div class="position-relative pb-4">
+      <span class="player1"></span>
+      <span class="player2"></span>
+      <span class="player3"></span>
+      <span class="player4"></span>
+     </div>
+    </div>
+    <div class="bg-primary bg-opacity-10 p-2 mb-2 rounded">
+     Dice
+     <h1 class="" id="diceValue">0</h1>
+     <button class="btn btn-primary btn-block" id="dice" onclick="getNewNumber()">Press </button>
+    </div>
+    <div class="bg-danger bg-opacity-50 p-2 mb-2 rounded">
+     <h5>Snakes Position</h5>
+     <span class="snake-number bg-light bg-opacity-50 mr-1 rounded d-inline-block"></span>
+     <span class="snake-number bg-light bg-opacity-50 mr-1 rounded d-inline-block"></span>
+     <span class="snake-number bg-light bg-opacity-50 mr-1 rounded d-inline-block"></span>
+     <span class="snake-number bg-light bg-opacity-50 mr-1 rounded d-inline-block"></span>
+     <span class="snake-number bg-light bg-opacity-50 mr-1 rounded d-inline-block"></span>
+     <span class="snake-number bg-light bg-opacity-50 mr-1 rounded d-inline-block"></span>
+     <span class="snake-number bg-light bg-opacity-50 mr-1 rounded d-inline-block"></span>
+     <span class="snake-number bg-light bg-opacity-50 mr-1 rounded d-inline-block"></span>
+    </div>
+    <div class="bg-info bg-opacity-50 p-2 mb-2 rounded">
+     <h5>Ladders Position</h5>
+     <span class="ladder-number bg-light bg-opacity-50 mr-1 rounded d-inline-block"></span>
+     <span class="ladder-number bg-light bg-opacity-50 mr-1 rounded d-inline-block"></span>
+     <span class="ladder-number bg-light bg-opacity-50 mr-1 rounded d-inline-block"></span>
+     <span class="ladder-number bg-light bg-opacity-50 mr-1 rounded d-inline-block"></span>
+     <span class="ladder-number bg-light bg-opacity-50 mr-1 rounded d-inline-block"></span>
+     <span class="ladder-number bg-light bg-opacity-50 mr-1 rounded d-inline-block"></span>
+     <span class="ladder-number bg-light bg-opacity-50 mr-1 rounded d-inline-block"></span>
+     <span class="ladder-number bg-light bg-opacity-50 mr-1 rounded d-inline-block"></span>
+    </div>
+   </div>
+  </div>
+ </div>
+
+</body>
+<script>
+
+ let rowBlock = document.getElementsByClassName('row-block')
+ let totalSnakeLadders = 8;
+ let snakeArray = [];
+ rowBlock[0].classList.add('bg-success', 'bg-opacity-75')
+ rowBlock[99].classList.add('bg-warning', 'bg-opacity-75')
+
+ const getSnakes = () => {
+  snakeHtml = document.getElementsByClassName('snake-number')
+  for (i = 0; i < totalSnakeLadders; i++) {
+   snakeNum = Math.ceil(Math.random() * 99)
+   if (!snakeArray.includes(snakeNum)) {
+    snakeArray.push(snakeNum)
+    rowBlock[100 - snakeNum].classList.add('bg-danger', 'bg-opacity-25');
+    snakeHtml[i].innerHTML = snakeNum
+    snakeHtml[i].classList.add('p-1', 'mb-1')
+   }
+  }
+  snakeArray.sort((a, b) => { return (a - b) })
+  return snakeArray;
+ }
+ getSnakes();
+
+ let laddersArray = [];
+
+ const getLadders = () => {
+  laddersHtml = document.getElementsByClassName('ladder-number')
+  for (i = 0; i < totalSnakeLadders; i++) {
+   laddersNum = Math.ceil(Math.random() * 99)
+   if (!laddersArray.includes(laddersNum) && !snakeArray.includes(laddersNum)) {
+    laddersArray.push(laddersNum)
+    rowBlock[100 - laddersNum].classList.add('bg-info', 'bg-opacity-25');
+    laddersHtml[i].innerHTML = laddersNum;
+    laddersHtml[i].classList.add('p-1', 'mb-1')
+   }
+  }
+  laddersArray.sort((a, b) => { return (a - b) })
+  return laddersArray;
+ }
+ getLadders();
+
+ const getNewNumber = () => {
+  diceNumber = ''
+  let diceValue = document.getElementById('diceValue');
+  diceNumber = Math.ceil(Math.random() * 6);
+  diceValue.innerHTML = '--'
+  setTimeout(() => { diceValue.innerHTML = diceNumber }, 500);
+  playGame(diceNumber);
+  return diceNumber;
+ }
+
+ let player1 = 0;
+ let player2 = 0;
+ let player3 = 0;
+ let player4 = 0;
+ let playerTurn = 1;
+
+ const playGame = (diceNumber) => {
+  document.getElementById('dice').setAttribute('disabled', 'disabled')
+  if (playerTurn == 4) {
+   playerTurn = 1;
+   player4 = player4 + diceNumber;
+   document.getElementsByClassName('player4')[0].classList.remove('player4')
+   rowBlock[100 - player4].classList.add('player4');
+   if (diceNumber == 6) {
+    playerTurn = 4;
+   }
+   if (laddersArray.includes(player4)) {
+    for (i = 0; i < laddersArray.length - 1; i++) {
+     if (laddersArray[i] == player4 && i != laddersArray.length) {
+      console.log(`player4 got ladder at ${player4}`)
+      document.getElementsByClassName('player4')[0].classList.remove('player4');
+      player4 = laddersArray[i + 1];
+      rowBlock[100 - player4].classList.add('player4');
+      break;
+     }
+    }
+   }
+   if (snakeArray.includes(player4)) {
+    for (i = 0; i < snakeArray.length; i++) {
+     if (snakeArray[i] == player4 && i != 0) {
+      console.log(`player4 Bitten by Snake at ${player4}`)
+      document.getElementsByClassName('player4')[0].classList.remove('player4');
+      player4 = snakeArray[i - 1];
+      rowBlock[100 - player4].classList.add('player4');
+      break;
+     }
+    }
+   }
+  }
+  else if (playerTurn == 3) {
+   playerTurn = 4;
+   player3 = player3 + diceNumber;
+   document.getElementsByClassName('player3')[0].classList.remove('player3')
+   rowBlock[100 - player3].classList.add('player3');
+   if (diceNumber == 6) {
+    playerTurn = 3;
+   }
+   if (laddersArray.includes(player3)) {
+    for (i = 0; i < laddersArray.length - 1; i++) {
+     if (laddersArray[i] == player3 && i != laddersArray.length) {
+      console.log(`player3 got ladder at ${player3}`)
+      document.getElementsByClassName('player3')[0].classList.remove('player3');
+      player3 = laddersArray[i + 1];
+      rowBlock[100 - player3].classList.add('player3');
+      break;
+     }
+    }
+   }
+   if (snakeArray.includes(player3)) {
+    for (i = 0; i < snakeArray.length; i++) {
+     if (snakeArray[i] == player3 && i != 0) {
+      console.log(`player3 Bitten by Snake at ${player3}`)
+      document.getElementsByClassName('player3')[0].classList.remove('player3');
+      player3 = snakeArray[i - 1];
+      rowBlock[100 - player3].classList.add('player3');
+      break;
+     }
+    }
+   }
+  }
+  else if (playerTurn == 2) {
+   playerTurn = 3;
+   player2 = player2 + diceNumber;
+   document.getElementsByClassName('player2')[0].classList.remove('player2')
+   rowBlock[100 - player2].classList.add('player2');
+   if (diceNumber == 6) {
+    playerTurn = 2;
+   }
+   if (laddersArray.includes(player2)) {
+    for (i = 0; i < laddersArray.length - 1; i++) {
+     if (laddersArray[i] == player2 && i != laddersArray.length) {
+      console.log(`player2 got ladder at ${player2}`)
+      document.getElementsByClassName('player2')[0].classList.remove('player2');
+      player2 = laddersArray[i + 1];
+      rowBlock[100 - player2].classList.add('player2');
+      break;
+     }
+    }
+   }
+   if (snakeArray.includes(player2)) {
+    for (i = 0; i < snakeArray.length; i++) {
+     if (snakeArray[i] == player2 && i != 0) {
+      console.log(`player2 Bitten by Snake at ${player2}`)
+      document.getElementsByClassName('player2')[0].classList.remove('player2');
+      player2 = snakeArray[i - 1];
+      rowBlock[100 - player2].classList.add('player2');
+      break;
+     }
+    }
+   }
+  }
+  else {
+   playerTurn = 2;
+   player1 = player1 + diceNumber;
+   document.getElementsByClassName('player1')[0].classList.remove('player1')
+   rowBlock[100 - player1].classList.add('player1');
+   if (diceNumber == 6) {
+    playerTurn = 1;
+   }
+   if (laddersArray.includes(player1)) {
+    for (i = 0; i < laddersArray.length - 1; i++) {
+     if (laddersArray[i] == player1 && i != laddersArray.length) {
+      console.log(`player1 got ladder at ${player1}`)
+      document.getElementsByClassName('player1')[0].classList.remove('player1');
+      player1 = laddersArray[i + 1];
+      rowBlock[100 - player1].classList.add('player1');
+      break;
+     }
+    }
+   }
+   if (snakeArray.includes(player1)) {
+    for (i = 0; i < snakeArray.length; i++) {
+     if (snakeArray[i] == player1 && i != 0) {
+      console.log(`player1 Bitten by Snake at ${player1}`)
+      document.getElementsByClassName('player1')[0].classList.remove('player1');
+      player1 = snakeArray[i - 1];
+      rowBlock[100 - player1].classList.add('player1');
+      break;
+     }
+    }
+   }
+
+  }
+  if (player1 >= 100 || player2 >= 100 || player3 >= 100 || player4 >= 100) {
+   alert(`Game Over Player 1 ${player1},Player 2 ${player2},Player 3 ${player3},Player 4 ${player4}`)
+  }
+  document.getElementById('dice').removeAttribute('disabled')
+  document.getElementById('playerTurn').innerHTML = `Player ${playerTurn}`;
+  console.log('player1', player1, 'player2', player2,'player3', player3, 'player4', player4 ,'------', diceNumber)
+ }
+ console.log('Game Start')
+
+</script>
+
+</html>
