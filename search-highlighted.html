@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+ <meta charset="UTF-8">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Search highlight via JS</title>
+ <style>
+  pre{max-width: 1000px; white-space: pre-line;}
+  mark:not(:empty) { padding: 1px; border-radius: 4px; background-color: yellow;}
+ </style>
+</head>
+
+<body>
+<h1>Serch and highlight content with JS</h1>
+ <input type="text" class="" name='keyword' id="searchDataLogs" onkeyup="addMark()" placeholder="search to highlighted" />
+ <pre>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sagittis tincidunt sapien ut maximus. Nam sit
+  amet purus eget turpis tincidunt aliquet. Nulla facilisi. Fusce facilisis eros et massa scelerisque, vitae porta nisi
+  consequat. Integer luctus, elit a porta semper, massa elit hendrerit massa, vel viverra velit velit vel magna. Fusce
+  laoreet semper odio, sed venenatis eros malesuada eget. Nunc et ante id mauris vestibulum sodales. Sed aliquam turpis
+  in turpis porttitor, ut varius diam hendrerit.</pre>
+
+  <pre> massa elit hendrerit massa, vel viverra velit velit vel magna. Fusce
+   laoreet semper odio, sed venenatis eros malesuada eget. Nunc et ante id mauris vestibulum sodales. Sed aliquam turpis
+   in turpis porttitor, ut varius diam hendrerit.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sagittis tincidunt sapien ut maximus. Nam sit amet purus eget turpis tincidunt aliquet. Nulla facilisi. Fusce facilisis eros et massa scelerisque, vitae porta nisi consequat. Integer luctus, elit a porta semper,</pre>
+ <script>
+
+  const $box = document.getElementsByTagName('pre');
+  const $search = document.getElementById('searchDataLogs');
+
+  let  addMark = (e) => {
+   const searchText = $search.value;
+   const regex = new RegExp(searchText, 'gi');
+
+   for(i=0;i<= $box.length;i++){
+    if($box[i]){
+     let text = $box[i].innerHTML;
+     text = text.replace(/(<mark class="highlight">|<\/mark>)/gim, '');
+  
+     const newText = text.replace(regex, '<mark class="highlight">$&</mark>');
+     $box[i].innerHTML = newText;
+    }
+   }
+  }
+ </script>
+
+</body>
+
+</html>
