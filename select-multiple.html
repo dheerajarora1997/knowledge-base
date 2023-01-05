@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+ <meta charset="UTF-8">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Bootstrap 4.6 with jQuery</title>
+ <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+ <link rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.18/css/bootstrap-select.min.css" />
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.sumoselect/3.4.8/sumoselect.min.css" />
+</head>
+
+<body>
+ <div class="container">
+  <div class="row">
+   <div class="col-sm-3">
+    <select name="" class="form-control" id="one" multiple>
+     <option value="no">no</option>
+     <option value="1">1</option>
+     <option value="2">2</option>
+     <option value="3">3</option>
+     <option value="4">4</option>
+    </select>
+   </div>
+   <div class="col-sm-3">
+    <select name="" class="form-control" id="two" multiple>
+     <option value="no">no</option>
+     <option value="1">1</option>
+     <option value="2">2</option>
+     <option value="3">3</option>
+     <option value="4">4</option>
+    </select>
+   </div>
+   <div class="col-sm-3">
+    <select name="" class="form-control" id="three" multiple>
+     <option value="no">no</option>
+     <option value="1">1</option>
+     <option value="2">2</option>
+     <option value="3">3</option>
+     <option value="4">4</option>
+    </select>
+   </div>
+   <div class="col-sm-3">
+    <div id="data-gen"></div>
+   </div>
+  </div>
+ </div>
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.18/js/bootstrap-select.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.sumoselect/3.4.8/jquery.sumoselect.min.js"></script>
+<script>
+ $('select').SumoSelect();
+ let selectedVal = [];
+ $(document).on('change', 'select', function () {
+
+  $(this).find(`option:selected`).map((i, el) => {
+   if (!selectedVal.includes(el.value)) {
+    selectedVal.push(el.value)
+   }
+  })
+  $(this).find(`option:not(:selected):not(:disabled)`).map((indx, elem) => {
+
+
+   $(selectedVal).map((indexArr, eleArr) => {
+    if (elem.value == selectedVal[indexArr]) {
+     selectedVal.splice(indexArr, 1)
+    }
+   })
+  })
+
+  sId = $(this).attr('id');
+
+  $(`select:not(#${sId})`).map((ind, sel) => {
+
+   $(sel).find('option:not(:selected)').map((index, element) => {
+
+    if (selectedVal.includes(element.value)) {
+     $(element).prop('disabled', true);
+    }
+    else {
+     $(element).prop('disabled', false);
+    }
+   })
+   $(sel).SumoSelect().sumo.reload();
+  })
+  // $('select').selectpicker('refresh');
+ });
+</script>
+</html>
