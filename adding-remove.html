@@ -5,19 +5,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+    <title>Adding and removing row via JS with dynamic class</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
     <style>
-        .row:last-child:first-child .remove-element,
-        .row:first-child .remove-element{
-            display: none;
-        }
-        .row:not(:last-child):not(:first-child) .add-element{
-            display: none;
-        }
-        .row:last-child:not(:first-child) .add-element{
-            display: none;
-        }
+     .row .add-element{display: none;}
+      .row:last-child:first-child .remove-element{display: none;}
+      .row:last-child .add-element{display: inline-block;}
     </style>
 </head>
 
@@ -26,7 +19,7 @@
         <h4 class="mb-3">Clone row with and without class</h4>
         <div class="jumbotron">
             <div class="container" id="groupContainer">
-                <div class="row mb-3">
+                <div class="row mb-3" id="row-0">
                     <div class="col-sm-4">
                         <input type="text" name="" id="">
                     </div>
@@ -34,27 +27,24 @@
                         <input type="text" name="" id="">
                     </div>
                     <div class="col-sm-4 text-right">
-                        <a href="javascript:void(0);" class="add-element mb-0 btn btn-sm btn-success text-decoration-none" onclick="addNewElement()"> +
-                        </a>
-                        <a href="javascript:void(0);" class="remove-element mb-0 btn btn-sm btn-danger text-decoration-none" onclick="removeCurrentElement(this)"> - </a>
+                     <a href="javascript:void(0);" class="remove-element mb-0 btn btn-sm btn-danger text-decoration-none" onclick="removeCurrentElement(this)"> - </a>
+                     <a href="javascript:void(0);" class="add-element mb-0 btn btn-sm btn-success text-decoration-none" onclick="addNewElement()"> + </a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"></script>
     <script>
-        function addNewElement(){
-            let addingHtml = $('.row:first-child').html();
-            // Add extra class
-            // $('#groupContainer').append('<div class="row mb-3"> '+ addingHtml + '</div>');
-            // Complete clone
-            $('#groupContainer .row:first-child').clone().appendTo('#groupContainer');
+      let count = 0;
+        let addNewElement =()=> {
+            count++;
+            let addingHtml = document.getElementsByClassName('row')[0].outerHTML;
+            document.getElementById('groupContainer').innerHTML = document.getElementById('groupContainer').innerHTML + addingHtml;
+            console.log(document.querySelectorAll('#groupContainer .row')[document.querySelectorAll('#groupContainer .row').length - 1])
+            document.querySelectorAll('#groupContainer .row')[document.querySelectorAll('#groupContainer .row').length - 1].id = `row-${count}`
         }
         function removeCurrentElement(e) {
-            $(e).closest('.row').remove();
+            e.closest('.row').remove();
         }
     </script>
 </body>
