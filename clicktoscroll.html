@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+ <meta charset="UTF-8">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Click scroll tabs</title>
+ <style>
+   #wrapper .wrapper_container{position: relative; max-width: 400px;}
+   #wrapper .wrapper_container button{background: rgba(241,111,59,.4); color: #f16f3b; border: 1px solid rgba(241,111,59,.5); border-radius: 100%; width: 25px; height: 25px; display: flex; justify-content: center; align-items: center;}
+  div#scrollEl {max-width: 100%; overflow: hidden; overflow-x: auto;}
+  ul { list-style-type: none; white-space: nowrap; display: inline-block; margin: 0; padding: 0; }
+  ul li { display: inline-block; }
+  ul li a { background: rgba(241,111,59,.1); color: #f16f3b; padding: 5px;}
+  ul li a.active { background: rgba(241,111,59,.3);}
+  .scrollEl_left, .scrollEl_right { position: absolute; top: 0; }
+  .scrollEl_left:disabled, .scrollEl_right:disabled{filter: grayscale(.5);}
+  .scrollEl_left { left: -30px; }
+  .scrollEl_right {   right: -30px; }
+  .container{width: 100%;padding-right: 15px;padding-left: 15px;margin-right: auto;margin-left: auto; max-width: 1170px;}
+ </style>
+</head>
+
+<body>
+   <div id="wrapper">
+      <div class="container">
+         <div class="wrapper_container">
+            <button class="scrollEl_left" onclick="triggerScroll('minus')"> < </button>
+            <button class="scrollEl_right" onclick="triggerScroll('plus')"> > </button>
+            <div id="scrollEl" class="position-relative">
+             <ul class="m-0 p-0" id="option_list">
+              <li><a href="javascript:void(0)" onclick="triggerScroll(this)" class="active">option 1</a></li>
+              <li><a href="javascript:void(0)" onclick="triggerScroll(this)">option 2</a></li>
+              <li><a href="javascript:void(0)" onclick="triggerScroll(this)">option 3</a></li>
+              <li><a href="javascript:void(0)" onclick="triggerScroll(this)">option 4</a></li>
+              <li><a href="javascript:void(0)" onclick="triggerScroll(this)">option 5</a></li>
+              <li><a href="javascript:void(0)" onclick="triggerScroll(this)">option 6</a></li>
+              <li><a href="javascript:void(0)" onclick="triggerScroll(this)">option 7</a></li>
+              <li><a href="javascript:void(0)" onclick="triggerScroll(this)">option 8</a></li>
+              <li><a href="javascript:void(0)" onclick="triggerScroll(this)">option 9</a></li>
+              <li><a href="javascript:void(0)" onclick="triggerScroll(this)">option 10</a></li>
+             </ul>
+            </div>
+         </div>
+      </div>
+   </div>
+
+   <script>
+      let option_list = document.getElementById('option_list');
+      const scrollEl = document.getElementById('scrollEl')
+
+      let disableScroll = () => {
+         if(scrollEl.scrollLeft < 10){
+            document.querySelector('.scrollEl_left').disabled =  true;
+         } else if(scrollEl.scrollLeft >= option_list.clientWidth - scrollEl.clientWidth ){
+            document.querySelector('.scrollEl_right').disabled =  true;
+         } else {
+            document.querySelector('.scrollEl_left').disabled =  false;
+            document.querySelector('.scrollEl_right').disabled =  false;
+         }
+      }
+
+      const triggerScroll = (element) => {
+
+         if(element == 'plus'){
+            scrollEl.scrollLeft = scrollEl.scrollLeft + scrollEl.getElementsByTagName('li')[0].clientWidth;
+         } else if(element == 'minus') {
+            scrollEl.scrollLeft = scrollEl.scrollLeft - scrollEl.getElementsByTagName('li')[0].clientWidth;
+         }
+         if(element.tagName == 'A'){
+            option_list.querySelector('.active').classList.remove('active')
+            element.classList.add('active')
+            if(element.getBoundingClientRect().left > scrollEl.clientWidth / 2){
+               scrollEl.scrollLeft = scrollEl.scrollLeft + element.parentElement.clientWidth;
+            } else {
+               scrollEl.scrollLeft = scrollEl.scrollLeft - element.parentElement.clientWidth;
+            }
+         }
+         disableScroll();
+      }
+
+      (function() {
+         disableScroll();
+      })();
+      scrollEl.addEventListener('scroll', disableScroll)
+   </script>
+</body>
+
+</html>
