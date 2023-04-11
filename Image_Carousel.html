@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+ <meta charset="UTF-8">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Image Carousel ES6</title>
+</head>
+
+<body>
+
+ <style>
+  .image-carousel {
+   overflow: hidden;
+   background: black;
+  }
+
+  .image-carousel .carousel-slide {
+   display: inline-block;
+   width: 100%;
+   overflow: hidden;
+   /* white-space: nowrap; */
+   background: black;
+  }
+
+  .carousel-slide.slide-right {
+   transition: all ease-in-out .5s;
+   transform: translateX(-100%);
+  }
+
+  .carousel-slide.slide-left {
+   transition: all ease-in-out .5s;
+   transform: translateX(100%);
+  }
+
+  .carousel-slide .carousel-item {
+   display: inline-block;
+   width: 100%;
+   display: none;
+  }
+
+  .carousel-slide .carousel-item.active {
+   display: block;
+  }
+
+  .carousel-indicator-list-item {
+   list-style-type: none;
+   width: 15px;
+   height: 3px;
+   display: inline-block;
+   border: 1px solid #fff;
+   cursor: pointer;
+  }
+
+  .carousel-indicator-list-item.active {
+   background: #fff;
+  }
+
+
+  .bg-dark {
+   background: black;
+   color: #fff;
+  }
+ </style>
+ <section>
+  <div class="image-carousel" id="carousel1">
+   <ol class="carousel-indicator-list">
+    <li class="carousel-indicator-list-item active" data-slide-to="1"></li>
+    <li class="carousel-indicator-list-item" data-slide-to="2"></li>
+    <li class="carousel-indicator-list-item" data-slide-to="3"></li>
+   </ol>
+   <div class="carousel-slide">
+    <div class="carousel-item active">
+     <div class="bg-dark">
+      <h1>Hello world 1</h1>
+      <p class="">description</p>
+     </div>
+    </div>
+    <div class="carousel-item">
+     <div class="bg-dark">
+      <h1>Hello world 2</h1>
+      <p class="">description</p>
+     </div>
+    </div>
+    <div class="carousel-item">
+     <div class="bg-dark">
+      <h1>Hello world 3</h1>
+      <p class="">description</p>
+     </div>
+    </div>
+   </div>
+   <div class="carousel-indicator">
+    <button class="carousel-indicator-button" type="button" data-indicator="left">Left</button>
+    <button class="carousel-indicator-button" type="button" data-indicator="right">Right</button>
+   </div>
+  </div>
+ </section>
+ <script>
+  const carouselIndicatorButtons = document.querySelectorAll('.carousel-indicator-button');
+  const allItems = document.querySelectorAll('.carousel-item');
+  const carouselListItem = document.querySelectorAll('.carousel-indicator-list-item');
+
+  carouselIndicatorButtons.forEach(button => {
+   button.addEventListener('click', () => {
+    const activeList = document.querySelector('.carousel-indicator-list-item.active');
+    const activeItem = document.querySelector('.carousel-item.active');
+    const direction = button.dataset.indicator === 'right' ? 1 : -1;
+    const index = Array.from(allItems).indexOf(activeItem);
+    const nextIndex = (index + direction + allItems.length) % allItems.length;
+
+
+    direction ? document.querySelector('.carousel-slide').classList.add('slide-right') : document.querySelector('.carousel-slide').classList.add('slide-left')
+    
+    setTimeout(() => {
+     if (document.querySelector('.slide-left')) document.querySelector('.carousel-slide').classList.remove('slide-left')
+     if (document.querySelector('.slide-right')) document.querySelector('.carousel-slide').classList.remove('slide-right')
+     activeItem.classList.remove('active');
+     allItems[nextIndex].classList.add('active');
+     activeList.classList.remove('active');
+     carouselListItem[nextIndex].classList.add('active');
+    }, 500);
+   });
+  });
+
+  carouselListItem.forEach(list => {
+   list.addEventListener('click', () => {
+    const activeList = document.querySelector('.carousel-indicator-list-item.active');
+    const activeItem = document.querySelector('.carousel-item.active');
+    if (list.dataset.slideTo === activeList.dataset.slideTo) return false;
+    
+    list.dataset.slideTo > activeList.dataset.slideTo ?  document.querySelector('.carousel-slide').classList.add('slide-right') : document.querySelector('.carousel-slide').classList.add('slide-left')
+
+    setTimeout(() => {
+     if (document.querySelector('.slide-left')) document.querySelector('.carousel-slide').classList.remove('slide-left')
+     if (document.querySelector('.slide-right')) document.querySelector('.carousel-slide').classList.remove('slide-right')
+     activeList.classList.remove('active')
+     activeItem.classList.remove('active')
+     allItems[list.dataset.slideTo - 1].classList.add('active')
+     carouselListItem[list.dataset.slideTo - 1].classList.add('active')
+    }, 500);
+   })
+  })
+
+// let autoSlide = setInterval(() => {
+
+//  const activeList = document.querySelector('.carousel-indicator-list-item.active');
+//  const activeItem = document.querySelector('.carousel-item.active');
+ 
+//  console.log(activeList.dataset.slideTo)
+
+//  activeItem.classList.remove('active')
+//  activeList.classList.remove('active')
+
+//  if(activeList.dataset.slideTo < allItems.length){
+//   allItems[activeList.dataset.slideTo].classList.add('active')
+//   carouselListItem[activeList.dataset.slideTo].classList.add('active')
+//  } else {
+//   allItems[0].classList.add('active')
+//   carouselListItem[0].classList.add('active')
+//  }
+
+
+ 
+//  activeItem.classList.remove('active')
+//  activeList.classList.remove('active')
+
+//  // activeList.dataset.slideTo
+
+// }, 1500);
+
+
+ </script>
+</body>
+
+</html>
