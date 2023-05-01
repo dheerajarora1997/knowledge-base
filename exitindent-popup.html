@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exit indent Popup</title>
+</head>
+
+<body>
+  <h1>Exit Indent popup Dheeraj Arora</h1>
+
+  <script>
+    // append style 
+    var style = document.createElement('style');
+    style.setAttribute('type', 'text/css');
+    style.textContent = `.exit-intent-popup{position:fixed;top:0;left:0;width:100%;height:100%;background-color:rgba(0,0,0,.8);z-index:9999;display:none;justify-content:center;align-items:center}.popup-content{background-color:#fed500;padding:30px;max-width:600px;width:100%;text-align:center;display:inline-block;position:relative}.popup-content h2{margin:0}.popup-content form input[type=email],.popup-content form input[type=text]{width:100%;padding:10px;margin-bottom:10px;border-radius:5px;border:1px solid #ccc;font-size:16px}.popup-content form label{font-size:14px; text-align: left; display: inline-block;margin-bottom:10px;cursor:pointer}.popup-content form label input[type=checkbox]{margin-right:10px}.popup-content form button[type=submit]{background-color:#000;color:#fff;border:none;padding:10px 20px;font-size:16px;cursor:pointer;width:100%}.popup-content button.close{position:absolute;right:10px;top:10px;background:0 0;border:none;font-size:22px;cursor:pointer}.error-message{color:red;margin-top:10px}form#subscribe-form{width:100%;display:inline-block;text-align: left;}.column-1{width:60%;float:left;display:inline-block}.column-2{width:40%;float:left;display:inline-block}.column-2 img{max-width:80%;margin-top:40px}.policy-link-wrapper{display:inline-block; width: 100%; text-align: center;}.policy-link{margin:10px auto;display:inline-block;}@media only screen and (max-width:767px){.column-1{width:100%}.column-2{display:none}.popup-content{max-width:calc(100% - 80px)}}`;
+    var head = document.head || document.getElementsByTagName('head')[0];
+    head.appendChild(style);
+
+    // append html
+    let completeCode = `<div class="popup-content"><button class="close" onclick="hidePopup()">X</button><div class="column-1"><h2>GET 10% OFF WHEN YOU SIGN UP FOR</h2><p>SAVINGS, NEWS, UPDATES AND MORE</p><form id="subscribe-form"><input type="text" id="name-input" placeholder="Enter your Name" required> <input type="email" id="email-input" placeholder="Enter your Email" required><label><input type="checkbox" id="consent-checkbox"> Check this box to receive monthly newsletter.</label><button type="submit" id="subscribe-btn">Subscribe</button><div class="policy-link-wrapper"><a href="javascript:void(0);" class="policy-link">PRIVACY POLICY</a></div></form><div class="error-message"></div></div><div class="column-2"><img src="https://www.transparentpng.com/thumb/special-offer/special-offer-tag-png-pictures-4.png" alt=""></div></div>`;
+    modal = document.createElement('div')
+    modal.classList.add('exit-intent-popup')
+    modal.id = "exit-intent-popup";
+    modal.innerHTML = completeCode;
+    document.getElementsByTagName('body')[0].append(modal);
+
+    // Exit Indent
+    window.addEventListener('beforeunload', function (event) {
+      event.preventDefault();
+      event.returnValue = false;
+      const confirmationMessage = 'Are you sure you want to leave?';
+      event.returnValue = confirmationMessage;
+      return confirmationMessage;
+    });
+
+    // Show popup function
+    function showPopup() {
+      document.getElementById("exit-intent-popup").style.display = "flex";
+    }
+
+    // Hide popup function
+    function hidePopup() {
+      document.getElementById("exit-intent-popup").style.display = "none";
+    }
+
+    // Cookie functions
+    function setCookie(name, value, days) {
+      var expires = "";
+      if (days) {
+        var date = new Date();
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        expires = "; expires=" + date.toUTCString();
+      }
+      document.cookie = name + "=" + value + expires + "; path=/";
+    }
+
+    function getCookie(name) {
+      var nameEQ = name + "=";
+      var ca = document.cookie.split(";");
+      for (var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == " ") c = c.substring(1, c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+      }
+      return null;
+    }
+
+    if (window.innerWidth > 767) {
+      document.addEventListener("mouseleave", function (event) {
+        if (event.clientY < 0) {
+          if (getCookie("subscribe_success")) {
+            return;
+          } else {
+            showPopup();
+          }
+        }
+      });
+    } else {
+      let triggerPopup = setInterval(() => {
+        if (getCookie("subscribe_success")) {
+          return;
+        } else {
+          showPopup();
+        }
+
+      }, 5000);
+    }
+
+    // Create cookie on popup close
+    document.addEventListener("click", function (event) {
+      if (event.target.matches(".exit-intent-popup") || event.target.matches(".exit-intent-popup-close")) {
+        setCookie("popup_closed", "true", 30);
+        hidePopup();
+      }
+    });
+
+    // Submit form and create cookie on successful submission
+    document.getElementById("subscribe-form").addEventListener("submit", function (event) {
+      event.preventDefault();
+      var email = document.getElementById("email-input").value;
+      var consent = document.getElementById("consent-checkbox").checked;
+      var errorMessage = document.querySelector(".error-message");
+      const re = /^[^.-][\w.-]+[^.-]@[^\-.][\w.-]+\.[\w.-]+$/;
+      if (email === "" || !consent) {
+        errorMessage.textContent = "Please enter your email and check the consent box.";
+      } else if (!re.test(email)) {
+        errorMessage.textContent = "Please enter your email and check the consent box.";
+        return false;
+      } else {
+        setCookie("subscribe_success", "true", 30);
+        hidePopup();
+      }
+    });
+
+
+  </script>
+</body>
+
+</html>
