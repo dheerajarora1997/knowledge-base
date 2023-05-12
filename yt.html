@@ -2,48 +2,53 @@
 <html lang="en">
 
 <head>
- <meta charset="UTF-8" />
- <meta http-equiv="X-UA-Compatible" content="IE=edge" />
- <meta name="viewport" content="width=device-width, initial-scale=1.0" />
- <title>Document</title>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
 </head>
 
 <body>
- <div id="search">
-  <input type="text" class="search-input" name="videosSearch">
-  <button onclick="fetchYouTubeVideos()" type="button">Search</button>
- </div>
- <div id="main">
-  <iframe class="one" width="560" height="315" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-  <iframe class="two" width="560" height="315" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-  <iframe class="three" width="560" height="315" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-  <iframe class="four" width="560" height="315" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-  <iframe class="five" width="560" height="315" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
- </div>
+  <div id="search">
+    <input type="text" class="search-input" name="videosSearch">
+    <button onclick="fetchYouTubeVideos()" type="button">Search</button>
+  </div>
+  <div id="main">
+    <iframe class="one" width="560" height="315" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <iframe class="two" width="560" height="315" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <iframe class="three" width="560" height="315" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <iframe class="four" width="560" height="315" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <iframe class="five" width="560" height="315" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </div>
 
- <script>
-  const fetchYouTubeVideos = async () => {
-   let query = document.getElementsByName('videosSearch');
-   query = query[0].value;
-   let iframes = document.getElementsByTagName('iframe')
-   const API_KEY = 'AIzaSyCee76lb8Fv7FVbTojIZMbSY8tP9hmbC40';
-   let data = await fetch(`https://www.googleapis.com/youtube/v3/search?key=${API_KEY}&q=${query}`);
-   let parseNewData = await data.json();
-   console.log(parseNewData.items)
-   parseNewData.items.map((el, i) => {
-    console.log(i)
-    if(el.id.kind == "youtube#video"){
-     iframes[i].setAttribute("src", `https://www.youtube.com/embed/${el.id.videoId}`);
+  <script>
+    const fetchYouTubeVideos = async () => {
+      let query = document.getElementsByName('videosSearch');
+      query = query[0].value;
+      let iframe = document.getElementsByTagName('iframe');
+      const API_KEY = 'AIzaSyCee76lb8Fv7FVbTojIZMbSY8tP9hmbC40';
+      let data = await fetch(`https://www.googleapis.com/youtube/v3/search?key=${API_KEY}&q=${query}`);
+      let parseNewData = await data.json();
+      console.log(parseNewData.items)
+      parseNewData.items.map((el, i) => {
+        console.log(el.id,el.id.kind)
+        iframe[i].style.display = '';
+        if (el.id.kind == "youtube#video") {
+          iframe[i].setAttribute("src", `https://www.youtube.com/embed/${el.id.videoId}`);
+        }
+        else if (el.id.kind == "youtube#playlist") {
+          iframe[i].setAttribute("src", `https://www.youtube.com/embed/videoseries?list=${el.id.playlistId}`);
+          iframe[i].style.display = 'none';
+        }
+        else if (el.id.kind == "youtube#channel") {
+          iframe[i].setAttribute("src", `https://www.youtube.com/embed/${el.id.channelId}?controls=0`);
+          iframe[i].style.display = 'none';
+        }
+        // console.log(el.id.kind);
+      })
     }
-    else{
-     iframes[i].remove();
-    }
-    console.log(el.id.videoId ? 'video' : 'channel');
-   })
-  }
-   // fetchYouTubeVideos('Bijli');
 
- </script>
+  </script>
 </body>
 
 </html>
