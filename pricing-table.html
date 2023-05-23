@@ -1,0 +1,1251 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+ <meta charset="UTF-8">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Document</title>
+ <style>
+  table.pricing-table thead tr th {
+	 color: #fff;
+	 border: none;
+	 border-right: 5px solid #fff;
+	 border-left: 5px solid #fff;
+	 border-radius: 10px 10px 0 0;
+	 padding: 10px 10px;
+	 position: relative;
+}
+ table.pricing-table thead tr th:not(:nth-child(1)) {
+	 min-width: 180px;
+	 max-width: 180px;
+}
+ table.pricing-table thead tr th:nth-child(1) {
+	 min-width: 280px;
+	 max-width: 280px;
+}
+ table.pricing-table thead tr th:nth-child(2) {
+	 color: #c280ff;
+	 background: #faf5ff;
+	 box-shadow: 0 0 10px rgba(0, 0, 0, .02);
+}
+ table.pricing-table thead tr th:nth-child(3) {
+	 color: #8080ff;
+	 background: #f5f5ff;
+	 box-shadow: 0 0 10px rgba(0, 0, 0, .02);
+}
+ table.pricing-table thead tr th:nth-child(4) {
+	 color: #ec808d;
+	 background: #fdf3f5;
+	 box-shadow: 0 0 10px rgba(0, 0, 0, .02);
+}
+ table.pricing-table thead tr th:nth-child(5) {
+	 color: #ea8fea;
+	 background: #fcedfc;
+	 box-shadow: 0 0 10px rgba(0, 0, 0, .02);
+}
+ table.pricing-table tbody tr:nth-child(1) td:nth-child(1), table.pricing-table tfoot tr:nth-child(1) td:nth-child(1) {
+	 border-radius: 4px 0 0 0;
+}
+ table.pricing-table tbody tr:nth-last-child(1) td:nth-child(1), table.pricing-table tfoot tr:nth-last-child(1) td:nth-child(1) {
+	 border-radius: 4px 0 0 0;
+}
+ table.pricing-table tbody tr td, table.pricing-table tfoot tr td {
+	 padding: 10px 10px;
+	 border-right: 5px solid #fff;
+	 border-left: 5px solid #fff;
+	 border-top: 1px solid rgba(0, 0, 0, .012);
+}
+ table.pricing-table tbody tr td:nth-child(1), table.pricing-table tfoot tr td:nth-child(1) {
+	 padding: 0;
+	 border-left: 1px solid rgba(0, 0, 0, .025);
+}
+ table.pricing-table tbody tr td:nth-child(2), table.pricing-table tfoot tr td:nth-child(2) {
+	 background: #fcf8ff;
+}
+ table.pricing-table tbody tr td:nth-child(2) .btn.btn-link, table.pricing-table tfoot tr td:nth-child(2) .btn.btn-link {
+	 background: #c280ff !important;
+}
+ table.pricing-table tbody tr td:nth-child(3), table.pricing-table tfoot tr td:nth-child(3) {
+	 background: #f8f8ff;
+}
+ table.pricing-table tbody tr td:nth-child(3) .btn.btn-link, table.pricing-table tfoot tr td:nth-child(3) .btn.btn-link {
+	 background: #8080ff !important;
+}
+ table.pricing-table tbody tr td:nth-child(4), table.pricing-table tfoot tr td:nth-child(4) {
+	 background: #fef6f7;
+}
+ table.pricing-table tbody tr td:nth-child(4) .btn.btn-link, table.pricing-table tfoot tr td:nth-child(4) .btn.btn-link {
+	 background: #ec808d !important;
+}
+ table.pricing-table tbody tr td:nth-child(5), table.pricing-table tfoot tr td:nth-child(5) {
+	 background: #fcedfc;
+}
+ table.pricing-table tbody tr td:nth-child(5) .btn.btn-link, table.pricing-table tfoot tr td:nth-child(5) .btn.btn-link {
+	 background: #ea8fea !important;
+}
+ table.pricing-table tbody tr td .table-collapse, table.pricing-table tfoot tr td .table-collapse {
+	 position: relative;
+	 padding: 10px;
+	 background-color: rgba(0, 0, 0, .02);
+	 pointer-events: unset !important;
+}
+ table.pricing-table tbody tr td .table-collapse:after, table.pricing-table tfoot tr td .table-collapse:after {
+	 content: '\e5cf';
+	 font-family: 'Material Icons Outlined';
+	 position: absolute;
+	 right: 0;
+	 top: 10px;
+	 border-radius: 100%;
+	 width: 20px;
+	 height: 20px;
+	 justify-content: center;
+	 align-items: center;
+	 display: flex;
+	 transition: all ease-in-out 0.2s;
+}
+ table.pricing-table tbody tr td .table-collapse[aria-expanded="true"]:after, table.pricing-table tfoot tr td .table-collapse[aria-expanded="true"]:after {
+	 transform: rotate(180deg);
+}
+ table.pricing-table tbody tr:nth-last-child(1), table.pricing-table tfoot tr:nth-last-child(1) {
+	 position: sticky;
+	 top: 100px;
+}
+ table.pricing-table .table-row-subitem td:nth-child(2) {
+	 background: #fdfaff;
+}
+ table.pricing-table .table-row-subitem td:nth-child(3) {
+	 background: #fafaff;
+}
+ table.pricing-table .table-row-subitem td:nth-child(4) {
+	 background: #fef8f9;
+}
+ table.pricing-table .table-row-subitem td:nth-child(5) {
+	 background: #fdf6fd;
+}
+ table.pricing-table .table-row-subitem .table-subitem {
+	 padding: 10px 0 10px 15px;
+}
+ table.pricing-table .table-row-subitem[data-display="false"] {
+	 display: none;
+}
+ table.pricing-table tfoot {
+	 position: sticky;
+	 bottom: 0;
+	 z-index: 999;
+}
+ table.pricing-table tfoot td {
+	 position: relative;
+	 padding: 10px 0 0 !important;
+	 opacity: 1 !important;
+}
+ table.pricing-table tfoot td:nth-child(1) {
+	 border-left: none !important;
+}
+ table.pricing-table tfoot td[data-highlight="true"] .choose_plan {
+	 display: none;
+}
+ table.pricing-table tfoot td[data-highlight="true"]:nth-child(2) {
+	 color: #c280ff;
+	 background-color: #f3e6ff;
+}
+ table.pricing-table tfoot td[data-highlight="true"]:nth-child(2):after {
+	 border-bottom: 2px solid #c280ff;
+}
+ table.pricing-table tfoot td[data-highlight="true"]:nth-child(3) {
+	 color: #8080ff;
+	 background-color: #e6e6ff;
+}
+ table.pricing-table tfoot td[data-highlight="true"]:nth-child(3):after {
+	 border-bottom: 2px solid #8080ff;
+}
+ table.pricing-table tfoot td[data-highlight="true"]:nth-child(4) {
+	 color: #ec808d;
+	 background-color: #f9d9dd;
+}
+ table.pricing-table tfoot td[data-highlight="true"]:nth-child(4):after {
+	 border-bottom: 2px solid #ec808d;
+}
+ table.pricing-table tfoot td[data-highlight="true"]:nth-child(5) {
+	 color: #ea8fea;
+	 background-color: #fdf6fd;
+}
+ table.pricing-table tfoot td[data-highlight="true"]:nth-child(5):after {
+	 border-bottom: 2px solid #ea8fea;
+}
+ table.pricing-table tbody tr td {
+	 position: relative;
+	 z-index: 1;
+}
+ table.pricing-table tbody tr:hover td:before {
+	 content: '';
+	 position: absolute;
+	 top: 0;
+	 left: 0;
+	 width: 100%;
+	 height: 100%;
+	 z-index: 0;
+	 background: rgba(0, 0, 0, .01) !important;
+}
+ .package-pills {
+	 display: inline-block;
+	 list-style-type: none;
+	 padding: 3px 5px;
+	 overflow: hidden;
+	 position: relative;
+}
+ @media only screen and (min-width: 768px) {
+	 .package-pills {
+		 border-radius: 100px;
+		 border: 1px solid #92969b;
+		 box-shadow: 0 0 10px rgba(0, 0, 0, .05);
+	}
+}
+ @media only screen and (max-width: 767px) {
+	 .package-pills {
+		 white-space: nowrap;
+		 overflow: hidden;
+		 max-width: 90%;
+		 overflow-x: scroll;
+	}
+}
+ .package-pills .pill-slider {
+	 position: absolute;
+	 left: 0;
+	 z-index: 0;
+	 top: 3px;
+	 border-radius: 100px;
+	 height: calc(100% - 6px);
+	 transition: all ease-in-out 0.2s;
+	 background: #5f6368;
+	 box-shadow: 0 0 10px rgba(0, 0, 0, .05);
+}
+ @media only screen and (max-width: 767px) {
+	 .package-pills .pill-slider {
+		 display: none;
+	}
+}
+ .package-pills li {
+	 display: inline-block;
+}
+ .package-pills li a {
+	 display: inline-block;
+	 position: relative;
+	 border-radius: 20px;
+	 margin: 0;
+	 color: #5f6368;
+	 transition: all ease-in-out 0.25s;
+	 padding: 7px 20px;
+}
+ .package-pills li a.active {
+	 font-weight: 500;
+	 color: #fff;
+	 background: #5f6368;
+}
+ .pricing-table tr th[data-disabled="true"] {
+	 background: rgba(0, 0, 0, .08) !important;
+	 filter: grayscale(1);
+	 opacity: 0.5;
+}
+ .pricing-table tr th[data-highlight="true"] {
+	 position: relative;
+	 z-index: 0;
+}
+ .pricing-table tr th[data-highlight="true"]:before {
+	 content: '';
+	 position: absolute;
+	 background-color: #f00;
+	 width: 100%;
+	 height: 10px;
+	 left: 0;
+	 top: -7px;
+	 border-radius: 8px 8px 0 0;
+	 z-index: -1;
+}
+ .pricing-table tr th[data-highlight="true"]:nth-child(2) {
+	 color: #fff;
+	 background-color: #c280ff;
+	 padding-top: 0 !important;
+	 padding-bottom: 5px !important;
+}
+ .pricing-table tr th[data-highlight="true"]:nth-child(2):before {
+	 background-color: #c280ff;
+}
+ .pricing-table tr th[data-highlight="true"]:nth-child(3) {
+	 color: #fff;
+	 background-color: #8080ff;
+	 padding-top: 0 !important;
+	 padding-bottom: 5px !important;
+}
+ .pricing-table tr th[data-highlight="true"]:nth-child(3):before {
+	 background-color: #8080ff;
+}
+ .pricing-table tr th[data-highlight="true"]:nth-child(4) {
+	 color: #fff;
+	 background-color: #ec808d;
+	 padding-top: 0 !important;
+	 padding-bottom: 5px !important;
+}
+ .pricing-table tr th[data-highlight="true"]:nth-child(4):before {
+	 background-color: #ec808d;
+}
+ .pricing-table tr th[data-highlight="true"]:nth-child(5) {
+	 color: #fff;
+	 background-color: #ea8fea;
+	 padding-top: 0 !important;
+	 padding-bottom: 5px !important;
+}
+ .pricing-table tr th[data-highlight="true"]:nth-child(5):before {
+	 background-color: #ea8fea;
+}
+ .pricing-table tr td label {
+	 display: none;
+}
+ .pricing-table tr td span.material-icons-outlined {
+	 display: inline-block;
+}
+ .pricing-table tr td[data-disabled="true"] {
+	 background: rgba(0, 0, 0, .05) !important;
+	 filter: grayscale(1);
+	 opacity: 0.5;
+	 pointer-events: none;
+}
+ .pricing-table tr td[data-disabled="true"] .choose_plan {
+	 background: #e3dffd !important;
+	 filter: grayscale(1);
+}
+ .pricing-table tr td[data-highlight="true"] label {
+	 display: inline-block;
+}
+ .pricing-table tr td[data-highlight="true"] span.material-icons-outlined.text-danger, .pricing-table tr td[data-highlight="true"] span.material-icons-outlined.text-primary {
+	 display: none;
+}
+ .pricing-table tr td[data-highlight="true"]:after {
+	 content: '';
+	 position: absolute;
+	 top: 0;
+	 left: 0;
+	 width: 100%;
+	 height: calc(100% + 1px);
+	 background: transparent;
+	 border: 2px solid #f00;
+	 border-width: 0 2px;
+}
+ .pricing-table tr td[data-highlight="true"]:nth-child(2):after {
+	 border-color: #c280ff;
+}
+ .pricing-table tr td[data-highlight="true"]:nth-child(3):after {
+	 border-color: #8080ff;
+}
+ .pricing-table tr td[data-highlight="true"]:nth-child(4):after {
+	 border-color: #ec808d;
+}
+ .pricing-table tr td[data-highlight="true"]:nth-child(5):after {
+	 border-color: #ea8fea;
+}
+ .pricing-table tr .permission-modal-link-wrapper {
+	 display: inline-block;
+	 width: calc(100% - 4px);
+	 padding: 5px;
+	 margin: 5px 0 0;
+	 background: rgba(0, 0, 0, .02);
+	 border-top: 1px solid rgba(0, 0, 0, .03);
+	 position: relative;
+	 z-index: 1;
+}
+ .pricing-table tr .permission-modal-link-wrapper:hover {
+	 background: rgba(0, 0, 0, .03);
+}
+ .pricing-table tr .permission-modal-link-wrapper:hover button {
+	 cursor: pointer;
+}
+ .pricing-table tr .permission-modal-link-wrapper button {
+	 line-height: 0;
+}
+ .pricing-table tr .permission-modal-link-wrapper button:after {
+	 content: '\e941';
+	 font-family: 'Material Icons Outlined';
+	 right: -3px;
+	 top: 8px;
+	 font-size: 24px;
+	 position: relative;
+}
+ table.pricing-table .bg-light-danger {
+	 background-color: #fef1f5 !important;
+}
+ table.pricing-table .bg-light-success {
+	 background: #ecfbf4 !important;
+}
+ table.pricing-table .custom-radio input ~ .custom-btn-span:before, table.pricing-table .custom-checkbox input ~ .custom-btn-span:before {
+	 font-size: 20px;
+}
+ table.pricing-table .custom-checkbox input ~ .custom-btn-span:before {
+	 content: '\e836';
+}
+ table.pricing-table .custom-checkbox input:checked ~ .custom-btn-span:before {
+	 content: '\e86c';
+}
+ #package_details .table-responsive {
+	 max-width: 100vw;
+	 overflow: hidden;
+	 overflow-x: auto;
+	 padding-top: 10px;
+}
+ 
+ </style>
+</head>
+
+<body>
+
+ <div class="table-responsive">
+  <table class="table pricing-table text-center">
+   <thead>
+    <tr class="">
+     <th class=""></th>
+     <th class="" data-disabled="true">Starter</th>
+     <th class="" data-highlight="true">Growth<span class="d-block font-weight-normal fs-12">Your Active Plan</span>
+     </th>
+     <th class="" data-disabled="true">Pro</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr data-label="1">
+     <td class="text-left"><a aria-expanded="false" class="d-block table-collapse" href="javascript:void(0);">Lead
+       Management</a></td>
+     <td data-disabled="true"><span class="text-secondary">6 / 10</span> <span
+       class="material-icons-outlined fs-14 text-danger bg-light-danger rounded-circle p-1 d-none">close</span></td>
+     <td data-highlight="true"><span class="text-secondary">7 / 10</span> <span
+       class="material-icons-outlined fs-14 text-danger bg-light-danger rounded-circle p-1 d-none">close</span></td>
+     <td data-disabled="true"><span class="text-secondary">7 / 10</span> <span
+       class="material-icons-outlined fs-14 text-danger bg-light-danger rounded-circle p-1 d-none">close</span></td>
+    </tr>
+    <tr class="table-row-subitem" data-display="false" data-label="1">
+     <td class="text-left">
+      <div class="table-subitem text-secondary">One View Lead Profile</div>
+     </td>
+     <td data-disabled="true"><input name="default_feature_id[1][]" type="hidden" value="1" autocomplete="off"><span
+       class="material-icons-outlined fs-14 text-success bg-light-success rounded-circle p-1">done</span></td>
+     <td data-highlight="true"><input name="default_feature_id[3][]" type="hidden" value="1" autocomplete="off"><span
+       class="material-icons-outlined fs-14 text-success bg-light-success rounded-circle p-1">done</span></td>
+     <td data-disabled="true"><input name="default_feature_id[4][]" type="hidden" value="1" autocomplete="off"><span
+       class="material-icons-outlined fs-14 text-success bg-light-success rounded-circle p-1">done</span></td>
+    </tr>
+    <tr class="table-row-subitem" data-display="false" data-label="1">
+     <td class="text-left">
+      <div class="table-subitem text-secondary">Lead Verification</div>
+     </td>
+     <td data-disabled="true"><input name="default_feature_id[1][]" type="hidden" value="2" autocomplete="off"><span
+       class="material-icons-outlined fs-14 text-success bg-light-success rounded-circle p-1">done</span></td>
+     <td data-highlight="true"><input name="default_feature_id[3][]" type="hidden" value="2" autocomplete="off"><span
+       class="material-icons-outlined fs-14 text-success bg-light-success rounded-circle p-1">done</span></td>
+     <td data-disabled="true"><input name="default_feature_id[4][]" type="hidden" value="2" autocomplete="off"><span
+       class="material-icons-outlined fs-14 text-success bg-light-success rounded-circle p-1">done</span></td>
+    </tr>
+    <tr class="table-row-subitem" data-display="false" data-label="1">
+     <td class="text-left">
+      <div class="table-subitem text-secondary">Custom Fields</div>
+     </td>
+     <td data-disabled="true"><input name="default_feature_id[1][]" type="hidden" value="3" autocomplete="off"><span
+       class="material-icons-outlined fs-14 text-success bg-light-success rounded-circle p-1">done</span></td>
+     <td data-highlight="true"><input name="default_feature_id[3][]" type="hidden" value="3" autocomplete="off"><span
+       class="material-icons-outlined fs-14 text-success bg-light-success rounded-circle p-1">done</span></td>
+     <td data-disabled="true"><input name="default_feature_id[4][]" type="hidden" value="3" autocomplete="off"><span
+       class="material-icons-outlined fs-14 text-success bg-light-success rounded-circle p-1">done</span></td>
+    </tr>
+    <tr class="table-row-subitem" data-display="false" data-label="1">
+     <td class="text-left">
+      <div class="table-subitem text-secondary">Custom Tabs</div>
+     </td>
+     <td data-disabled="true"><label class="custom-checkbox mb-0"><input
+        class="select_module_id feature_class feature_add_ons_1" name="feature_id[1][]" type="checkbox" value="4"
+        autocomplete="off"><span class="custom-btn-span"></span></label><span
+       class="material-icons-outlined fs-14 text-danger bg-light-danger rounded-circle p-1">close</span></td>
+     <td data-highlight="true"><input name="default_feature_id[3][]" type="hidden" value="4" autocomplete="off"><span
+       class="material-icons-outlined fs-14 text-success bg-light-success rounded-circle p-1">done</span></td>
+     <td data-disabled="true"><input name="default_feature_id[4][]" type="hidden" value="4" autocomplete="off"><span
+       class="material-icons-outlined fs-14 text-success bg-light-success rounded-circle p-1">done</span></td>
+    </tr>
+    <tr class="table-row-subitem" data-display="false" data-label="1">
+     <td class="text-left">
+      <div class="table-subitem text-secondary">Predictive Analytics (Lead Score, Lead Strength)</div>
+     </td>
+     <td data-disabled="true"><input name="default_feature_id[1][]" type="hidden" value="5" autocomplete="off"><span
+       class="material-icons-outlined fs-14 text-success bg-light-success rounded-circle p-1">done</span></td>
+     <td data-highlight="true"><input name="default_feature_id[3][]" type="hidden" value="5" autocomplete="off"><span
+       class="material-icons-outlined fs-14 text-success bg-light-success rounded-circle p-1">done</span></td>
+     <td data-disabled="true"><input name="default_feature_id[4][]" type="hidden" value="5" autocomplete="off"><span
+       class="material-icons-outlined fs-14 text-success bg-light-success rounded-circle p-1">done</span></td>
+    </tr>
+    <tr class="table-row-subitem" data-display="false" data-label="1">
+     <td class="text-left">
+      <div class="table-subitem text-secondary">Bulk Offline Upload/Quick Add</div>
+     </td>
+     <td data-disabled="true"><input name="default_feature_id[1][]" type="hidden" value="6" autocomplete="off"><span
+       class="material-icons-outlined fs-14 text-success bg-light-success rounded-circle p-1">done</span></td>
+     <td data-highlight="true"><input name="default_feature_id[3][]" type="hidden" value="6" autocomplete="off"><span
+       class="material-icons-outlined fs-14 text-success bg-light-success rounded-circle p-1">done</span></td>
+     <td data-disabled="true"><input name="default_feature_id[4][]" type="hidden" value="6" autocomplete="off"><span
+       class="material-icons-outlined fs-14 text-success bg-light-success rounded-circle p-1">done</span></td>
+    </tr>
+    <tr class="table-row-subitem" data-display="false" data-label="1">
+     <td class="text-left">
+      <div class="table-subitem text-secondary">Duplicate Blocking</div>
+     </td>
+     <td data-disabled="true"><input name="default_feature_id[1][]" type="hidden" value="7" autocomplete="off"><span
+       class="material-icons-outlined fs-14 text-success bg-light-success rounded-circle p-1">done</span></td>
+     <td data-highlight="true"><input name="default_feature_id[3][]" type="hidden" value="7" autocomplete="off"><span
+       class="material-icons-outlined fs-14 text-success bg-light-success rounded-circle p-1">done</span></td>
+     <td data-disabled="true"><input name="default_feature_id[4][]" type="hidden" value="7" autocomplete="off"><span
+       class="material-icons-outlined fs-14 text-success bg-light-success rounded-circle p-1">done</span></td>
+    </tr>
+    <tr class="table-row-subitem" data-display="false" data-label="1">
+     <td class="text-left">
+      <div class="table-subitem text-secondary">Agent OTP</div>
+     </td>
+     <td data-disabled="true"><label class="custom-checkbox mb-0"><input
+        class="select_module_id feature_class feature_add_ons_1" name="feature_id[1][]" type="checkbox" value="8"
+        autocomplete="off"><span class="custom-btn-span"></span></label><span
+       class="material-icons-outlined fs-14 text-danger bg-light-danger rounded-circle p-1">close</span></td>
+     <td data-highlight="true"><label class="custom-checkbox mb-0"><input
+        class="select_module_id feature_class feature_add_ons_3" name="feature_id[3][]" type="checkbox" value="8"
+        autocomplete="off"><span class="custom-btn-span"></span></label><span
+       class="material-icons-outlined fs-14 text-danger bg-light-danger rounded-circle p-1">close</span></td>
+     <td data-disabled="true"><label class="custom-checkbox mb-0"><input
+        class="select_module_id feature_class feature_add_ons_4" name="feature_id[4][]" type="checkbox" value="8"
+        autocomplete="off"><span class="custom-btn-span"></span></label><span
+       class="material-icons-outlined fs-14 text-danger bg-light-danger rounded-circle p-1">close</span></td>
+    </tr>
+    <tr class="table-row-subitem" data-display="false" data-label="1">
+     <td class="text-left">
+      <div class="table-subitem text-secondary">RA</div>
+     </td>
+     <td data-disabled="true"><label class="custom-checkbox mb-0"><input
+        class="select_module_id feature_class feature_add_ons_1" name="feature_id[1][]" type="checkbox" value="9"
+        autocomplete="off"><span class="custom-btn-span"></span></label><span
+       class="material-icons-outlined fs-14 text-danger bg-light-danger rounded-circle p-1">close</span></td>
+     <td data-highlight="true"><label class="custom-checkbox mb-0"><input
+        class="select_module_id feature_class feature_add_ons_3" name="feature_id[3][]" type="checkbox" value="9"
+        autocomplete="off"><span class="custom-btn-span"></span></label><span
+       class="material-icons-outlined fs-14 text-danger bg-light-danger rounded-circle p-1">close</span></td>
+     <td data-disabled="true"><label class="custom-checkbox mb-0"><input
+        class="select_module_id feature_class feature_add_ons_4" name="feature_id[4][]" type="checkbox" value="9"
+        autocomplete="off"><span class="custom-btn-span"></span></label><span
+       class="material-icons-outlined fs-14 text-danger bg-light-danger rounded-circle p-1">close</span></td>
+    </tr>
+    <tr class="table-row-subitem" data-display="false" data-label="1">
+     <td class="text-left">
+      <div class="table-subitem text-secondary">Session</div>
+     </td>
+     <td data-disabled="true"><label class="custom-checkbox mb-0"><input
+        class="select_module_id feature_class feature_add_ons_1" name="feature_id[1][]" type="checkbox" value="10"
+        autocomplete="off"><span class="custom-btn-span"></span></label><span
+       class="material-icons-outlined fs-14 text-danger bg-light-danger rounded-circle p-1">close</span></td>
+     <td data-highlight="true"><label class="custom-checkbox mb-0"><input
+        class="select_module_id feature_class feature_add_ons_3" name="feature_id[3][]" type="checkbox" value="10"
+        autocomplete="off"><span class="custom-btn-span"></span></label><span
+       class="material-icons-outlined fs-14 text-danger bg-light-danger rounded-circle p-1">close</span></td>
+     <td data-disabled="true"><label class="custom-checkbox mb-0"><input
+        class="select_module_id feature_class feature_add_ons_4" name="feature_id[4][]" type="checkbox" value="10"
+        autocomplete="off"><span class="custom-btn-span"></span></label><span
+       class="material-icons-outlined fs-14 text-danger bg-light-danger rounded-circle p-1">close</span></td>
+    </tr>
+    <tr data-label="2">
+     <td class="text-left"><a aria-expanded="false" class="d-block table-collapse" href="javascript:void(0);">Sales
+       Management</a></td>
+     <td data-disabled="true"><span class="text-secondary">6 / 15</span> <span
+       class="material-icons-outlined fs-14 text-danger bg-light-danger rounded-circle p-1 d-none">close</span></td>
+     <td data-highlight="true"><span class="text-secondary">8 / 15</span> <span
+       class="material-icons-outlined fs-14 text-danger bg-light-danger rounded-circle p-1 d-none">close</span></td>
+     <td data-disabled="true"><span class="text-secondary">13 / 15</span> <span
+       class="material-icons-outlined fs-14 text-danger bg-light-danger rounded-circle p-1 d-none">close</span></td>
+    </tr>
+    <tr class="table-row-subitem" data-display="false" data-label="2">
+     <td class="text-left">
+      <div class="table-subitem text-secondary">Smart Views</div>
+     </td>
+     <td data-disabled="true"><label class="custom-checkbox mb-0"><input
+        class="select_module_id feature_class feature_add_ons_1" name="feature_id[1][]" type="checkbox" value="11"
+        autocomplete="off"><span class="custom-btn-span"></span></label><span
+       class="material-icons-outlined fs-14 text-danger bg-light-danger rounded-circle p-1">close</span></td>
+     <td data-highlight="true"><input name="default_feature_id[3][]" type="hidden" value="11" autocomplete="off"><span
+       class="material-icons-outlined fs-14 text-success bg-light-success rounded-circle p-1">done</span></td>
+     <td data-disabled="true"><input name="default_feature_id[4][]" type="hidden" value="11" autocomplete="off"><span
+       class="material-icons-outlined fs-14 text-success bg-light-success rounded-circle p-1">done</span></td>
+    </tr>
+    <tr class="table-row-subitem" data-display="false" data-label="2">
+     <td class="text-left">
+      <div class="table-subitem text-secondary">Round Robin Lead Distribution</div>
+     </td>
+     <td data-disabled="true"><input name="default_feature_id[1][]" type="hidden" value="12" autocomplete="off"><span
+       class="material-icons-outlined fs-14 text-success bg-light-success rounded-circle p-1">done</span></td>
+     <td data-highlight="true"><input name="default_feature_id[3][]" type="hidden" value="12" autocomplete="off"><span
+       class="material-icons-outlined fs-14 text-success bg-light-success rounded-circle p-1">done</span></td>
+     <td data-disabled="true"><input name="default_feature_id[4][]" type="hidden" value="12" autocomplete="off"><span
+       class="material-icons-outlined fs-14 text-success bg-light-success rounded-circle p-1">done</span></td>
+    </tr>
+    <tr class="table-row-subitem" data-display="false" data-label="2">
+     <td class="text-left">
+      <div class="table-subitem text-secondary">Advanced Lead Distribution (Business Logic)</div>
+     </td>
+     <td data-disabled="true"><label class="custom-checkbox mb-0"><input
+        class="select_module_id feature_class feature_add_ons_1" name="feature_id[1][]" type="checkbox" value="13"
+        autocomplete="off"><span class="custom-btn-span"></span></label><span
+       class="material-icons-outlined fs-14 text-danger bg-light-danger rounded-circle p-1">close</span></td>
+     <td data-highlight="true"><input name="default_feature_id[3][]" type="hidden" value="13" autocomplete="off"><span
+       class="material-icons-outlined fs-14 text-success bg-light-success rounded-circle p-1">done</span></td>
+     <td data-disabled="true"><input name="default_feature_id[4][]" type="hidden" value="13" autocomplete="off"><span
+       class="material-icons-outlined fs-14 text-success bg-light-success rounded-circle p-1">done</span></td>
+    </tr>
+    <tr class="table-row-subitem" data-display="false" data-label="2">
+     <td class="text-left">
+      <div class="table-subitem text-secondary">Lead Distribution to checked In users</div>
+     </td>
+     <td data-disabled="true"><label class="custom-checkbox mb-0"><input
+        class="select_module_id feature_class feature_add_ons_1" name="feature_id[1][]" type="checkbox" value="14"
+        autocomplete="off"><span class="custom-btn-span"></span></label><span
+       class="material-icons-outlined fs-14 text-danger bg-light-danger rounded-circle p-1">close</span></td>
+     <td data-highlight="true"><label class="custom-checkbox mb-0"><input
+        class="select_module_id feature_class feature_add_ons_3" name="feature_id[3][]" type="checkbox" value="14"
+        autocomplete="off"><span class="custom-btn-span"></span></label><span
+       class="material-icons-outlined fs-14 text-danger bg-light-danger rounded-circle p-1">close</span></td>
+     <td data-disabled="true"><input name="default_feature_id[4][]" type="hidden" value="14" autocomplete="off"><span
+       class="material-icons-outlined fs-14 text-success bg-light-success rounded-circle p-1">done</span></td>
+    </tr>
+    <tr class="table-row-subitem" data-display="false" data-label="2">
+     <td class="text-left">
+      <div class="table-subitem text-secondary">Tasks &amp; Follow Ups</div>
+     </td>
+     <td data-disabled="true"><input name="default_feature_id[1][]" type="hidden" value="15" autocomplete="off"><span
+       class="material-icons-outlined fs-14 text-success bg-light-success rounded-circle p-1">done</span></td>
+     <td data-highlight="true"><input name="default_feature_id[3][]" type="hidden" value="15" autocomplete="off"><span
+       class="material-icons-outlined fs-14 text-success bg-light-success rounded-circle p-1">done</span></td>
+     <td data-disabled="true"><input name="default_feature_id[4][]" type="hidden" value="15" autocomplete="off"><span
+       class="material-icons-outlined fs-14 text-success bg-light-success rounded-circle p-1">done</span></td>
+    </tr>
+    <tr class="table-row-subitem" data-display="false" data-label="2">
+     <td class="text-left">
+      <div class="table-subitem text-secondary">Conversation Notes</div>
+     </td>
+     <td data-disabled="true"><input name="default_feature_id[1][]" type="hidden" value="16" autocomplete="off"><span
+       class="material-icons-outlined fs-14 text-success bg-light-success rounded-circle p-1">done</span></td>
+     <td data-highlight="true"><input name="default_feature_id[3][]" type="hidden" value="16" autocomplete="off"><span
+       class="material-icons-outlined fs-14 text-success bg-light-success rounded-circle p-1">done</span></td>
+     <td data-disabled="true"><input name="default_feature_id[4][]" type="hidden" value="16" autocomplete="off"><span
+       class="material-icons-outlined fs-14 text-success bg-light-success rounded-circle p-1">done</span></td>
+    </tr>
+    <tr class="table-row-subitem" data-display="false" data-label="2">
+     <td class="text-left">
+      <div class="table-subitem text-secondary">Real time Notifications</div>
+     </td>
+     <td data-disabled="true"><label class="custom-checkbox mb-0"><input
+        class="select_module_id feature_class feature_add_ons_1" name="feature_id[1][]" type="checkbox" value="17"
+        autocomplete="off"><span class="custom-btn-span"></span></label><span
+       class="material-icons-outlined fs-14 text-danger bg-light-danger rounded-circle p-1">close</span></td>
+     <td data-highlight="true"><label class="custom-checkbox mb-0"><input
+        class="select_module_id feature_class feature_add_ons_3" name="feature_id[3][]" type="checkbox" value="17"
+        autocomplete="off"><span class="custom-btn-span"></span></label><span
+       class="material-icons-outlined fs-14 text-danger bg-light-danger rounded-circle p-1">close</span></td>
+     <td data-disabled="true"><input name="default_feature_id[4][]" type="hidden" value="17" autocomplete="off"><span
+       class="material-icons-outlined fs-14 text-success bg-light-success rounded-circle p-1">done</span></td>
+    </tr>
+    <tr class="table-row-subitem" data-display="false" data-label="2">
+     <td class="text-left">
+      <div class="table-subitem text-secondary">Appointment Manager</div>
+     </td>
+     <td data-disabled="true"><label class="custom-checkbox mb-0"><input
+        class="select_module_id feature_class feature_add_ons_1" name="feature_id[1][]" type="checkbox" value="18"
+        autocomplete="off"><span class="custom-btn-span"></span></label><span
+       class="material-icons-outlined fs-14 text-danger bg-light-danger rounded-circle p-1">close</span></td>
+     <td data-highlight="true"><label class="custom-checkbox mb-0"><input
+        class="select_module_id feature_class feature_add_ons_3" name="feature_id[3][]" type="checkbox" value="18"
+        autocomplete="off"><span class="custom-btn-span"></span></label><span
+       class="material-icons-outlined fs-14 text-danger bg-light-danger rounded-circle p-1">close</span></td>
+     <td data-disabled="true"><input name="default_feature_id[4][]" type="hidden" value="18" autocomplete="off"><span
+       class="material-icons-outlined fs-14 text-success bg-light-success rounded-circle p-1">done</span></td>
+    </tr>
+    <tr class="table-row-subitem" data-display="false" data-label="2">
+     <td class="text-left">
+      <div class="table-subitem text-secondary">Opportunity Management</div>
+     </td>
+     <td data-disabled="true"><label class="custom-checkbox mb-0"><input
+        class="select_module_id feature_class feature_add_ons_1" name="feature_id[1][]" type="checkbox" value="19"
+        autocomplete="off"><span class="custom-btn-span"></span></label><span
+       class="material-icons-outlined fs-14 text-danger bg-light-danger rounded-circle p-1">close</span></td>
+     <td data-highlight="true"><label class="custom-checkbox mb-0"><input
+        class="select_module_id feature_class feature_add_ons_3" name="feature_id[3][]" type="checkbox" value="19"
+        autocomplete="off"><span class="custom-btn-span"></span></label><span
+       class="material-icons-outlined fs-14 text-danger bg-light-danger rounded-circle p-1">close</span></td>
+     <td data-disabled="true"><input name="default_feature_id[4][]" type="hidden" value="19" autocomplete="off"><span
+       class="material-icons-outlined fs-14 text-success bg-light-success rounded-circle p-1">done</span></td>
+    </tr>
+    <tr class="table-row-subitem" data-display="false" data-label="2">
+     <td class="text-left">
+      <div class="table-subitem text-secondary">Request and Schedule a Call Automation</div>
+     </td>
+     <td data-disabled="true"><label class="custom-checkbox mb-0"><input
+        class="select_module_id feature_class feature_add_ons_1" name="feature_id[1][]" type="checkbox" value="20"
+        autocomplete="off"><span class="custom-btn-span"></span></label><span
+       class="material-icons-outlined fs-14 text-danger bg-light-danger rounded-circle p-1">close</span></td>
+     <td data-highlight="true"><label class="custom-checkbox mb-0"><input
+        class="select_module_id feature_class feature_add_ons_3" name="feature_id[3][]" type="checkbox" value="20"
+        autocomplete="off"><span class="custom-btn-span"></span></label><span
+       class="material-icons-outlined fs-14 text-danger bg-light-danger rounded-circle p-1">close</span></td>
+     <td data-disabled="true"><input name="default_feature_id[4][]" type="hidden" value="20" autocomplete="off"><span
+       class="material-icons-outlined fs-14 text-success bg-light-success rounded-circle p-1">done</span></td>
+    </tr>
+    <tr class="table-row-subitem" data-display="false" data-label="2">
+     <td class="text-left">
+      <div class="table-subitem text-secondary">Sales Reporting</div>
+     </td>
+     <td data-disabled="true"><input name="default_feature_id[1][]" type="hidden" value="21" autocomplete="off"><span
+       class="material-icons-outlined fs-14 text-success bg-light-success rounded-circle p-1">done</span></td>
+     <td data-highlight="true"><input name="default_feature_id[3][]" type="hidden" value="21" autocomplete="off"><span
+       class="material-icons-outlined fs-14 text-success bg-light-success rounded-circle p-1">done</span></td>
+     <td data-disabled="true"><input name="default_feature_id[4][]" type="hidden" value="21" autocomplete="off"><span
+       class="material-icons-outlined fs-14 text-success bg-light-success rounded-circle p-1">done</span></td>
+    </tr>
+    <tr class="table-row-subitem" data-display="false" data-label="2">
+     <td class="text-left">
+      <div class="table-subitem text-secondary">One-on-one Emails</div>
+     </td>
+     <td data-disabled="true"><input name="default_feature_id[1][]" type="hidden" value="22" autocomplete="off"><span
+       class="material-icons-outlined fs-14 text-success bg-light-success rounded-circle p-1">done</span></td>
+     <td data-highlight="true"><input name="default_feature_id[3][]" type="hidden" value="22" autocomplete="off"><span
+       class="material-icons-outlined fs-14 text-success bg-light-success rounded-circle p-1">done</span></td>
+     <td data-disabled="true"><input name="default_feature_id[4][]" type="hidden" value="22" autocomplete="off"><span
+       class="material-icons-outlined fs-14 text-success bg-light-success rounded-circle p-1">done</span></td>
+    </tr>
+    <tr class="table-row-subitem" data-display="false" data-label="2">
+     <td class="text-left">
+      <div class="table-subitem text-secondary">One-on-One WhatsApp</div>
+     </td>
+     <td data-disabled="true"><input name="default_feature_id[1][]" type="hidden" value="23" autocomplete="off"><span
+       class="material-icons-outlined fs-14 text-success bg-light-success rounded-circle p-1">done</span></td>
+     <td data-highlight="true"><input name="default_feature_id[3][]" type="hidden" value="23" autocomplete="off"><span
+       class="material-icons-outlined fs-14 text-success bg-light-success rounded-circle p-1">done</span></td>
+     <td data-disabled="true"><input name="default_feature_id[4][]" type="hidden" value="23" autocomplete="off"><span
+       class="material-icons-outlined fs-14 text-success bg-light-success rounded-circle p-1">done</span></td>
+    </tr>
+    <tr class="table-row-subitem" data-display="false" data-label="2">
+     <td class="text-left">
+      <div class="table-subitem text-secondary">Report Builder</div>
+     </td>
+     <td data-disabled="true"><label class="custom-checkbox mb-0"><input
+        class="select_module_id feature_class feature_add_ons_1" name="feature_id[1][]" type="checkbox" value="24"
+        autocomplete="off"><span class="custom-btn-span"></span></label><span
+       class="material-icons-outlined fs-14 text-danger bg-light-danger rounded-circle p-1">close</span></td>
+     <td data-highlight="true"><label class="custom-checkbox mb-0"><input
+        class="select_module_id feature_class feature_add_ons_3" name="feature_id[3][]" type="checkbox" value="24"
+        autocomplete="off"><span class="custom-btn-span"></span></label><span
+       class="material-icons-outlined fs-14 text-danger bg-light-danger rounded-circle p-1">close</span></td>
+     <td data-disabled="true"><label class="custom-checkbox mb-0"><input
+        class="select_module_id feature_class feature_add_ons_4" name="feature_id[4][]" type="checkbox" value="24"
+        autocomplete="off"><span class="custom-btn-span"></span></label><span
+       class="material-icons-outlined fs-14 text-danger bg-light-danger rounded-circle p-1">close</span></td>
+    </tr>
+    <tr class="table-row-subitem" data-display="false" data-label="2">
+     <td class="text-left">
+      <div class="table-subitem text-secondary">Trend analysis</div>
+     </td>
+     <td data-disabled="true"><label class="custom-checkbox mb-0"><input
+        class="select_module_id feature_class feature_add_ons_1" name="feature_id[1][]" type="checkbox" value="25"
+        autocomplete="off"><span class="custom-btn-span"></span></label><span
+       class="material-icons-outlined fs-14 text-danger bg-light-danger rounded-circle p-1">close</span></td>
+     <td data-highlight="true"><label class="custom-checkbox mb-0"><input
+        class="select_module_id feature_class feature_add_ons_3" name="feature_id[3][]" type="checkbox" value="25"
+        autocomplete="off"><span class="custom-btn-span"></span></label><span
+       class="material-icons-outlined fs-14 text-danger bg-light-danger rounded-circle p-1">close</span></td>
+     <td data-disabled="true"><label class="custom-checkbox mb-0"><input
+        class="select_module_id feature_class feature_add_ons_4" name="feature_id[4][]" type="checkbox" value="25"
+        autocomplete="off"><span class="custom-btn-span"></span></label><span
+       class="material-icons-outlined fs-14 text-danger bg-light-danger rounded-circle p-1">close</span></td>
+    </tr>
+    <tr data-label="3">
+     <td class="text-left"><a aria-expanded="false" class="d-block table-collapse" href="javascript:void(0);">Payment
+       Management</a></td>
+     <td data-disabled="true"><span class="text-secondary">0 / 3</span> <span
+       class="material-icons-outlined fs-14 text-danger bg-light-danger rounded-circle p-1 d-none">close</span></td>
+     <td data-highlight="true"><span class="text-secondary">2 / 3</span> <span
+       class="material-icons-outlined fs-14 text-danger bg-light-danger rounded-circle p-1 d-none">close</span></td>
+     <td data-disabled="true"><span class="text-secondary">3 / 3</span> <span
+       class="material-icons-outlined fs-14 text-danger bg-light-danger rounded-circle p-1 d-none">close</span></td>
+    </tr>
+    <tr class="table-row-subitem" data-display="false" data-label="3">
+     <td class="text-left">
+      <div class="table-subitem text-secondary">Payment link</div>
+     </td>
+     <td data-disabled="true"><label class="custom-checkbox mb-0"><input
+        class="select_module_id feature_class feature_add_ons_1" name="feature_id[1][]" type="checkbox" value="26"
+        autocomplete="off"><span class="custom-btn-span"></span></label><span
+       class="material-icons-outlined fs-14 text-danger bg-light-danger rounded-circle p-1">close</span></td>
+     <td data-highlight="true"><input name="default_feature_id[3][]" type="hidden" value="26" autocomplete="off"><span
+       class="material-icons-outlined fs-14 text-success bg-light-success rounded-circle p-1">done</span></td>
+     <td data-disabled="true"><input name="default_feature_id[4][]" type="hidden" value="26" autocomplete="off"><span
+       class="material-icons-outlined fs-14 text-success bg-light-success rounded-circle p-1">done</span></td>
+    </tr>
+    <tr class="table-row-subitem" data-display="false" data-label="3">
+     <td class="text-left">
+      <div class="table-subitem text-secondary">Split Payment</div>
+     </td>
+     <td data-disabled="true"><label class="custom-checkbox mb-0"><input
+        class="select_module_id feature_class feature_add_ons_1" name="feature_id[1][]" type="checkbox" value="27"
+        autocomplete="off"><span class="custom-btn-span"></span></label><span
+       class="material-icons-outlined fs-14 text-danger bg-light-danger rounded-circle p-1">close</span></td>
+     <td data-highlight="true"><input name="default_feature_id[3][]" type="hidden" value="27" autocomplete="off"><span
+       class="material-icons-outlined fs-14 text-success bg-light-success rounded-circle p-1">done</span></td>
+     <td data-disabled="true"><input name="default_feature_id[4][]" type="hidden" value="27" autocomplete="off"><span
+       class="material-icons-outlined fs-14 text-success bg-light-success rounded-circle p-1">done</span></td>
+    </tr>
+    <tr class="table-row-subitem" data-display="false" data-label="3">
+     <td class="text-left">
+      <div class="table-subitem text-secondary">Payment reminder</div>
+     </td>
+     <td data-disabled="true"><label class="custom-checkbox mb-0"><input
+        class="select_module_id feature_class feature_add_ons_1" name="feature_id[1][]" type="checkbox" value="28"
+        autocomplete="off"><span class="custom-btn-span"></span></label><span
+       class="material-icons-outlined fs-14 text-danger bg-light-danger rounded-circle p-1">close</span></td>
+     <td data-highlight="true"><label class="custom-checkbox mb-0"><input
+        class="select_module_id feature_class feature_add_ons_3" name="feature_id[3][]" type="checkbox" value="28"
+        autocomplete="off"><span class="custom-btn-span"></span></label><span
+       class="material-icons-outlined fs-14 text-danger bg-light-danger rounded-circle p-1">close</span></td>
+     <td data-disabled="true"><input name="default_feature_id[4][]" type="hidden" value="28" autocomplete="off"><span
+       class="material-icons-outlined fs-14 text-success bg-light-success rounded-circle p-1">done</span></td>
+    </tr>
+    <tr data-label="4">
+     <td class="text-left"><a aria-expanded="false" class="d-block table-collapse" href="javascript:void(0);">User and
+       Team Management</a></td>
+     <td data-disabled="true"><span class="text-secondary">1 / 6</span> <span
+       class="material-icons-outlined fs-14 text-danger bg-light-danger rounded-circle p-1 d-none">close</span></td>
+     <td data-highlight="true"><span class="text-secondary">5 / 6</span> <span
+       class="material-icons-outlined fs-14 text-danger bg-light-danger rounded-circle p-1 d-none">close</span></td>
+     <td data-disabled="true"><span class="text-secondary">6 / 6</span> <span
+       class="material-icons-outlined fs-14 text-danger bg-light-danger rounded-circle p-1 d-none">close</span></td>
+    </tr>
+    <tr class="table-row-subitem" data-display="false" data-label="4">
+     <td class="text-left">
+      <div class="table-subitem text-secondary">Default Role Based Access</div>
+     </td>
+     <td data-disabled="true"><input name="default_feature_id[1][]" type="hidden" value="29" autocomplete="off"><span
+       class="material-icons-outlined fs-14 text-success bg-light-success rounded-circle p-1">done</span></td>
+     <td data-highlight="true"><input name="default_feature_id[3][]" type="hidden" value="29" autocomplete="off"><span
+       class="material-icons-outlined fs-14 text-success bg-light-success rounded-circle p-1">done</span></td>
+     <td data-disabled="true"><input name="default_feature_id[4][]" type="hidden" value="29" autocomplete="off"><span
+       class="material-icons-outlined fs-14 text-success bg-light-success rounded-circle p-1">done</span></td>
+    </tr>
+    <tr class="table-row-subitem" data-display="false" data-label="4">
+     <td class="text-left">
+      <div class="table-subitem text-secondary">Custom Role Based Access</div>
+     </td>
+     <td data-disabled="true"><label class="custom-checkbox mb-0"><input
+        class="select_module_id feature_class feature_add_ons_1" name="feature_id[1][]" type="checkbox" value="30"
+        autocomplete="off"><span class="custom-btn-span"></span></label><span
+       class="material-icons-outlined fs-14 text-danger bg-light-danger rounded-circle p-1">close</span></td>
+     <td data-highlight="true"><input name="default_feature_id[3][]" type="hidden" value="30" autocomplete="off"><span
+       class="material-icons-outlined fs-14 text-success bg-light-success rounded-circle p-1">done</span></td>
+     <td data-disabled="true"><input name="default_feature_id[4][]" type="hidden" value="30" autocomplete="off"><span
+       class="material-icons-outlined fs-14 text-success bg-light-success rounded-circle p-1">done</span></td>
+    </tr>
+    <tr class="table-row-subitem" data-display="false" data-label="4">
+     <td class="text-left">
+      <div class="table-subitem text-secondary">Teams &amp; HIerarchy Management</div>
+     </td>
+     <td data-disabled="true"><label class="custom-checkbox mb-0"><input
+        class="select_module_id feature_class feature_add_ons_1" name="feature_id[1][]" type="checkbox" value="31"
+        autocomplete="off"><span class="custom-btn-span"></span></label><span
+       class="material-icons-outlined fs-14 text-danger bg-light-danger rounded-circle p-1">close</span></td>
+     <td data-highlight="true"><input name="default_feature_id[3][]" type="hidden" value="31" autocomplete="off"><span
+       class="material-icons-outlined fs-14 text-success bg-light-success rounded-circle p-1">done</span></td>
+     <td data-disabled="true"><input name="default_feature_id[4][]" type="hidden" value="31" autocomplete="off"><span
+       class="material-icons-outlined fs-14 text-success bg-light-success rounded-circle p-1">done</span></td>
+    </tr>
+    <tr class="table-row-subitem" data-display="false" data-label="4">
+     <td class="text-left">
+      <div class="table-subitem text-secondary">User Session and Audit Log Module</div>
+     </td>
+     <td data-disabled="true"><label class="custom-checkbox mb-0"><input
+        class="select_module_id feature_class feature_add_ons_1" name="feature_id[1][]" type="checkbox" value="32"
+        autocomplete="off"><span class="custom-btn-span"></span></label><span
+       class="material-icons-outlined fs-14 text-danger bg-light-danger rounded-circle p-1">close</span></td>
+     <td data-highlight="true"><input name="default_feature_id[3][]" type="hidden" value="32" autocomplete="off"><span
+       class="material-icons-outlined fs-14 text-success bg-light-success rounded-circle p-1">done</span></td>
+     <td data-disabled="true"><input name="default_feature_id[4][]" type="hidden" value="32" autocomplete="off"><span
+       class="material-icons-outlined fs-14 text-success bg-light-success rounded-circle p-1">done</span></td>
+    </tr>
+    <tr class="table-row-subitem" data-display="false" data-label="4">
+     <td class="text-left">
+      <div class="table-subitem text-secondary">Data Masking Module</div>
+     </td>
+     <td data-disabled="true"><label class="custom-checkbox mb-0"><input
+        class="select_module_id feature_class feature_add_ons_1" name="feature_id[1][]" type="checkbox" value="33"
+        autocomplete="off"><span class="custom-btn-span"></span></label><span
+       class="material-icons-outlined fs-14 text-danger bg-light-danger rounded-circle p-1">close</span></td>
+     <td data-highlight="true"><input name="default_feature_id[3][]" type="hidden" value="33" autocomplete="off"><span
+       class="material-icons-outlined fs-14 text-success bg-light-success rounded-circle p-1">done</span></td>
+     <td data-disabled="true"><input name="default_feature_id[4][]" type="hidden" value="33" autocomplete="off"><span
+       class="material-icons-outlined fs-14 text-success bg-light-success rounded-circle p-1">done</span></td>
+    </tr>
+    <tr class="table-row-subitem" data-display="false" data-label="4">
+     <td class="text-left">
+      <div class="table-subitem text-secondary">Restricted IP Access Module</div>
+     </td>
+     <td data-disabled="true"><label class="custom-checkbox mb-0"><input
+        class="select_module_id feature_class feature_add_ons_1" name="feature_id[1][]" type="checkbox" value="34"
+        autocomplete="off"><span class="custom-btn-span"></span></label><span
+       class="material-icons-outlined fs-14 text-danger bg-light-danger rounded-circle p-1">close</span></td>
+     <td data-highlight="true"><label class="custom-checkbox mb-0"><input
+        class="select_module_id feature_class feature_add_ons_3" name="feature_id[3][]" type="checkbox" value="34"
+        autocomplete="off"><span class="custom-btn-span"></span></label><span
+       class="material-icons-outlined fs-14 text-danger bg-light-danger rounded-circle p-1">close</span></td>
+     <td data-disabled="true"><input name="default_feature_id[4][]" type="hidden" value="34" autocomplete="off"><span
+       class="material-icons-outlined fs-14 text-success bg-light-success rounded-circle p-1">done</span></td>
+    </tr>
+    <tr data-label="5">
+     <td class="text-left"><a aria-expanded="false" class="d-block table-collapse" href="javascript:void(0);">Logs</a>
+     </td>
+     <td data-disabled="true"><span class="text-secondary">4 / 4</span> <span
+       class="material-icons-outlined fs-14 text-danger bg-light-danger rounded-circle p-1 d-none">close</span></td>
+     <td data-highlight="true"><span class="text-secondary">4 / 4</span> <span
+       class="material-icons-outlined fs-14 text-danger bg-light-danger rounded-circle p-1 d-none">close</span></td>
+     <td data-disabled="true"><span class="text-secondary">4 / 4</span> <span
+       class="material-icons-outlined fs-14 text-danger bg-light-danger rounded-circle p-1 d-none">close</span></td>
+    </tr>
+    <tr class="table-row-subitem" data-display="false" data-label="5">
+     <td class="text-left">
+      <div class="table-subitem text-secondary">Data flow Logs</div>
+     </td>
+     <td data-disabled="true"><input name="default_feature_id[1][]" type="hidden" value="35" autocomplete="off"><span
+       class="material-icons-outlined fs-14 text-success bg-light-success rounded-circle p-1">done</span></td>
+     <td data-highlight="true"><input name="default_feature_id[3][]" type="hidden" value="35" autocomplete="off"><span
+       class="material-icons-outlined fs-14 text-success bg-light-success rounded-circle p-1">done</span></td>
+     <td data-disabled="true"><input name="default_feature_id[4][]" type="hidden" value="35" autocomplete="off"><span
+       class="material-icons-outlined fs-14 text-success bg-light-success rounded-circle p-1">done</span></td>
+    </tr>
+    <tr class="table-row-subitem" data-display="false" data-label="5">
+     <td class="text-left">
+      <div class="table-subitem text-secondary">Data Porting</div>
+     </td>
+     <td data-disabled="true"><input name="default_feature_id[1][]" type="hidden" value="36" autocomplete="off"><span
+       class="material-icons-outlined fs-14 text-success bg-light-success rounded-circle p-1">done</span></td>
+     <td data-highlight="true"><input name="default_feature_id[3][]" type="hidden" value="36" autocomplete="off"><span
+       class="material-icons-outlined fs-14 text-success bg-light-success rounded-circle p-1">done</span></td>
+     <td data-disabled="true"><input name="default_feature_id[4][]" type="hidden" value="36" autocomplete="off"><span
+       class="material-icons-outlined fs-14 text-success bg-light-success rounded-circle p-1">done</span></td>
+    </tr>
+    <tr class="table-row-subitem" data-display="false" data-label="5">
+     <td class="text-left">
+      <div class="table-subitem text-secondary">Daily Cumulative Count Log</div>
+     </td>
+     <td data-disabled="true"><input name="default_feature_id[1][]" type="hidden" value="37" autocomplete="off"><span
+       class="material-icons-outlined fs-14 text-success bg-light-success rounded-circle p-1">done</span></td>
+     <td data-highlight="true"><input name="default_feature_id[3][]" type="hidden" value="37" autocomplete="off"><span
+       class="material-icons-outlined fs-14 text-success bg-light-success rounded-circle p-1">done</span></td>
+     <td data-disabled="true"><input name="default_feature_id[4][]" type="hidden" value="37" autocomplete="off"><span
+       class="material-icons-outlined fs-14 text-success bg-light-success rounded-circle p-1">done</span></td>
+    </tr>
+    <tr class="table-row-subitem" data-display="false" data-label="5">
+     <td class="text-left">
+      <div class="table-subitem text-secondary">Client API</div>
+     </td>
+     <td data-disabled="true"><input name="default_feature_id[1][]" type="hidden" value="38" autocomplete="off"><span
+       class="material-icons-outlined fs-14 text-success bg-light-success rounded-circle p-1">done</span></td>
+     <td data-highlight="true"><input name="default_feature_id[3][]" type="hidden" value="38" autocomplete="off"><span
+       class="material-icons-outlined fs-14 text-success bg-light-success rounded-circle p-1">done</span></td>
+     <td data-disabled="true"><input name="default_feature_id[4][]" type="hidden" value="38" autocomplete="off"><span
+       class="material-icons-outlined fs-14 text-success bg-light-success rounded-circle p-1">done</span></td>
+    </tr>
+    <tr data-label="6">
+     <td class="text-left"><a aria-expanded="false" class="d-block table-collapse" href="javascript:void(0);">Mobile
+       CRM</a></td>
+     <td data-disabled="true"><span class="text-secondary">2 / 4</span> <span
+       class="material-icons-outlined fs-14 text-danger bg-light-danger rounded-circle p-1 d-none">close</span></td>
+     <td data-highlight="true"><span class="text-secondary">2 / 4</span> <span
+       class="material-icons-outlined fs-14 text-danger bg-light-danger rounded-circle p-1 d-none">close</span></td>
+     <td data-disabled="true"><span class="text-secondary">2 / 4</span> <span
+       class="material-icons-outlined fs-14 text-danger bg-light-danger rounded-circle p-1 d-none">close</span></td>
+    </tr>
+    <tr class="table-row-subitem" data-display="false" data-label="6">
+     <td class="text-left">
+      <div class="table-subitem text-secondary">Mobile App Usage</div>
+     </td>
+     <td data-disabled="true"><input name="default_feature_id[1][]" type="hidden" value="39" autocomplete="off"><span
+       class="material-icons-outlined fs-14 text-success bg-light-success rounded-circle p-1">done</span></td>
+     <td data-highlight="true"><input name="default_feature_id[3][]" type="hidden" value="39" autocomplete="off"><span
+       class="material-icons-outlined fs-14 text-success bg-light-success rounded-circle p-1">done</span></td>
+     <td data-disabled="true"><input name="default_feature_id[4][]" type="hidden" value="39" autocomplete="off"><span
+       class="material-icons-outlined fs-14 text-success bg-light-success rounded-circle p-1">done</span></td>
+    </tr>
+    <tr class="table-row-subitem" data-display="false" data-label="6">
+     <td class="text-left">
+      <div class="table-subitem text-secondary">Mobile App Click to Call</div>
+     </td>
+     <td data-disabled="true"><input name="default_feature_id[1][]" type="hidden" value="40" autocomplete="off"><span
+       class="material-icons-outlined fs-14 text-success bg-light-success rounded-circle p-1">done</span></td>
+     <td data-highlight="true"><input name="default_feature_id[3][]" type="hidden" value="40" autocomplete="off"><span
+       class="material-icons-outlined fs-14 text-success bg-light-success rounded-circle p-1">done</span></td>
+     <td data-disabled="true"><input name="default_feature_id[4][]" type="hidden" value="40" autocomplete="off"><span
+       class="material-icons-outlined fs-14 text-success bg-light-success rounded-circle p-1">done</span></td>
+    </tr>
+    <tr class="table-row-subitem" data-display="false" data-label="6">
+     <td class="text-left">
+      <div class="table-subitem text-secondary">Mobile App Check In - Check Out</div>
+     </td>
+     <td data-disabled="true"><label class="custom-checkbox mb-0"><input
+        class="select_module_id feature_class feature_add_ons_1" name="feature_id[1][]" type="checkbox" value="41"
+        autocomplete="off"><span class="custom-btn-span"></span></label><span
+       class="material-icons-outlined fs-14 text-danger bg-light-danger rounded-circle p-1">close</span></td>
+     <td data-highlight="true"><label class="custom-checkbox mb-0"><input
+        class="select_module_id feature_class feature_add_ons_3" name="feature_id[3][]" type="checkbox" value="41"
+        autocomplete="off"><span class="custom-btn-span"></span></label><span
+       class="material-icons-outlined fs-14 text-danger bg-light-danger rounded-circle p-1">close</span></td>
+     <td data-disabled="true"><label class="custom-checkbox mb-0"><input
+        class="select_module_id feature_class feature_add_ons_4" name="feature_id[4][]" type="checkbox" value="41"
+        autocomplete="off"><span class="custom-btn-span"></span></label><span
+       class="material-icons-outlined fs-14 text-danger bg-light-danger rounded-circle p-1">close</span></td>
+    </tr>
+    <tr class="table-row-subitem" data-display="false" data-label="6">
+     <td class="text-left">
+      <div class="table-subitem text-secondary">Mobile App - Field Force Tracking</div>
+     </td>
+     <td data-disabled="true"><label class="custom-checkbox mb-0"><input
+        class="select_module_id feature_class feature_add_ons_1" name="feature_id[1][]" type="checkbox" value="42"
+        autocomplete="off"><span class="custom-btn-span"></span></label><span
+       class="material-icons-outlined fs-14 text-danger bg-light-danger rounded-circle p-1">close</span></td>
+     <td data-highlight="true"><label class="custom-checkbox mb-0"><input
+        class="select_module_id feature_class feature_add_ons_3" name="feature_id[3][]" type="checkbox" value="42"
+        autocomplete="off"><span class="custom-btn-span"></span></label><span
+       class="material-icons-outlined fs-14 text-danger bg-light-danger rounded-circle p-1">close</span></td>
+     <td data-disabled="true"><label class="custom-checkbox mb-0"><input
+        class="select_module_id feature_class feature_add_ons_4" name="feature_id[4][]" type="checkbox" value="42"
+        autocomplete="off"><span class="custom-btn-span"></span></label><span
+       class="material-icons-outlined fs-14 text-danger bg-light-danger rounded-circle p-1">close</span></td>
+    </tr>
+    <tr data-label="7">
+     <td class="text-left"><a aria-expanded="false" class="d-block table-collapse" href="javascript:void(0);">Developer
+       Portal</a></td>
+     <td data-disabled="true"><span class="text-secondary">1 / 1</span> <span
+       class="material-icons-outlined fs-14 text-danger bg-light-danger rounded-circle p-1 d-none">close</span></td>
+     <td data-highlight="true"><span class="text-secondary">1 / 1</span> <span
+       class="material-icons-outlined fs-14 text-danger bg-light-danger rounded-circle p-1 d-none">close</span></td>
+     <td data-disabled="true"><span class="text-secondary">1 / 1</span> <span
+       class="material-icons-outlined fs-14 text-danger bg-light-danger rounded-circle p-1 d-none">close</span></td>
+    </tr>
+    <tr class="table-row-subitem" data-display="false" data-label="7">
+     <td class="text-left">
+      <div class="table-subitem text-secondary">APIs Framework (API Rate Limits)</div>
+     </td>
+     <td data-disabled="true"><input name="default_feature_id[1][]" type="hidden" value="43" autocomplete="off"><span
+       class="material-icons-outlined fs-14 text-success bg-light-success rounded-circle p-1">done</span></td>
+     <td data-highlight="true"><input name="default_feature_id[3][]" type="hidden" value="43" autocomplete="off"><span
+       class="material-icons-outlined fs-14 text-success bg-light-success rounded-circle p-1">done</span></td>
+     <td data-disabled="true"><input name="default_feature_id[4][]" type="hidden" value="43" autocomplete="off"><span
+       class="material-icons-outlined fs-14 text-success bg-light-success rounded-circle p-1">done</span></td>
+    </tr>
+    <tr data-label="8">
+     <td class="text-left"><a aria-expanded="false" class="d-block table-collapse"
+       href="javascript:void(0);">Webhook</a></td>
+     <td data-disabled="true"><span class="text-secondary">0 / 1</span> <span
+       class="material-icons-outlined fs-14 text-danger bg-light-danger rounded-circle p-1 d-none">close</span></td>
+     <td data-highlight="true"><span class="text-secondary">1 / 1</span> <span
+       class="material-icons-outlined fs-14 text-danger bg-light-danger rounded-circle p-1 d-none">close</span></td>
+     <td data-disabled="true"><span class="text-secondary">1 / 1</span> <span
+       class="material-icons-outlined fs-14 text-danger bg-light-danger rounded-circle p-1 d-none">close</span></td>
+    </tr>
+    <tr class="table-row-subitem" data-display="false" data-label="8">
+     <td class="text-left">
+      <div class="table-subitem text-secondary">Webhook</div>
+     </td>
+     <td data-disabled="true"><label class="custom-checkbox mb-0"><input
+        class="select_module_id feature_class feature_add_ons_1" name="feature_id[1][]" type="checkbox" value="44"
+        autocomplete="off"><span class="custom-btn-span"></span></label><span
+       class="material-icons-outlined fs-14 text-danger bg-light-danger rounded-circle p-1">close</span></td>
+     <td data-highlight="true"><input name="default_feature_id[3][]" type="hidden" value="44" autocomplete="off"><span
+       class="material-icons-outlined fs-14 text-success bg-light-success rounded-circle p-1">done</span></td>
+     <td data-disabled="true"><input name="default_feature_id[4][]" type="hidden" value="44" autocomplete="off"><span
+       class="material-icons-outlined fs-14 text-success bg-light-success rounded-circle p-1">done</span></td>
+    </tr>
+    <tr data-label="9">
+     <td class="text-left"><a aria-expanded="false" class="d-block table-collapse"
+       href="javascript:void(0);">Extensions</a></td>
+     <td data-disabled="true"><span class="text-secondary">0 / 7</span> <span
+       class="material-icons-outlined fs-14 text-danger bg-light-danger rounded-circle p-1 d-none">close</span></td>
+     <td data-highlight="true"><span class="text-secondary">1 / 7</span> <span
+       class="material-icons-outlined fs-14 text-danger bg-light-danger rounded-circle p-1 d-none">close</span></td>
+     <td data-disabled="true"><span class="text-secondary">0 / 7</span> <span
+       class="material-icons-outlined fs-14 text-danger bg-light-danger rounded-circle p-1 d-none">close</span></td>
+    </tr>
+    <tr class="table-row-subitem" data-display="false" data-label="9">
+     <td class="text-left">
+      <div class="table-subitem text-secondary">Extensions</div>
+     </td>
+     <td data-disabled="true"><label class="custom-checkbox mb-0"><input
+        class="select_module_id feature_class feature_add_ons_1" name="feature_id[1][]" type="checkbox" value="45"
+        autocomplete="off"><span class="custom-btn-span"></span></label><span
+       class="material-icons-outlined fs-14 text-danger bg-light-danger rounded-circle p-1">close</span></td>
+     <td data-highlight="true"><label class="custom-checkbox mb-0"><input checked="checked"
+        class="select_module_id feature_class feature_add_ons_3 added_addon" name="feature_id[3][]" type="checkbox"
+        value="45" autocomplete="off"><span class="custom-btn-span"></span></label><span
+       class="material-icons-outlined fs-14 text-primary bg-light-info rounded-circle p-1">done</span></td>
+     <td data-disabled="true"><label class="custom-checkbox mb-0"><input
+        class="select_module_id feature_class feature_add_ons_4" name="feature_id[4][]" type="checkbox" value="45"
+        autocomplete="off"><span class="custom-btn-span"></span></label><span
+       class="material-icons-outlined fs-14 text-danger bg-light-danger rounded-circle p-1">close</span></td>
+    </tr>
+    <tr class="table-row-subitem" data-display="false" data-label="9">
+     <td class="text-left">
+      <div class="table-subitem text-secondary">Niaa Connector</div>
+     </td>
+     <td data-disabled="true"><label class="custom-checkbox mb-0"><input
+        class="select_module_id feature_class feature_add_ons_1" name="feature_id[1][]" type="checkbox" value="46"
+        autocomplete="off"><span class="custom-btn-span"></span></label><span
+       class="material-icons-outlined fs-14 text-danger bg-light-danger rounded-circle p-1">close</span></td>
+     <td data-highlight="true"><label class="custom-checkbox mb-0"><input
+        class="select_module_id feature_class feature_add_ons_3" name="feature_id[3][]" type="checkbox" value="46"
+        autocomplete="off"><span class="custom-btn-span"></span></label><span
+       class="material-icons-outlined fs-14 text-danger bg-light-danger rounded-circle p-1">close</span></td>
+     <td data-disabled="true"><label class="custom-checkbox mb-0"><input
+        class="select_module_id feature_class feature_add_ons_4" name="feature_id[4][]" type="checkbox" value="46"
+        autocomplete="off"><span class="custom-btn-span"></span></label><span
+       class="material-icons-outlined fs-14 text-danger bg-light-danger rounded-circle p-1">close</span></td>
+    </tr>
+    <tr class="table-row-subitem" data-display="false" data-label="9">
+     <td class="text-left">
+      <div class="table-subitem text-secondary">Telephony Connector</div>
+     </td>
+     <td data-disabled="true"><label class="custom-checkbox mb-0"><input
+        class="select_module_id feature_class feature_add_ons_1" name="feature_id[1][]" type="checkbox" value="47"
+        autocomplete="off"><span class="custom-btn-span"></span></label><span
+       class="material-icons-outlined fs-14 text-danger bg-light-danger rounded-circle p-1">close</span></td>
+     <td data-highlight="true"><label class="custom-checkbox mb-0"><input
+        class="select_module_id feature_class feature_add_ons_3" name="feature_id[3][]" type="checkbox" value="47"
+        autocomplete="off"><span class="custom-btn-span"></span></label><span
+       class="material-icons-outlined fs-14 text-danger bg-light-danger rounded-circle p-1">close</span></td>
+     <td data-disabled="true"><label class="custom-checkbox mb-0"><input
+        class="select_module_id feature_class feature_add_ons_4" name="feature_id[4][]" type="checkbox" value="47"
+        autocomplete="off"><span class="custom-btn-span"></span></label><span
+       class="material-icons-outlined fs-14 text-danger bg-light-danger rounded-circle p-1">close</span></td>
+    </tr>
+    <tr class="table-row-subitem" data-display="false" data-label="9">
+     <td class="text-left">
+      <div class="table-subitem text-secondary">Zoho Creator</div>
+     </td>
+     <td data-disabled="true"><label class="custom-checkbox mb-0"><input
+        class="select_module_id feature_class feature_add_ons_1" name="feature_id[1][]" type="checkbox" value="48"
+        autocomplete="off"><span class="custom-btn-span"></span></label><span
+       class="material-icons-outlined fs-14 text-danger bg-light-danger rounded-circle p-1">close</span></td>
+     <td data-highlight="true"><label class="custom-checkbox mb-0"><input
+        class="select_module_id feature_class feature_add_ons_3" name="feature_id[3][]" type="checkbox" value="48"
+        autocomplete="off"><span class="custom-btn-span"></span></label><span
+       class="material-icons-outlined fs-14 text-danger bg-light-danger rounded-circle p-1">close</span></td>
+     <td data-disabled="true"><label class="custom-checkbox mb-0"><input
+        class="select_module_id feature_class feature_add_ons_4" name="feature_id[4][]" type="checkbox" value="48"
+        autocomplete="off"><span class="custom-btn-span"></span></label><span
+       class="material-icons-outlined fs-14 text-danger bg-light-danger rounded-circle p-1">close</span></td>
+    </tr>
+    <tr class="table-row-subitem" data-display="false" data-label="9">
+     <td class="text-left">
+      <div class="table-subitem text-secondary">WABA Connector</div>
+     </td>
+     <td data-disabled="true"><label class="custom-checkbox mb-0"><input
+        class="select_module_id feature_class feature_add_ons_1" name="feature_id[1][]" type="checkbox" value="49"
+        autocomplete="off"><span class="custom-btn-span"></span></label><span
+       class="material-icons-outlined fs-14 text-danger bg-light-danger rounded-circle p-1">close</span></td>
+     <td data-highlight="true"><label class="custom-checkbox mb-0"><input
+        class="select_module_id feature_class feature_add_ons_3" name="feature_id[3][]" type="checkbox" value="49"
+        autocomplete="off"><span class="custom-btn-span"></span></label><span
+       class="material-icons-outlined fs-14 text-danger bg-light-danger rounded-circle p-1">close</span></td>
+     <td data-disabled="true"><label class="custom-checkbox mb-0"><input
+        class="select_module_id feature_class feature_add_ons_4" name="feature_id[4][]" type="checkbox" value="49"
+        autocomplete="off"><span class="custom-btn-span"></span></label><span
+       class="material-icons-outlined fs-14 text-danger bg-light-danger rounded-circle p-1">close</span></td>
+    </tr>
+    <tr class="table-row-subitem" data-display="false" data-label="9">
+     <td class="text-left">
+      <div class="table-subitem text-secondary">SMS Connector App</div>
+     </td>
+     <td data-disabled="true"><label class="custom-checkbox mb-0"><input
+        class="select_module_id feature_class feature_add_ons_1" name="feature_id[1][]" type="checkbox" value="50"
+        autocomplete="off"><span class="custom-btn-span"></span></label><span
+       class="material-icons-outlined fs-14 text-danger bg-light-danger rounded-circle p-1">close</span></td>
+     <td data-highlight="true"><label class="custom-checkbox mb-0"><input
+        class="select_module_id feature_class feature_add_ons_3" name="feature_id[3][]" type="checkbox" value="50"
+        autocomplete="off"><span class="custom-btn-span"></span></label><span
+       class="material-icons-outlined fs-14 text-danger bg-light-danger rounded-circle p-1">close</span></td>
+     <td data-disabled="true"><label class="custom-checkbox mb-0"><input
+        class="select_module_id feature_class feature_add_ons_4" name="feature_id[4][]" type="checkbox" value="50"
+        autocomplete="off"><span class="custom-btn-span"></span></label><span
+       class="material-icons-outlined fs-14 text-danger bg-light-danger rounded-circle p-1">close</span></td>
+    </tr>
+    <tr class="table-row-subitem" data-display="false" data-label="9">
+     <td class="text-left">
+      <div class="table-subitem text-secondary">Email Connector App</div>
+     </td>
+     <td data-disabled="true"><label class="custom-checkbox mb-0"><input
+        class="select_module_id feature_class feature_add_ons_1" name="feature_id[1][]" type="checkbox" value="51"
+        autocomplete="off"><span class="custom-btn-span"></span></label><span
+       class="material-icons-outlined fs-14 text-danger bg-light-danger rounded-circle p-1">close</span></td>
+     <td data-highlight="true"><label class="custom-checkbox mb-0"><input
+        class="select_module_id feature_class feature_add_ons_3" name="feature_id[3][]" type="checkbox" value="51"
+        autocomplete="off"><span class="custom-btn-span"></span></label><span
+       class="material-icons-outlined fs-14 text-danger bg-light-danger rounded-circle p-1">close</span></td>
+     <td data-disabled="true"><label class="custom-checkbox mb-0"><input
+        class="select_module_id feature_class feature_add_ons_4" name="feature_id[4][]" type="checkbox" value="51"
+        autocomplete="off"><span class="custom-btn-span"></span></label><span
+       class="material-icons-outlined fs-14 text-danger bg-light-danger rounded-circle p-1">close</span></td>
+    </tr>
+   </tbody>
+   <tfoot>
+    <tr>
+     <td class="col-3 bg-white"><input id="plan" type="hidden" value="3" autocomplete="off"></td>
+     <td class="col-3 choose_plan_1"><button class="btn btn-link text-white px-4 py-2 mb-3 choose_plan"
+       data-plan="1">Choose Starter</button></td>
+     <td class="col-3 choose_plan_3" data-highlight="true"><button
+       class="btn btn-link text-white px-4 py-2 mb-3 choose_plan" data-plan="3">Choose Growth</button><a
+       class="font-weight-bold fs-15 d-flex justify-content-center align-items-center"> <span
+        class="material-icons-outlined fs-14 mr-1"> task_alt </span> Active plan</a><small
+       class="d-block leading-3 font-weight-bold addon_count">with 1 Addon</small>
+      <div class="permission-modal-link-wrapper"><button
+        class="bg-transparent text-primary border-0 position-relative z-10 permission-modal-link"
+        onclick="permission_modal()">Set Permission</button></div>
+     </td>
+     <td class="col-3 choose_plan_4"><button class="btn btn-link text-white px-4 py-2 mb-3 choose_plan"
+       data-plan="4">Choose Pro</button></td>
+    </tr>
+   </tfoot>
+  </table>
+ </div>
+
+ <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+ <script>
+  $(document).on('click', '.table-collapse', function () {
+   if ($(this).attr('aria-expanded') == 'false') {$(this).attr('aria-expanded', true)}
+   else {$(this).attr('aria-expanded', false)}
+   label = $(this).closest('tr').data('label')
+   if ($(`.pricing-table tr.table-row-subitem[data-label="${label}"]`).attr('data-display') == 'true') {
+    $(`.pricing-table tr.table-row-subitem[data-label="${label}"]`).attr('data-display', 'false');
+   }
+   else {$(`.pricing-table tr.table-row-subitem[data-label="${label}"]`).attr('data-display', 'true');}
+  });
+  $(document).on('click', '.choose_plan', function(){
+    let plan = $(this).data('plan');
+    let nth_td_child  = $(this).closest('td').index() + 1;
+    $('#plan').val(plan);
+    $(`.pricing-table tfoot tr td small`).remove();
+    if($(`.pricing-table tr td input:not([disabled]):checked`).length){
+        $(`.pricing-table tr td input:not(.added_addon):not([disabled]):checked`).prop('checked', false)
+    }
+    $('.pricing-table tr [data-disabled="true"]').removeAttr('data-disabled');
+    $(`.pricing-table tbody tr td:not(:nth-child(${nth_td_child})):not(:nth-child(1)),.pricing-table thead tr th:not(:nth-child(${nth_td_child})):not(:nth-child(1))`).attr('data-disabled', true)
+    $(`.pricing-table tr [data-highlight="true"]`).removeAttr('data-highlight');
+    $(`.pricing-table tr td:nth-child(${nth_td_child}),.pricing-table tr th:nth-child(${nth_td_child})`).attr('data-highlight', true)
+    $(`.pricing-table tr th span`).remove();
+    $(`.pricing-table tr th:nth-child(${nth_td_child})`).append('<span class="d-block font-weight-normal fs-12">Your Active Plan</span>')
+    $(`.pricing-table tfoot tr td a`).remove();
+    $(`.pricing-table tfoot .permission-modal-link-wrapper`).remove();
+    $(`.pricing-table tfoot tr td:nth-child(${nth_td_child})`).append('<a class="font-weight-bold fs-15 d-flex justify-content-center align-items-center"> <span class="material-icons-outlined fs-14 mr-1"> task_alt </span> Active plan</a><div class="permission-modal-link-wrapper"><button class="bg-transparent text-primary border-0 position-relative z-10 permission-modal-link" onclick="permission_modal()">Set Permission</button></div>');
+    $('#applied_permissions').val(false);
+});
+ </script>
+
+</body>
+
+</html>
