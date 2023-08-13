@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Updating Object</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <section class="bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h1 class="display-4 text-center my-4 py-3 border-bottom">Update Object</h1>
+                </div>
+                <div class="col-sm-12 col-md-4">
+                    <h3 class="fw-light mb-5 mt-3">Current Object</h3>
+                    <span class="bg-light">
+                        {
+                        <br />
+                        name: 'dheeraj',
+                        <br />
+                        jobRole: 'lead',
+                        <br />
+                        company:'comviva'
+                        <br />
+                        }
+                        </pre>
+                </div>
+                <div class="col-sm-12 col-md-4 bg-dark bg-opacity-10">
+                    <h3 class="fw-light mb-5 mt-3">Update Object</h3>
+                    <div class="row">
+                        <div class="col-5"><input type="text" name="" id="field-key-1" class="mb-4" value="name" disabled></div>
+                        <div class="col-5"><input type="text" name="" id="field-value-1" class="mb-4" value="arora"></div>
+                        <div class="col-5"><input type="text" name="" id="field-key-2" class="mb-4" value="jobRole" disabled></div>
+                        <div class="col-5"><input type="text" name="" id="field-value-2" class="mb-4" value="lead"></div>
+                        <div class="col-5"><input type="text" name="" id="field-key-3" class="mb-4" value="company" disabled></div>
+                        <div class="col-5"><input type="text" name="" id="field-value-3" class="mb-4" value="comviva"></div>
+                        <div class="col-12"><button class="btn btn-primary w-100 mb-3" onclick="updateObject()">Update</button></div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-4 ps-5">
+                    <h3 class="fw-light mb-5 mt-3">Result</h3>
+                    <div id="result">
+                        <h3 class="display-6">Click update button</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script>
+        const updateObject = () => {
+         let updatedObject = `[{"${document.getElementById('field-key-1').value}":"${document.getElementById('field-value-1').value}"},{"${document.getElementById('field-key-2').value}":"${document.getElementById('field-value-2').value}"},{"${document.getElementById('field-key-3').value}":"${document.getElementById('field-value-3').value}"}]`
+         console.log(updatedObject)   
+         console.log(JSON.parse(updatedObject))
+         document.getElementById('result').innerHTML= `${updatedObject} <br /><br /><br /> check console for more`
+        }
+
+    </script>
+</body>
+
+</html>
