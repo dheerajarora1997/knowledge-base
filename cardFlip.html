@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>card</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        font-family: "Montserrat", sans-serif;
+      }
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+      .card {
+        margin: 0 auto;
+        width: 400px;
+        height: 230px;
+        border-radius: 10px;
+        background: #0a1174;
+        color: #f1f1f1;
+      }
+      .card .flip-box-inner {
+        width: 100%;
+        display: inline-block;
+        height: 100%;
+        position: relative;
+        text-align: center;
+        transition: 0.8s;
+        transform-style: preserve-3d;
+      }
+      .card:hover .flip-box-inner {
+        transform: rotatey(180deg);
+      }
+
+      .card .flip-box-front,
+      .card .flip-box-back {
+        position: absolute;
+        width: 100%;
+        backface-visibility: hidden;
+      }
+
+      .card .flip-box-back {
+        transform: rotateY(180deg);
+      }
+
+      .card .flip-box-front .banklogo {
+        display: block;
+        text-align: right;
+        padding-right: 20px;
+        padding-top: 20px;
+        font-size: 2rem;
+      }
+      .card .flip-box-front .bankcardNum {
+        padding-block: 40px;
+        font-size: 2rem;
+      }
+      .card .flip-box-front .bankcardDate,
+      .card .flip-box-front .bankcardName {
+        text-align: left;
+        padding-left: 20px;
+      }
+      .card .flip-box-front .bankcardName {
+        margin-top: 5px;
+      }
+      .card .flip-box-back .cardCVV {
+        position: absolute;
+        top: 150px;
+        right: 50px;
+        font-size: 1.2rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <div class="flip-box-inner">
+        <div class="flip-box-front">
+          <div class="banklogo">PNB</div>
+          <div class="bankcardNum">User DATA</div>
+          <div class="bankcardDate">12/12/24</div>
+          <div class="bankcardName">Kunal</div>
+        </div>
+        <div class="flip-box-back">
+          <div class="cardCVV">999</div>
+        </div>
+      </div>
+    </div>
+    <script>
+        let userData = prompt("Enter card number");
+        let bankcardName = prompt('Enter User Name')
+        if (/^\d+$/.test(userData) && userData.length == 16) {
+          userData = userData.replaceAll(/(.{4})/g, '$1 ');
+          setTimeout(() => {
+              document.querySelector(".bankcardNum").innerHTML = userData;
+              document.querySelector(".bankcardName").innerHTML = bankcardName;
+        }, 100);
+        } else {
+            alert("Please enter a numeric value with 16 characters. Please try again.");
+
+          window.location.reload();
+        }
+      </script>
+      
+  </body>
+</html>
