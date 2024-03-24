@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      h2 {
+        margin-bottom: 15px;
+      }
+      h4 {
+        margin-bottom: 35px;
+      }
+      .wrapper {
+        display: flex;
+        height: 100vh;
+        width: 100vw;
+        align-items: center;
+        justify-content: center;
+        background: #fff;
+      }
+      .wrapper .atm-screen {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        background: blue;
+        padding: 20px;
+        width: 450px;
+        height: calc(100vh - 100px);
+        max-height: 400px;
+      }
+      .d-flex {
+        display: flex;
+        width: 100%;
+      }
+      .justify-content-between {
+        justify-content: space-between;
+      }
+      .btn {
+        border: 0;
+        width: 150px;
+        padding: 10px;
+        background: yellow;
+        color: #323232;
+        font-weight: bold;
+        border-radius: 10px;
+        margin-block: 5px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="atm-screen">
+        <h2>ATM Bank India</h2>
+        <h4>Select Transaction</h4>
+        <div class="d-flex justify-content-between">
+          <button
+            class="btn"
+            onclick="buttonClicked(this)"
+            data-action="fastCash"
+          >
+            Fast Cash</button
+          ><button
+            class="btn"
+            onclick="buttonClicked(this)"
+            data-action="fastCash"
+          >
+            Fast Cash
+          </button>
+        </div>
+        <div class="d-flex justify-content-between">
+          <button
+            class="btn"
+            onclick="buttonClicked(this)"
+            data-action="cashWithdrawal"
+          >
+            Cash withdrawal</button
+          ><button
+            class="btn"
+            onclick="buttonClicked(this)"
+            data-action="cashWithdrawal"
+          >
+            Cash withdrawal
+          </button>
+        </div>
+        <div class="d-flex justify-content-between">
+          <button
+            class="btn"
+            onclick="buttonClicked(this)"
+            data-action="balinquiry"
+          >
+            Balance Inquiry</button
+          ><button
+            class="btn"
+            onclick="buttonClicked(this)"
+            data-action="balinquiry"
+          >
+            Balance Inquiry
+          </button>
+        </div>
+        <div class="d-flex justify-content-between">
+          <button
+            class="btn"
+            onclick="buttonClicked(this)"
+            data-action="miniStatement"
+          >
+            Mini Statement</button
+          ><button
+            class="btn"
+            onclick="buttonClicked(this)"
+            data-action="miniStatement"
+          >
+            Mini Statement
+          </button>
+        </div>
+      </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script>
+      function buttonClicked(element) {
+        var clickedElement = $(element).data("action");
+        var userPIN = prompt(
+          `You have selected ${clickedElement}, Enter you PIN`
+        );
+        if (clickedElement === "cashWithdrawal") {
+          var cashAmount = prompt("Enter Amount.");
+        } else if (clickedElement === "balinquiry") {
+          alert("You Bank Balance is 5000.00");
+        } else if (clickedElement === "miniStatement") {
+          alert("Dr. 5000, Cr. 300, Cr. 700");
+        } else {
+          var fashAmount5000 = confirm("Do you want to withdraw 5000.");
+          if (fashAmount5000) {
+            alert("Please collect your cash");
+          } else {
+            var fashAmount10000 = confirm("Do you want to withdraw 10000.");
+            if (fashAmount10000) {
+              alert("Please collect your cash");
+            } else {
+              window.location.reload();
+            }
+          }
+        }
+      }
+    </script>
+  </body>
+</html>
