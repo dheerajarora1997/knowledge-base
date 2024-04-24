@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My HTML Page</title>
+    <script>
+      const debounce = (func, delay) => {
+        let timer;
+        return () => {
+          clearTimeout(timer);
+          timer = setTimeout(func, delay);
+        };
+      };
+
+      const myFun = debounce(() => {
+        console.log("Sending request to server");
+      }, 500);
+    </script>
+  </head>
+  <body>
+    <input type="text" onkeyup="myFun()" />
+  </body>
+</html>
