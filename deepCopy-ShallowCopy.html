@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+<script>
+  let obj = 
+{
+    'name':'archit', 
+    details: {
+        age : '20',
+        mode : 'Pro'
+    }
+}
+console.log(obj)
+ 
+let obj2 = {...obj}
+let obj3 = JSON.parse(JSON.stringify(obj));
+obj2.name = 'JAI';
+obj2.details.age = '22';
+obj2.details.mode = 'ProMax'
+
+obj3.name = 'JAI';
+obj3.details.age = '22';
+obj3.details.mode = 'ProMax'
+ 
+console.log(obj2, 'Shallow Copy')
+console.log(obj, 'Orginal')
+console.log(obj3, 'Deep Copy')
+</script>
+  </head>
+  <body>
+    Open console.
+  </body>
+</html>
