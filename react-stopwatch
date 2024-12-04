@@ -1,0 +1,45 @@
+import { React, useState, useRef } from 'react';
+
+export function App(props) {
+  const timerId = useRef(null);
+  const [timer, setTimer] = useState(0);
+  const [isRunning, setIsRunning] = useState(false);
+  const firstFun = () => {
+    console.log('function ');
+    if (timer && isRunning) {
+      console.log('pause');
+      setIsRunning(false);
+      clearInterval(timerId.current);
+    } else {
+      console.log('start');
+      setIsRunning(true);
+      timerId.current = setInterval(() => {
+        setTimer(prevTimer => prevTimer + 1);
+      }, 1000);
+    }
+  };
+  const resetTimer = () => {
+    console.log('reset');
+    clearInterval(timerId.current);
+    setTimer(0);
+  };
+  return (
+    <div className='App'>
+      <h1>{timer}</h1>
+      <button
+        onClick={() => {
+          firstFun();
+        }}
+      >
+        Start / Pause
+      </button>
+      <button
+        onClick={() => {
+          resetTimer();
+        }}
+      >
+        Reset
+      </button>
+    </div>
+  );
+}
