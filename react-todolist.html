@@ -1,0 +1,59 @@
+import { React, useState } from 'react';
+
+export function App(props) {
+  const [list, setList] = useState([]);
+  const addNew = () => {
+    let sample = [...list];
+    sample.push(' ');
+    setList(sample);
+  };
+  const addValue = (value, index) => {
+    let sample = [...list];
+    sample[index] = value;
+    setList(sample);
+  };
+  const removeItem = index => {
+    let sample = [...list];
+    sample.splice(index, 1);
+    setList(sample);
+  };
+  return (
+    <div className='App'>
+      <h1>To Do List</h1>
+      {list?.map((listItem, index) => {
+        return (
+          <div key={`unique-${index}`}>
+            <input
+              value={listItem}
+              onChange={e => {
+                addValue(e.target.value, index);
+              }}
+              disabled={list.length - 1 !== index}
+            />
+            <button
+              onClick={() => {
+                removeItem(index);
+              }}
+            >
+              X
+            </button>
+          </div>
+        );
+      })}
+      <button
+        onClick={() => {
+          addNew();
+        }}
+        style={{
+          marginTop: 10,
+          border: '1px dashed #000',
+          display: 'block',
+          width: '100%',
+          backgroundColor: 'transparent',
+        }}
+      >
+        + Plus
+      </button>
+    </div>
+  );
+}
