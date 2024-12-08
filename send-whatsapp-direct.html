@@ -292,6 +292,10 @@
       const createLink = () => {
         const phone = document.getElementById("phone").value;
         const message = document.querySelector("textarea").value;
+        if (phone === "") {
+          alert("Please enter a phone number!");
+          return;
+        }
         const url = `https://wa.me/${phone}?text=${message}`;
         window.open(url, "_blank");
       };
