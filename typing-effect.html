@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Typing Effect Heading</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f4f4f4;
+      margin: 0;
+    }
+    .typing-effect {
+      font-size: 2rem;
+      font-weight: bold;
+      color: #333;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 2px solid #333;
+      width: 20ch;
+      animation: typing 3s steps(20) infinite, blink 0.5s step-end infinite;
+    }
+
+    @keyframes typing {
+      0%, 100% { width: 0; }
+      50% { width: 20ch; }
+    }
+
+    @keyframes blink {
+      50% { border-color: transparent; }
+    }
+  </style>
+</head>
+<body>
+  <div class="typing-effect"></div>
+
+  <script>
+    const texts = ["Welcome to my website", "Learn HTML, CSS, and JavaScript", "Create stunning designs"];
+    let index = 0;
+
+    function updateText() {
+      const typingElement = document.querySelector('.typing-effect');
+      typingElement.textContent = texts[index];
+      index = (index + 1) % texts.length;
+    }
+
+    setInterval(updateText, 3000);
+    updateText();
+  </script>
+</body>
+</html>
