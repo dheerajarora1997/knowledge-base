@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clock with Fullscreen Toggle</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #ffffff;
+        }
+
+        #clock {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            background-color: #4caf50;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div id="clock">00:00:00</div>
+    <button id="fullscreen-btn">Toggle Fullscreen</button>
+
+    <script>
+        const clock = document.getElementById("clock");
+        const fullscreenBtn = document.getElementById("fullscreen-btn");
+
+        // Update the clock every second
+        function updateClock() {
+            const now = new Date();
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            clock.textContent = `${hours}:${minutes}:${seconds}`;
+        }
+
+        setInterval(updateClock, 1000);
+        updateClock(); // Initialize clock immediately
+
+        // Fullscreen toggle function
+        fullscreenBtn.addEventListener("click", () => {
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen();
+            } else {
+                document.exitFullscreen();
+            }
+        });
+
+        // Prevent the device from sleeping
+        if ('wakeLock' in navigator) {
+            let wakeLock = null;
+
+            const requestWakeLock = async () => {
+                try {
+                    wakeLock = await navigator.wakeLock.request('screen');
+                    console.log("Wake Lock active");
+                } catch (err) {
+                    console.error("Wake Lock error:", err);
+                }
+            };
+
+            const releaseWakeLock = () => {
+                if (wakeLock !== null) {
+                    wakeLock.release();
+                    wakeLock = null;
+                }
+            };
+
+            document.addEventListener("visibilitychange", () => {
+                if (document.visibilityState === "visible") {
+                    requestWakeLock();
+                } else {
+                    releaseWakeLock();
+                }
+            });
+
+            requestWakeLock();
+        } else {
+            console.warn("Wake Lock API is not supported in this browser.");
+        }
+    </script>
+</body>
+</html>
