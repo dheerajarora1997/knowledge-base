@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Time Passed Since 18/02/2025</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding-top: 50px;
+      background-color: #f0f0f0;
+    }
+    h1 {
+      font-size: 2.5em;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+
+  <h1 id="timePassed"></h1>
+
+  <script>
+    function updateTimePassed() {
+      const startDate = new Date('2025-02-18T00:00:00'); // 18th Feb 2025
+      const now = new Date();
+      let diff = now - startDate; // difference in milliseconds
+
+      if (diff < 0) {
+        document.getElementById("timePassed").textContent = "Date is in the future!";
+        return;
+      }
+
+      // Calculate time parts
+      const seconds = Math.floor(diff / 1000) % 60;
+      const minutes = Math.floor(diff / (1000 * 60)) % 60;
+      const hours = Math.floor(diff / (1000 * 60 * 60)) % 24;
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+
+      document.getElementById("timePassed").textContent =
+        `${days} days, ${hours} hours, ${minutes} minutes, ${seconds} seconds passed since 18/02/2025`;
+    }
+
+    // Update every second
+    updateTimePassed(); // initial call
+    setInterval(updateTimePassed, 1000);
+  </script>
+
+</body>
+</html>
