@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      .parent {
+        width: 800px;
+        height: 150px;
+        border: red 5px solid;
+        position: relative;
+        margin: 0 auto 10px;
+        display: flex;
+      }
+      .child {
+        width: 30px;
+        height: 30px;
+        border: 3px solid blue;
+        margin: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="parent simple">
+      <div class="child"></div>
+      <div class="child"></div>
+      <div class="child"></div>
+    </div>
+    <div class="parent" style="flex-direction: column">
+      <div class="child"></div>
+      <div class="child"></div>
+      <div class="child"></div>
+    </div>
+    <div class="parent" style="align-items: center">
+      <div class="child"></div>
+      <div class="child"></div>
+      <div class="child"></div>
+    </div>
+    <div class="parent" style="justify-content: center">
+      <div class="child"></div>
+      <div class="child"></div>
+      <div class="child"></div>
+    </div>
+    <div class="parent" style="align-items: center; justify-content: center">
+      <div class="child"></div>
+      <div class="child"></div>
+      <div class="child"></div>
+    </div>
+    <div class="parent" style="justify-content: space-around">
+      <div class="child"></div>
+      <div class="child"></div>
+      <div class="child"></div>
+    </div>
+    <div class="parent" style="justify-content: space-between">
+      <div class="child"></div>
+      <div class="child"></div>
+      <div class="child"></div>
+    </div>
+
+    <!-- additional  -->
+    <div
+      class="parent"
+      style="flex-direction: column; justify-content: space-around"
+    >
+      <div class="child"></div>
+      <div class="child"></div>
+      <div class="child"></div>
+    </div>
+    <div
+      class="parent"
+      style="flex-direction: column; justify-content: space-between"
+    >
+      <div class="child"></div>
+      <div class="child"></div>
+      <div class="child"></div>
+    </div>
+  </body>
+</html>
