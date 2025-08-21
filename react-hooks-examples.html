@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>React Hooks Playground</title>
+    <!-- React and ReactDOM CDN -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <!-- Babel for JSX -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        padding: 20px;
+      }
+      .example {
+        border: 1px solid #ddd;
+        padding: 15px;
+        margin: 15px 0;
+        border-radius: 8px;
+      }
+      button {
+        margin: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>React Hooks Playground</h1>
+    <div id="root"></div>
+
+    <script type="text/babel">
+      const {
+        useState,
+        useEffect,
+        useContext,
+        useReducer,
+        useRef,
+        useMemo,
+        useCallback,
+        useLayoutEffect,
+        createContext,
+        forwardRef,
+        useImperativeHandle,
+        useDebugValue,
+        useId,
+        useTransition,
+        useDeferredValue,
+        memo,
+      } = React;
+
+      /** 1. useState */
+      function UseStateExample() {
+        const [count, setCount] = useState(0);
+        return (
+          <div className="example">
+            <h3>useState Example</h3>
+            <p>Count: {count}</p>
+            <button onClick={() => setCount(count + 1)}>+1</button>
+            <button onClick={() => setCount(0)}>Reset</button>
+          </div>
+        );
+      }
+
+      /** 2. useEffect */
+      function UseEffectExample() {
+        const [time, setTime] = useState(new Date().toLocaleTimeString());
+        useEffect(() => {
+          const timer = setInterval(
+            () => setTime(new Date().toLocaleTimeString()),
+            1000
+          );
+          return () => clearInterval(timer);
+        }, []);
+        return (
+          <div className="example">
+            <h3>useEffect Example</h3>
+            <p>Current Time: {time}</p>
+          </div>
+        );
+      }
+
+      /** 3. useContext */
+      const MyContext = createContext();
+      function UseContextExample() {
+        return (
+          <div className="example">
+            <h3>useContext Example</h3>
+            <MyContext.Provider value="Hello from Context!">
+              <Child />
+            </MyContext.Provider>
+          </div>
+        );
+      }
+      function Child() {
+        const value = useContext(MyContext);
+        return <p>{value}</p>;
+      }
+
+      /** 4. useReducer */
+      function UseReducerExample() {
+        function reducer(state, action) {
+          switch (action.type) {
+            case "inc":
+              return { count: state.count + 1 };
+            case "dec":
+              return { count: state.count - 1 };
+            default:
+              return state;
+          }
+        }
+        const [state, dispatch] = useReducer(reducer, { count: 0 });
+        return (
+          <div className="example">
+            <h3>useReducer Example</h3>
+            <p>Count: {state.count}</p>
+            <button onClick={() => dispatch({ type: "inc" })}>+1</button>
+            <button onClick={() => dispatch({ type: "dec" })}>-1</button>
+          </div>
+        );
+      }
+
+      /** 5. useRef */
+      function UseRefExample() {
+        const inputRef = useRef(null);
+        return (
+          <div className="example">
+            <h3>useRef Example</h3>
+            <input ref={inputRef} placeholder="Type something" />
+            <button onClick={() => inputRef.current.focus()}>Focus</button>
+          </div>
+        );
+      }
+
+      /** 6. useMemo */
+      function UseMemoExample() {
+        const [num, setNum] = useState(0);
+        const double = useMemo(() => num * 2, [num]);
+        return (
+          <div className="example">
+            <h3>useMemo Example</h3>
+            <p>Number: {num}</p>
+            <p>Double: {double}</p>
+            <button onClick={() => setNum(num + 1)}>+1</button>
+          </div>
+        );
+      }
+
+      /** 7. useCallback */
+      function UseCallbackExample() {
+        const [count, setCount] = useState(0);
+        const increment = useCallback(() => setCount((c) => c + 1), []);
+        return (
+          <div className="example">
+            <h3>useCallback Example</h3>
+            <p>Count: {count}</p>
+            <button onClick={increment}>+1</button>
+          </div>
+        );
+      }
+
+      /** 8. useLayoutEffect */
+      function UseLayoutEffectExample() {
+        const divRef = useRef(null);
+        useLayoutEffect(() => {
+          if (divRef.current) {
+            divRef.current.style.color = "blue";
+          }
+        }, []);
+        return (
+          <div className="example" ref={divRef}>
+            <h3>useLayoutEffect Example</h3>
+            <p>This text is styled after render.</p>
+          </div>
+        );
+      }
+
+      /** 9. forwardRef + useImperativeHandle */
+      const CustomInput = forwardRef((props, ref) => {
+        const inputRef = useRef();
+        useImperativeHandle(ref, () => ({
+          focusInput: () => inputRef.current.focus(),
+        }));
+        return <input ref={inputRef} placeholder="Custom Input" />;
+      });
+      function UseImperativeHandleExample() {
+        const inputRef = useRef();
+        return (
+          <div className="example">
+            <h3>useImperativeHandle Example</h3>
+            <CustomInput ref={inputRef} />
+            <button onClick={() => inputRef.current.focusInput()}>Focus</button>
+          </div>
+        );
+      }
+
+      /** 10. useDebugValue */
+      function useCustomHook(value) {
+        useDebugValue(value > 5 ? "High" : "Low");
+        return value * 2;
+      }
+      function UseDebugValueExample() {
+        const doubled = useCustomHook(3);
+        return (
+          <div className="example">
+            <h3>useDebugValue Example</h3>
+            <p>Doubled Value: {doubled}</p>
+          </div>
+        );
+      }
+
+      /** 11. useId */
+      function UseIdExample() {
+        const id = useId();
+        return (
+          <div className="example">
+            <h3>useId Example</h3>
+            <label htmlFor={id}>Name: </label>
+            <input id={id} type="text" />
+          </div>
+        );
+      }
+
+      /** 12. useTransition */
+      function UseTransitionExample() {
+        const [list, setList] = useState([]);
+        const [isPending, startTransition] = useTransition();
+        function handleClick() {
+          startTransition(() => {
+            setList(Array.from({ length: 2000 }, (_, i) => i));
+          });
+        }
+        return (
+          <div className="example">
+            <h3>useTransition Example</h3>
+            <button onClick={handleClick}>Generate List</button>
+            {isPending ? <p>Loading...</p> : <p>List length: {list.length}</p>}
+          </div>
+        );
+      }
+
+      /** 13. useDeferredValue */
+      function UseDeferredValueExample() {
+        const [text, setText] = useState("");
+        const deferredText = useDeferredValue(text);
+        return (
+          <div className="example">
+            <h3>useDeferredValue Example</h3>
+            <input value={text} onChange={(e) => setText(e.target.value)} />
+            <p>Immediate: {text}</p>
+            <p>Deferred: {deferredText}</p>
+          </div>
+        );
+      }
+
+      /** Render all examples */
+      function App() {
+        return (
+          <div>
+            <UseStateExample />
+            <UseEffectExample />
+            <UseContextExample />
+            <UseReducerExample />
+            <UseRefExample />
+            <UseMemoExample />
+            <UseCallbackExample />
+            <UseLayoutEffectExample />
+            <UseImperativeHandleExample />
+            <UseDebugValueExample />
+            <UseIdExample />
+            <UseTransitionExample />
+            <UseDeferredValueExample />
+          </div>
+        );
+      }
+
+      const root = ReactDOM.createRoot(document.getElementById("root"));
+      root.render(<App />);
+    </script>
+  </body>
+</html>
